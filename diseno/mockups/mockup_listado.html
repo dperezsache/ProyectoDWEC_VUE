@@ -14,21 +14,23 @@
             <div id="divCabecera">
                 <img src="../logo.png" alt="Logo de CoolPC" id="imgLogo"/>
                 <div id="divBusqueda">
-                    <input type="text" maxlength="50" placeholder="Búsqueda"/>
+                    <label id="labelBuscar" for="buscar">
+                        Búsqueda <input id="buscar" name="buscar" type="text" maxlength="50"/>
+                    </label>
                     <button type="button">
                         <span class="material-icons">search</span>
                     </button>
                 </div>
                 <div id="divBotones">
-                    <button type="button">
+                    <button type="button" id="buttonListado">
                         Listado de componentes 
                         <span class="material-icons">list</span>
                     </button>
-                    <button type="button">
+                    <button type="button" id="buttonAlta">
                         Alta de componente
                         <span class="material-icons">add</span>
                     </button>
-                    <button type="button">
+                    <button type="button" id="buttonModificar">
                         Modificar componente
                         <span class="material-icons">edit</span>
                     </button>
@@ -40,7 +42,7 @@
             <p id="pTotal">Total de productos: <span id="spanTotal">2</span></p>
 
             <div class="divItem">
-                <img src="../../src/www/assets/mockups_img/mockup_item1.jpg"/>
+                <img src="../../src/www/assets/mockups_img/mockup_item1.jpg" alt="Imagen de componente"/>
                 <p class="pNombreItem">Gigabyte GeForce RTX 3060 Gaming OC 12 GB V2 LHR</p>
                 <p class="pPrecioItem">449,89€</p>
                 <div class="divDescItem">
@@ -65,10 +67,10 @@
                     </ul>
                 </p>
                 <div>
-                    <button id="buttonEditar">
+                    <button class="buttonEditar">
                         <span class="material-icons">edit</span>
                     </button>
-                    <button id="buttonBorrar">
+                    <button class="buttonBorrar">
                         <span class="material-icons">delete</span>
                     </button>
                 </div>
@@ -76,7 +78,7 @@
             </div>
 
             <div class="divItem">
-                <img src="../../src/www/assets/mockups_img/mockup_item2.jpg"/>
+                <img src="../../src/www/assets/mockups_img/mockup_item2.jpg" alt="Imagen de componente"/>
                 <p class="pNombreItem">AMD Ryzen 5 5600X</p>
                 <p class="pPrecioItem">215,87€</p>
                 <div class="divDescItem">
@@ -96,10 +98,10 @@
                     </ul>
                 </p>
                 <div>
-                    <button id="buttonEditar">
+                    <button class="buttonEditar">
                         <span class="material-icons">edit</span>
                     </button>
-                    <button id="buttonBorrar">
+                    <button class="buttonBorrar">
                         <span class="material-icons">delete</span>
                     </button>
                 </div>
@@ -107,7 +109,8 @@
             </div>
         </div>
         <footer>
-            <img src="../logo-icono.png" alt="Logo de CoolPC"/>
+            <img id="imgFooter" src="../logo-icono.png" alt="Logo de CoolPC"/>
+            <img id="imgAccesibilidad" src="../../src/www/assets/wcag2AA-blue.png" alt="Logo de WCAG 2.0 AA"/>
         </footer>
     </body>
 </html>

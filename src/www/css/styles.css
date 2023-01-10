@@ -41,17 +41,25 @@ footer
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 100px;
+    height: 200px;
     background-color: #EA983B;
 }
 
-footer img
+footer img#imgFooter
 {
     width: 90px;
     height: 80px;
     display: block;
     margin: auto;
     padding: 10px 0;
+}
+
+footer img#imgAccesibilidad
+{
+    display: block;
+    margin: auto;
+    width: 192px;
+    height: 72px;
 }
 
 ::placeholder 
@@ -86,7 +94,6 @@ div#divBusqueda input
     height: 28px;
     width: 350px;
     margin-right: 0;
-    margin-left: 20px;
     border: 1px solid #ADACAC;
     border-radius: 0px;
     vertical-align: middle;
@@ -125,6 +132,11 @@ div#divBotones button:active
     background-color: #e9e9e9;
 }
 
+label#labelBuscar
+{
+    margin-left: 20px;
+}
+
 div#divListado,
 div#divAlta,
 div#divModificar
@@ -146,7 +158,7 @@ div#divListado p
 span#spanTotal
 {
     font-weight: bold;
-    color: #D9450D;
+    color: #a00000;
 }
 
 div#divAlta,
@@ -176,6 +188,11 @@ div#divBotonesForm button:hover
 div#divBotonesForm button:active
 {
     background-color: #e9e9e9;
+}
+
+img#imgAccesibilidad
+{
+
 }
 
 form
@@ -260,7 +277,7 @@ div.divItem
 p.pPrecioItem
 {
     font-weight: bold;
-    color: #D9450D;
+    color: #a00000;
     font-size: larger;
 }
 
