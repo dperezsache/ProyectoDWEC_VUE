@@ -1,0 +1,290 @@
+/* Autor: David Pérez Saché */
+
+/* FUENTES */
+@font-face
+{
+    font-family: "Roboto";
+    src: url("../assets/Roboto/Roboto-Regular.ttf");
+}
+
+/* ELEMENTOS GENERALES */
+html
+{
+    width: auto;
+    height: auto;
+    overflow-y: auto;
+    position: relative;
+    min-height: 100%;
+}
+
+body
+{
+    font-family: "Roboto";
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+
+table
+{
+    margin: auto;
+    text-align: center;
+}
+
+span.material-icons
+{
+    vertical-align: middle;
+}
+
+footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #EA983B;
+}
+
+footer img
+{
+    width: 90px;
+    height: 80px;
+    display: block;
+    margin: auto;
+    padding: 10px 0;
+}
+
+::placeholder 
+{
+    color: black;
+    opacity: 1;
+}
+
+/* IDs */
+img#imgLogo 
+{
+    width: 192px;
+    padding-left: 20px;
+    padding-top: 5px;
+    vertical-align: middle;
+}
+
+div#divBusqueda
+{
+    display: inline-block;
+}
+
+div#divCabecera
+{
+    text-align: center;
+    background-color: #EA983B;
+    padding-bottom: 5px;
+}
+
+div#divBusqueda input
+{
+    height: 28px;
+    width: 350px;
+    margin-right: 0;
+    margin-left: 20px;
+    border: 1px solid #ADACAC;
+    border-radius: 0px;
+    vertical-align: middle;
+}
+
+div#divBusqueda button
+{
+    height: 32px;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+    border: 1px solid #ADACAC;
+    border-radius: 0px;
+}
+
+div#divBotones
+{
+    display: inline-block;
+    padding-left: 15px;
+}
+
+div#divBotones button
+{
+    height: 50px;
+    background-color: #FFFFFF;
+    border: 1px solid #ADACAC;
+    border-radius: 10px;
+}
+
+div#divBotones button:hover
+{
+    background-color: #f3f3f3;
+}
+
+div#divBotones button:active
+{
+    background-color: #e9e9e9;
+}
+
+div#divListado,
+div#divAlta,
+div#divModificar
+{
+    margin-bottom: 120px;
+}
+
+p#pTotal
+{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+div#divListado p
+{
+    padding-left: 10px;
+}
+
+span#spanTotal
+{
+    font-weight: bold;
+    color: #D9450D;
+}
+
+div#divAlta,
+div#divModificar
+{
+    margin-top: 100px;
+}
+
+div#divBotonesForm
+{
+    text-align: center;
+}
+
+div#divBotonesForm button
+{
+    background-color: white;
+    border: 1px solid #ADACAC;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+div#divBotonesForm button:hover
+{
+    background-color: #f3f3f3;
+}
+
+div#divBotonesForm button:active
+{
+    background-color: #e9e9e9;
+}
+
+form
+{
+    width: 550px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: ghostwhite;
+    border: 1px solid #ADACAC;
+    border-radius: 15px;
+}
+
+select
+{
+    display: block;
+    margin: auto;
+    background-color: white;
+    border: 1px solid #ADACAC;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input
+{
+    font-family: "Roboto";
+}
+
+textarea
+{
+    resize: none;
+    font-family: "Roboto";
+}
+
+form input[type="text"], 
+form input[type="number"], 
+form input[type="date"], 
+form input[type="file"],
+textarea
+{
+    width: 400px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ADACAC;
+}
+
+form label
+{
+    display: block;
+}
+
+fieldset
+{
+    margin: 10px 0;
+    background-color: rgb(251, 251, 255);
+}
+
+form input[type="file"]
+{
+    border: 0;
+    width: 275px;
+}
+
+/* CLASES */
+div.divItem
+{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.divItem img
+{
+    width: 256px;
+    height: 256px;
+    display: block;
+    margin: auto;
+}
+
+p.pPrecioItem
+{
+    font-weight: bold;
+    color: #D9450D;
+    font-size: larger;
+}
+
+p.pNombreItem
+{
+    font-weight: bold;
+}
+
+div.divDescItem
+{
+    text-align: justify;
+    width: 40%;
+    margin: auto;
+}
+
+hr.hrItems
+{
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(173,172,172,1) 15%, rgba(173,172,172,1) 50%, rgba(173,172,172,1) 85%, rgba(173,172,172,0) 100%);
+}
+
+span.spanFecha
+{
+    text-decoration: underline;
+}
+

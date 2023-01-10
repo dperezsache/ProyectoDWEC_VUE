@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta author="David Pérez Saché"/>
+        <title>Alta componente</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="../../src/www/css/styles.css"/>
+        <link rel="icon" type="image/x-icon" href="../logo-icono.png"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <div id="divCabecera">
+                <img src="../logo.png" alt="Logo de CoolPC" id="imgLogo"/>
+                <div id="divBotones">
+                    <button type="button">
+                        Listado de componentes 
+                        <span class="material-icons">list</span>
+                    </button>
+                    <button type="button">
+                        Alta de componente
+                        <span class="material-icons">add</span>
+                    </button>
+                    <button type="button">
+                        Modificar componente
+                        <span class="material-icons">edit</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div id="divAlta">
+            <form id="formAlta">
+                <input type="text" name="nombre" placeholder="Nombre" pattern="^[A-Z][a-z]{3,50}$" maxlength="50" required/>
+                <input type="date" name="fecha" required/>
+                <input type="number" name="precio" step=".01" placeholder="Precio" required/>
+                <textarea name="descripcion" maxlength="500" rows="8" cols="50" placeholder="Descripción" required></textarea>
+                <input type="file" name="subirImagen" placeholder="Subir imagen" accept="image/png, image/jpeg"/>
+                <fieldset>
+                    <legend>Seguros que tiene el producto</legend>
+                    <label for="seguro1">
+                        Seguro contra robos
+                        <input type="checkbox" name="seguro1"/>
+                    </label>
+                    <label for="seguro2">
+                        Seguro contra roturas
+                        <input type="checkbox" name="seguro2"/>
+                    </label>
+                    <label for="seguro3">
+                        Seguro contra caídas no accidentales
+                        <input type="checkbox" name="seguro3"/>
+                    </label>
+                </fieldset>
+                <div id="divBotonesForm">
+                    <button type="button" id="botonAceptar">Aceptar</button>
+                    <button type="button" id="botonCancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <img src="../logo-icono.png" alt="Logo de CoolPC"/>
+        </footer>
+    </body>
+</html>

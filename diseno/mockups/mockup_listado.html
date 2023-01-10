@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta author="David Pérez Saché"/>
+        <title>Listado componentes</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="../../src/www/css/styles.css"/>
+        <link rel="icon" type="image/x-icon" href="../logo-icono.png"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <div id="divCabecera">
+                <img src="../logo.png" alt="Logo de CoolPC" id="imgLogo"/>
+                <div id="divBusqueda">
+                    <input type="text" maxlength="50" placeholder="Búsqueda"/>
+                    <button type="button">
+                        <span class="material-icons">search</span>
+                    </button>
+                </div>
+                <div id="divBotones">
+                    <button type="button">
+                        Listado de componentes 
+                        <span class="material-icons">list</span>
+                    </button>
+                    <button type="button">
+                        Alta de componente
+                        <span class="material-icons">add</span>
+                    </button>
+                    <button type="button">
+                        Modificar componente
+                        <span class="material-icons">edit</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <div id="divListado">
+            <p id="pTotal">Total de productos: <span id="spanTotal">2</span></p>
+
+            <div class="divItem">
+                <img src="../../src/www/assets/mockups_img/mockup_item1.jpg"/>
+                <p class="pNombreItem">Gigabyte GeForce RTX 3060 Gaming OC 12 GB V2 LHR</p>
+                <p class="pPrecioItem">449,89€</p>
+                <div class="divDescItem">
+                    <p>
+                        LA VICTORIA SE MIDE EN MILISEGUNDOS: NVIDIA Reflex ofrece la máxima ventaja competitiva. La latencia más baja. 
+                        La mejor capacidad de respuesta. Gracias a las GPU GeForce RTX serie 30 y los monitores NVIDIA
+                    </p>
+                    <p>
+                        TU JUEGO CREATIVO: Lleva tus proyectos creativos a un nuevo nivel con las GPU GeForce RTX serie 30. 
+                        Ofrece aceleración por IA en las mejores aplicaciones creativas. Con el soporte de la plataforma NVIDIA Studio de controladores dedicados y herramientas exclusivas.
+                        Y creado para obtener resultados en un tiempo récord. Tanto si estás renderizando escenas en 3D complejas, editando vídeo de 8K o retransmitiendo con la mejor codificación y calidad de imagen, 
+                        las GPU GeForce RTX te ofrecen el rendimiento necesario para tus mejores creaciones.
+                    </p>
+                </div>
+                <div class="pFechaItem">
+                    <p>Fecha de lanzamiento: <span class="spanFecha">12/01/2021</span></p>
+                </div>
+                <p class="pSegurosItem">
+                    <ul>
+                        <li>Se ofrece seguro contra roturas</li>
+                        <li>Se ofrece seguro contra caídas</li>
+                    </ul>
+                </p>
+                <div>
+                    <button id="buttonEditar">
+                        <span class="material-icons">edit</span>
+                    </button>
+                    <button id="buttonBorrar">
+                        <span class="material-icons">delete</span>
+                    </button>
+                </div>
+                <hr class="hrItems"/>
+            </div>
+
+            <div class="divItem">
+                <img src="../../src/www/assets/mockups_img/mockup_item2.jpg"/>
+                <p class="pNombreItem">AMD Ryzen 5 5600X</p>
+                <p class="pPrecioItem">215,87€</p>
+                <div class="divDescItem">
+                    <p>
+                        El AMD Ryzen 5 5600X es un procesador de escritorio con 6 núcleos, lanzado en noviembre de 2020. 
+                        Forma parte de la línea Ryzen 5 y utiliza la arquitectura Zen 3 (Vermeer) con Socket AM4. Gracias a AMD Simultaneous Multithreading (SMT), 
+                        el recuento de núcleos se duplica efectivamente a 12 subprocesos. Ryzen 5 5600X tiene 32 MB de caché L3 y funciona a 3,7 GHz de forma predeterminada,
+                        pero puede aumentar hasta 4,6 GHz, según la carga de trabajo. AMD está construyendo el Ryzen 5 5600X en un proceso de producción de 7 nm utilizando 4150 millones de transistores. 
+                    </p>
+                </div>
+                <div class="pFechaItem">
+                    <p>Fecha de lanzamiento: <span class="spanFecha">05/11/2020</span></p>
+                </div>
+                <p class="pSegurosItem">
+                    <ul>
+                        <li>No se ofrece ningún seguro</li>
+                    </ul>
+                </p>
+                <div>
+                    <button id="buttonEditar">
+                        <span class="material-icons">edit</span>
+                    </button>
+                    <button id="buttonBorrar">
+                        <span class="material-icons">delete</span>
+                    </button>
+                </div>
+                <hr class="hrItems"/>
+            </div>
+        </div>
+        <footer>
+            <img src="../logo-icono.png" alt="Logo de CoolPC"/>
+        </footer>
+    </body>
+</html>

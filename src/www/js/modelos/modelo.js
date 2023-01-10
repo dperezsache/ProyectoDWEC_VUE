@@ -8,8 +8,17 @@
 	Clase Modelo.
 	Gestiona los datos de la aplicación.
 **/
-export class modelo {
-    constructor() {
-
+export class modelo 
+{
+    constructor() 
+	{
+		this.nombre;	  // Nombre del componente (texto corto).
+		this.precio;	  // Precio del componente (número con decimales).
+		this.fecha;		  // Fecha cúando fue diseñado el componente (fecha SIN hora).
+		this.descripcion; // Descripción del componente (texto largo).
+		this.enStock;	  // Si el producto está o no disponible en stock (boolean).
+		this.seguros;	  // Los seguros que se ofrece al componente: por caída, viene dañado de fábrica... (checkboxes).
+		this.categoría;	  // Categoría a la que pertenece el componente: CPU, GPU, RAM, PSU, Placa base, Disco duro o torre (select).
+		this.imagen;	  // Imagen del componente (blob).
     }
 }
