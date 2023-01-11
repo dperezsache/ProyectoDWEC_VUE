@@ -14,15 +14,15 @@
             <div id="divCabecera">
                 <img src="../logo.png" alt="Logo de CoolPC" id="imgLogo"/>
                 <div id="divBotones">
-                    <button type="button">
+                    <button type="button" id="buttonListado">
                         Listado de componentes 
                         <span class="material-icons">list</span>
                     </button>
-                    <button type="button">
+                    <button type="button" id="buttonAlta">
                         Alta de componente
                         <span class="material-icons">add</span>
                     </button>
-                    <button type="button">
+                    <button type="button" id="buttonModificar">
                         Modificar componente
                         <span class="material-icons">edit</span>
                     </button>
@@ -32,26 +32,35 @@
 
         <div id="divAlta">
             <form id="formAlta">
-                <input type="text" name="nombre" placeholder="Nombre" pattern="^[A-Z][a-z]{3,50}$" maxlength="50" required/>
-                <input type="date" name="fecha" required/>
-                <input type="number" name="precio" step=".01" placeholder="Precio" required/>
-                <textarea name="descripcion" maxlength="500" rows="8" cols="50" placeholder="Descripción" required></textarea>
-                <input type="file" name="subirImagen" placeholder="Subir imagen" accept="image/png, image/jpeg"/>
+                <label for="nombre">
+                    Nombre <input type="text" name="nombre" pattern="^[A-Z][a-z]{3,50}$" maxlength="50" required/>
+                </label>
+                <label for="fecha">
+                    Fecha <input type="date" name="fecha" required/>
+                </label>
+                <label for="precio">
+                    Precio <input type="number" name="precio" step=".01" required/>
+                </label>
+                <label for="descripcion">
+                    Descripción <textarea name="descripcion" maxlength="500" rows="8" cols="50" required></textarea>
+                </label>
+                <label for="subirImagen">
+                    Subir imagen <input type="file" name="subirImagen" accept="image/png, image/jpeg"/>
+                </label>
+
                 <fieldset>
                     <legend>Seguros que tiene el producto</legend>
-                    <label for="seguro1">
-                        Seguro contra robos
-                        <input type="checkbox" name="seguro1"/>
+                    <label for="seguro1" class="labelCheckbox">
+                        Seguro contra robos <input type="checkbox" name="seguro1"/>
                     </label>
-                    <label for="seguro2">
-                        Seguro contra roturas
-                        <input type="checkbox" name="seguro2"/>
+                    <label for="seguro2" class="labelCheckbox">
+                        Seguro contra roturas <input type="checkbox" name="seguro2"/>
                     </label>
-                    <label for="seguro3">
-                        Seguro contra caídas no accidentales
-                        <input type="checkbox" name="seguro3"/>
+                    <label for="seguro3" class="labelCheckbox">
+                        Seguro contra caídas no accidentales <input type="checkbox" name="seguro3"/>
                     </label>
                 </fieldset>
+                
                 <div id="divBotonesForm">
                     <button type="button" id="botonAceptar">Aceptar</button>
                     <button type="button" id="botonCancelar">Cancelar</button>
@@ -60,7 +69,8 @@
         </div>
 
         <footer>
-            <img src="../logo-icono.png" alt="Logo de CoolPC"/>
+            <img id="imgFooter" src="../logo-icono.png" alt="Logo de CoolPC"/>
+            <img id="imgAccesibilidad" src="../../src/www/assets/wcag2AA-blue.png" alt="Logo de WCAG 2.0 AA"/>
         </footer>
     </body>
 </html>

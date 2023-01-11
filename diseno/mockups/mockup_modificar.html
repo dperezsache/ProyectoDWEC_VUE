@@ -14,15 +14,15 @@
             <div id="divCabecera">
                 <img src="../logo.png" alt="Logo de CoolPC" id="imgLogo"/>
                 <div id="divBotones">
-                    <button type="button">
+                    <button type="button" id="buttonListado">
                         Listado de componentes 
                         <span class="material-icons">list</span>
                     </button>
-                    <button type="button">
+                    <button type="button" id="buttonAlta">
                         Alta de componente
                         <span class="material-icons">add</span>
                     </button>
-                    <button type="button">
+                    <button type="button" id="buttonModificar">
                         Modificar componente
                         <span class="material-icons">edit</span>
                     </button>
@@ -32,27 +32,34 @@
 
         <div id="divModificar">
             <form id="formModificar">
-                <select name="actualizar">
-                    <option value="-1" disabled selected>-- Selecciona componente --</option>
-                </select>
-                <input type="text" name="nombre" placeholder="Nuevo nombre" pattern="^[A-Z][a-z]{3,50}$" maxlength="50" required value="AMD Ryzen 5 5600X"/>
-                <input type="date" name="fecha" required/>
-                <input type="number" name="precio" step=".01" placeholder="Nuevo precio" value="250.05" required/>
-                <textarea name="descripcion" maxlength="500" rows="8" cols="50" placeholder="Nueva descripción" required>El AMD Ryzen 5 5600X es un procesador de escritorio con 6 núcleos, lanzado en noviembre de 2020. Forma parte de la línea Ryzen 5 y utiliza la arquitectura Zen 3 (Vermeer) con Socket AM4.</textarea>
-                <input type="file" name="subirImagen" placeholder="Subir imagen" accept="image/png, image/jpeg"/>
+                <label for="actualizar">
+                    Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
+                </label>
+                <label for="nombre">
+                    Nuevo nombre <input type="text" name="nombre" value="AMD Ryzen 5 5600X" maxlength="50" required/>
+                </label>
+                <label for="fecha">
+                    Nueva fecha <input type="date" name="fecha" required/>
+                </label>
+                <label for="precio">
+                    Nuevo precio <input type="number" name="precio" value="250.05" step=".01" required/>
+                </label>
+                <label for="descripcion">
+                    Nueva descripción <textarea name="descripcion" maxlength="500" rows="8" cols="50" required>El AMD Ryzen 5 5600X es un procesador de escritorio con 6 núcleos, lanzado en noviembre de 2020. Forma parte de la línea Ryzen 5 y utiliza la arquitectura Zen 3 (Vermeer) con Socket AM4.</textarea>
+                </label>
+                <label for="subirImagen">
+                    Subir nueva imagen <input type="file" name="subirImagen" accept="image/png, image/jpeg"/>
+                </label>
                 <fieldset>
                     <legend>Seguros que tiene el producto</legend>
-                    <label for="seguro1">
-                        Seguro contra robos
-                        <input type="checkbox" name="seguro1"/>
+                    <label for="seguro1" class="labelCheckbox">
+                        Seguro contra robos <input type="checkbox" name="seguro1"/>
                     </label>
-                    <label for="seguro2">
-                        Seguro contra roturas
-                        <input type="checkbox" name="seguro2" checked/>
+                    <label for="seguro2" class="labelCheckbox">
+                        Seguro contra roturas <input type="checkbox" checked name="seguro2"/>
                     </label>
-                    <label for="seguro3">
-                        Seguro contra caídas no accidentales
-                        <input type="checkbox" name="seguro3"/>
+                    <label for="seguro3" class="labelCheckbox">
+                        Seguro contra caídas no accidentales <input type="checkbox" name="seguro3"/>
                     </label>
                 </fieldset>
                 <div id="divBotonesForm">
@@ -63,7 +70,8 @@
         </div>
 
         <footer>
-            <img src="../logo-icono.png" alt="Logo de CoolPC"/>
+            <img id="imgFooter" src="../logo-icono.png" alt="Logo de CoolPC"/>
+            <img id="imgAccesibilidad" src="../../src/www/assets/wcag2AA-blue.png" alt="Logo de WCAG 2.0 AA"/>
         </footer>
     </body>
 </html>
