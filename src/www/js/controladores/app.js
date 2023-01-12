@@ -3,6 +3,7 @@ import { VistaAlta } from "../vistas/vistaalta.js";
 import { VistaDivBotones } from "../vistas/vistadivbotones.js";
 import { VistaListado } from "../vistas/vistalistado.js";
 import { VistaModificar } from "../vistas/vistamodificar.js";
+import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
 
 class Controlador {
     /**
@@ -21,11 +22,13 @@ class Controlador {
         this.modelo = new Modelo();
 
         this.divBotones = document.getElementById('divBotones');
+        this.divBarraBusqueda = document.getElementById('divBusqueda');
         this.divAlta = document.getElementById('divAlta');
         this.divListado = document.getElementById('divListado');
         this.divModificar = document.getElementById('divModificar');
 
         this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
+        this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda);
         this.vistaAlta = new VistaAlta(this, this.divAlta);
         this.vistaListado = new VistaListado(this, this.divListado);
         this.vistaModificar = new VistaModificar(this, this.divModificar);
@@ -38,6 +41,7 @@ class Controlador {
 	**/
     pulsarBotonListado() {
         this.vistaListado.mostrar(true);
+        this.vistaBarraBusqueda.mostrar(true);
         this.vistaAlta.mostrar(false);
         this.vistaModificar.mostrar(false);
     }
@@ -47,6 +51,7 @@ class Controlador {
 	**/
     pulsarBotonAlta() {
         this.vistaListado.mostrar(false);
+        this.vistaBarraBusqueda.mostrar(false);
         this.vistaAlta.mostrar(true);
         this.vistaModificar.mostrar(false);
     }
@@ -56,6 +61,7 @@ class Controlador {
 	**/
     pulsarBotonModificar() {
         this.vistaListado.mostrar(false);
+        this.vistaBarraBusqueda.mostrar(false);
         this.vistaAlta.mostrar(false);
         this.vistaModificar.mostrar(true);
     }

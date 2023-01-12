@@ -11,7 +11,7 @@ export class Vista {
 	/**
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
-		@param {HtmlDivElement} div Div de HTML en el que se desplegará la vista.
+		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
 	**/
     constructor(controlador, div) {
 		this.controlador = controlador;

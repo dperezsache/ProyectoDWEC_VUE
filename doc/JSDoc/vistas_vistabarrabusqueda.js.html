@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: vistas/vista.js</title>
+    <title>JSDoc: Source: vistas/vistabarrabusqueda.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: vistas/vista.js</h1>
+    <h1 class="page-title">Source: vistas/vistabarrabusqueda.js</h1>
 
     
 
@@ -27,37 +27,26 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
-	@file Contiene el modelo de la aplicación
-	@author David Pérez Saché &lt;dperezsache.guadalupe@alumnado.fundacionloyola.es>
+	@file Contiene la vista de la barra de búsqueda.
+	@author David Pérez Saché &lt;dperezsache.guadalupe@alumnado.fundacionloyola.net>
 	@license GPL-3.0-or-later
 **/
 
+import {Vista} from './vista.js';
+
 /**
-	Implementa una vista.
+	Vista de la barra de búsqueda.
+	Contiene todos los componentes que hayan.
 **/
-export class Vista {
+export class VistaBarraBusqueda extends Vista {
 	/**
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
 	**/
     constructor(controlador, div) {
-		this.controlador = controlador;
-        this.div = div;
+        super(controlador, div);
     }
-
-    /**
-		Muestra u oculta el div principal de la vista.
-		@param {Boolean} ver True muestra la vista y false la oculta.
-	**/
-	mostrar(ver) {
-		if(ver) {
-            this.div.style.display = 'block';
-        }
-		else {
-            this.div.style.display = 'none';
-        }
-	}
 }</code></pre>
         </article>
     </section>
