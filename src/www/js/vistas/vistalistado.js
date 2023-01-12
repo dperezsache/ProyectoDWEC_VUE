@@ -18,6 +18,5 @@ export class VistaListado extends Vista {
 	**/
     constructor(controlador, div) {
         super(controlador, div);
-        this.modelo = this.controlador.getModelo();
     }
 }
