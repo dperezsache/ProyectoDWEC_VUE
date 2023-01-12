@@ -1,12 +1,10 @@
 /* Autor: David Pérez Saché */
 
-/* FUENTES */
 @font-face {
     font-family: "Roboto";
     src: url("../assets/Roboto/Roboto-Regular.ttf");
 }
 
-/* ELEMENTOS GENERALES */
 html {
     width: auto;
     height: auto;
@@ -91,7 +89,6 @@ form input[type="file"] {
     opacity: 1;
 }
 
-/* IDs */
 img#imgLogo {
     width: 192px;
     padding-left: 20px;
@@ -192,22 +189,22 @@ div#divModificar {
     margin-top: 100px;
 }
 
-div#divBotonesForm {
+div.divBotonesForm {
     text-align: center;
 }
 
-div#divBotonesForm button {
+div.divBotonesForm button {
     background-color: white;
     border: 1px solid #ADACAC;
     border-radius: 5px;
     padding: 5px;
 }
 
-div#divBotonesForm button:hover {
+div.divBotonesForm button:hover {
     background-color: #f3f3f3;
 }
 
-div#divBotonesForm button:active {
+div.divBotonesForm button:active {
     background-color: #e9e9e9;
 }
 
@@ -215,7 +212,6 @@ label.labelCheckbox {
     display: block;
 }
 
-/* CLASES */
 span.material-icons {
     vertical-align: middle;
 }
