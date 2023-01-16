@@ -7,13 +7,15 @@
 /**
 	Implementa una vista del menú de botones.
 **/
-export class VistaDivBotones {
+export class VistaDivBotones 
+{
     /**
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
 	**/
-	constructor(controlador, div) {
+	constructor(controlador, div) 
+	{
 		this.controlador = controlador;
 		this.div = div;
 		
@@ -29,21 +31,24 @@ export class VistaDivBotones {
     /**
 		Atención a la pulsación sobre el enlace de listado
 	**/
-	pulsarListado() {
+	pulsarListado() 
+	{
 		this.controlador.pulsarBotonListado();
 	}
 
 	/**
 		Atención a la pulsación sobre el enlace de CRUD
 	**/
-	pulsarAlta() {
+	pulsarAlta() 
+	{
 		this.controlador.pulsarBotonAlta();
 	}
 	
 	/**
 		Atención a la pulsación sobre el enlace de actualizar
 	**/
-	pulsarModificar() {
+	pulsarModificar() 
+	{
 		this.controlador.pulsarBotonModificar();
 	}
 }

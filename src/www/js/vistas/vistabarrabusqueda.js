@@ -10,13 +10,15 @@ import {Vista} from './vista.js';
 	Vista de la barra de búsqueda.
 	Contiene todos los componentes que hayan.
 **/
-export class VistaBarraBusqueda extends Vista {
+export class VistaBarraBusqueda extends Vista 
+{
 	/**
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
 	**/
-    constructor(controlador, div) {
+    constructor(controlador, div) 
+	{
         super(controlador, div);
     }
 }

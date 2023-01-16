@@ -7,13 +7,15 @@
 /**
 	Implementa una vista.
 **/
-export class Vista {
+export class Vista 
+{
 	/**
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
 	**/
-    constructor(controlador, div) {
+    constructor(controlador, div) 
+	{
 		this.controlador = controlador;
         this.div = div;
     }
@@ -22,11 +24,14 @@ export class Vista {
 		Muestra u oculta el div principal de la vista.
 		@param {Boolean} ver True muestra la vista y false la oculta.
 	**/
-	mostrar(ver) {
-		if(ver) {
+	mostrar(ver)
+	{
+		if(ver) 
+		{
             this.div.style.display = 'block';
         }
-		else {
+		else 
+		{
             this.div.style.display = 'none';
         }
 	}

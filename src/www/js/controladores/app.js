@@ -5,12 +5,14 @@ import { VistaListado } from "../vistas/vistalistado.js";
 import { VistaModificar } from "../vistas/vistamodificar.js";
 import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
 
-class Controlador {
+class Controlador 
+{
     /**
 	 *	Constructor de la clase.
 	 *	Llama al método iniciar al cargarse la página.
 	 */
-    constructor() {
+    constructor() 
+    {
         window.onload = this.iniciar.bind(this);
     }
 
@@ -18,8 +20,9 @@ class Controlador {
      * Inicia la aplicación.
      * Crea el modelo y las vistas.
      */
-    iniciar() {
-        this.modelo = new Modelo();
+    iniciar() 
+    {
+        this.modelo = new Modelo(this);
 
         this.divBotones = document.getElementById('divBotones');
         this.divBarraBusqueda = document.getElementById('divBusqueda');
@@ -39,7 +42,8 @@ class Controlador {
     /**
 		Atención a la pulsación sobre el botón de listado
 	**/
-    pulsarBotonListado() {
+    pulsarBotonListado() 
+    {
         this.vistaListado.mostrar(true);
         this.vistaBarraBusqueda.mostrar(true);
         this.vistaAlta.mostrar(false);
@@ -49,7 +53,8 @@ class Controlador {
     /**
 		Atención a la pulsación sobre el botón de alta
 	**/
-    pulsarBotonAlta() {
+    pulsarBotonAlta() 
+    {
         this.vistaListado.mostrar(false);
         this.vistaBarraBusqueda.mostrar(false);
         this.vistaAlta.mostrar(true);
@@ -59,12 +64,61 @@ class Controlador {
     /**
 		Atención a la pulsación sobre el botón de modificar
 	**/
-    pulsarBotonModificar() {
+    pulsarBotonModificar() 
+    {
         this.vistaListado.mostrar(false);
         this.vistaBarraBusqueda.mostrar(false);
         this.vistaAlta.mostrar(false);
         this.vistaModificar.mostrar(true);
     }
+
+    /**
+		Inserta el elemento en el modelo.
+    **/
+    aceptarCRUD(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
+    {
+        this.modelo.insertar(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3);
+        this.pulsarBotonListado();
+    }
+
+    /**
+		Atención al click en el icono editar del CRUD.
+	**/
+	actualizarCRUD(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3)
+	{
+		this.modelo.procesarComponente(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3);
+	}
+
+    /**
+		Atención al click en el icono eliminar del CRUD.
+		Elimina el elemento en el modelo.
+		@param {Number} id ID del dato a eliminar.
+	**/
+	eliminarCRUD(id) 
+    {
+		this.modelo.borrar(id);
+	}
+
+	/**
+		Atención al click en el icono editar del CRUD.
+		Manda al formulario de edición.
+		@param {Number} id ID del dato a editar.
+	**/
+	editarCRUD(id) 
+    {
+		this.pulsarBotonModificar();
+		this.vistaModificar.listado.value = id;
+		this.vistaModificar.actualizarForm();
+	}
+
+    /**
+		Devuelve el modelo de la aplicación.
+		@return {Modelo} El modelo de la aplicación.
+	**/
+	getModelo() 
+    {
+		return this.modelo;
+	}
 }
 
 const app = new Controlador();
