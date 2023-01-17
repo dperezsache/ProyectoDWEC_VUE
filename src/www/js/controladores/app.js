@@ -100,7 +100,7 @@ class Controlador
     /**
 		Atención al click en el icono eliminar del CRUD.
 		Elimina el elemento en el modelo.
-		@param {Number} id ID del dato a eliminar.
+		@param {Number} id ID del elemento a eliminar.
 	**/
 	eliminarCRUD(id) 
     {
@@ -110,7 +110,7 @@ class Controlador
 	/**
 		Atención al click en el icono editar del CRUD.
 		Manda al formulario de edición.
-		@param {Number} id ID del dato a editar.
+		@param {Number} id ID del elemento a editar.
 	**/
 	editarCRUD(id) 
     {

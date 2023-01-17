@@ -59,15 +59,15 @@ export class Modelo
 
 	/**
 	 	Insertar registro en la BD.
-		@param {String} nombre 
-		@param {Date} fecha 
-		@param {Number} precio 
-		@param {String} descripcion 
-		@param {Number} tipo
-		@param {File} imagen 
-		@param {Boolean} seguro1
-		@param {Boolean} seguro2
-		@param {Boolean} seguro3 
+		@param {String} nombre Nombre del componente.
+		@param {Date} fecha Fecha de lanzamiento.
+		@param {Number} precio Precio del componente.
+		@param {String} descripcion Descripción del componente.
+		@param {Number} tipo Tipo del componente.
+		@param {File} imagen Imagen del componente.
+		@param {Boolean} seguro1 Seguro nº 1.
+		@param {Boolean} seguro2 Seguro nº 2.
+		@param {Boolean} seguro3 Seguro nº 3.
 	**/
 	insertar(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
 	{
@@ -96,16 +96,16 @@ export class Modelo
 
 	/**
 	 	Obtener componente usando el ID, para después poder actualizarlo.
-		@param {Number} id
-		@param {String} nombre 
-		@param {Date} fecha 
-		@param {Number} precio 
-		@param {String} descripcion 
-		@param {Number} tipo
-		@param {File} imagen 
-		@param {Boolean} seguro1
-		@param {Boolean} seguro2
-		@param {Boolean} seguro3 
+		@param {Number} id ID del componente.
+		@param {String} nombre Nombre del componente.
+		@param {Date} fecha Fecha de lanzamiento.
+		@param {Number} precio Precio del componente.
+		@param {String} descripcion Descripción del componente.
+		@param {Number} tipo Tipo del componente.
+		@param {File} imagen Imagen del componente.
+		@param {Boolean} seguro1 Seguro nº 1.
+		@param {Boolean} seguro2 Seguro nº 2.
+		@param {Boolean} seguro3 Seguro nº 3.
 	**/
 	procesarComponente(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3)
 	{
@@ -135,6 +135,10 @@ export class Modelo
 		datos.fecha = fecha;
 		datos.precio = precio;
 		datos.descripcion = descripcion;
+		datos.tipo = tipo;
+		datos.seguro1 = seguro1;
+		datos.seguro2 = seguro2;
+		datos.seguro3 = seguro3;
 
 		let reader = new FileReader();
 		reader.readAsDataURL(imagen);
@@ -175,7 +179,7 @@ export class Modelo
 	**/
 	buscar(nombre)
 	{
-		if(!nombre)
+		if(!nombre)	// Si el nombre está en blanco, recuperar los registros.
 		{
 			this.obtenerRegistros();
 		}
@@ -193,7 +197,7 @@ export class Modelo
 						this.listaComponentes.push(componente);
 				}
 
-				this.avisar();
+				this.avisar();	// Llamada callback.
 			}
 		}
 	}

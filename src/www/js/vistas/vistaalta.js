@@ -132,6 +132,8 @@ export class VistaAlta extends Vista
 				this.seguro2.checked,
 				this.seguro3.checked
 			);
+
+			this.cancelar();	// Borrar los campos una vez añadido el elemento.
 		}
 		else
 		{
