@@ -45,18 +45,19 @@
         </div>
         <!-- Alta -->
         <div id="divAlta">
+            <p>⚠️ Rellena correctamente los campos indicados ⚠️</p>
             <form id="formAlta">
                 <label for="nombre">
-                    Nombre <input type="text" name="nombre" pattern="^[A-Z][a-z]{3,50}$" maxlength="50" required/>
+                    Nombre <input type="text" name="nombre" pattern="^[A-Z][a-z]{3,50}$" maxlength="50"/>
                 </label>
                 <label for="fecha">
-                    Fecha <input type="date" name="fecha" required/>
+                    Fecha <input type="date" name="fecha"/>
                 </label>
                 <label for="precio">
-                    Precio <input type="number" name="precio" step=".01" required/>
+                    Precio <input type="number" name="precio" step=".01"/>
                 </label>
                 <label for="descripcion">
-                    Descripción <textarea name="descripcion" maxlength="500" rows="8" cols="50" required></textarea>
+                    Descripción <textarea name="descripcion" maxlength="500" rows="8" cols="50"></textarea>
                 </label>
                 <label for="categoria">
                     Categoría
@@ -103,16 +104,16 @@
                     Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
                 </label>
                 <label for="nuevoNombre">
-                    Nuevo nombre <input type="text" name="nuevoNombre" maxlength="50" required/>
+                    Nuevo nombre <input type="text" name="nuevoNombre" maxlength="50"/>
                 </label>
                 <label for="nuevaFecha">
-                    Nueva fecha <input type="date" name="nuevaFecha" required/>
+                    Nueva fecha <input type="date" name="nuevaFecha"/>
                 </label>
                 <label for="nuevoPrecio">
-                    Nuevo precio <input type="number" name="nuevoPrecio" step=".01" required/>
+                    Nuevo precio <input type="number" name="nuevoPrecio" step=".01"/>
                 </label>
                 <label for="nuevaDescripcion">
-                    Nueva descripción <textarea name="nuevaDescripcion" maxlength="500" rows="8" cols="50" required></textarea>
+                    Nueva descripción <textarea name="nuevaDescripcion" maxlength="500" rows="8" cols="50"></textarea>
                 </label>
                 <label for="nuevaCategoria">
                     Nueva categoría

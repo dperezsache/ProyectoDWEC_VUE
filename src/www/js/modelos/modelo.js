@@ -129,7 +129,8 @@ export class Modelo
 		@param {Boolean} seguro2
 		@param {Boolean} seguro3 
 	**/
-	actualizarComponente(datos, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) {
+	actualizarComponente(datos, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
+	{
 		datos.nombre = nombre;
 		datos.fecha = fecha;
 		datos.precio = precio;
@@ -162,8 +163,7 @@ export class Modelo
 	{
 		const peticion = this.db.transaction('tablaComponentes', 'readonly').objectStore('tablaComponentes').getAll();
 		
-		peticion.onsuccess = () => 
-		{
+		peticion.onsuccess = () => {
 			this.listaComponentes = peticion.result;
 			this.avisar();
 		};

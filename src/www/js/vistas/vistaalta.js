@@ -43,8 +43,80 @@ export class VistaAlta extends Vista
 	**/
 	aceptar() 
 	{
-		if(this.campoNombre.value && this.campoFecha.value && this.campoPrecio.value && this.campoTipo && this.campoDescripcion.value && this.campoTipo.value!=-1 && this.campoImagen.files[0]!=null) 
+		let cont = 0;
+
+		// Validación nombre
+		if (this.campoNombre.value) 
 		{
+			cont++;
+			this.campoNombre.style.border = '1px solid lightgray';
+		}
+		else 
+		{
+			this.campoNombre.style.border = '1px solid red';
+		}
+
+		// Validación fecha
+		if (this.campoFecha.value) 
+		{
+			cont++;
+			this.campoFecha.style.border = '1px solid lightgray';
+		}
+		else 
+		{
+			this.campoFecha.style.border = '1px solid red';
+		}
+
+		// Validación precio
+		if (this.campoPrecio.value && !isNaN(this.campoPrecio.value)) 
+		{
+			cont++;
+			this.campoPrecio.style.border = '1px solid lightgray';
+		}
+		else 
+		{
+			this.campoPrecio.style.border = '1px solid red';
+		}
+
+		// Validación tipo
+		if (this.campoTipo.value != -1)
+		{
+			cont++;
+			this.campoTipo.style.border = '1px solid lightgray';
+		}
+		else
+		{
+			this.campoTipo.style.border = '1px solid red';
+		}
+
+		// Validación descripción
+		if (this.campoDescripcion.value)
+		{
+			cont++;
+			this.campoDescripcion.style.border = '1px solid lightgray';
+		}
+		else
+		{
+			this.campoDescripcion.style.border = '1px solid red';
+		}
+
+		// Validación imagen
+		if (this.campoImagen.files[0] != null)
+		{
+			cont++;
+			this.campoImagen.style.border = '1px solid lightgray';
+		}
+		else
+		{
+			this.campoImagen.style.border = '1px solid red';
+		}
+
+		let p = this.div.getElementsByTagName('p')[0];
+
+		if(cont == 6) 
+		{
+			p.style.display = 'none';
+			
 			this.controlador.aceptarCRUD(
 				this.campoNombre.value, 
 				this.campoFecha.value, 
@@ -56,6 +128,10 @@ export class VistaAlta extends Vista
 				this.seguro2.checked,
 				this.seguro3.checked
 			);
+		}
+		else
+		{
+			p.style.display = 'block';
 		}
 	}
 

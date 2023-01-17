@@ -73,6 +73,15 @@ class Controlador
     }
 
     /**
+		Realizar búsqueda de componentes.
+		@param {String} nombre Nombre del componente.
+	**/
+	buscarComponentes(nombre)
+	{
+		this.modelo.buscar(nombre);
+	}
+
+    /**
 		Inserta el elemento en el modelo.
     **/
     aceptarCRUD(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
