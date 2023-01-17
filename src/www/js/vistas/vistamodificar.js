@@ -109,23 +109,109 @@ export class VistaModificar extends Vista
 	**/
 	aceptar()
 	{
-		if(this.listado.value != -1)
+		const colorOk = '1px solid #ADACAC'; 
+		const colorMal = '1px solid crimson';
+		let cont = 0;
+
+		// Validación listado
+		if (this.listado.value != -1)
 		{
-			if(this.campoNombre.value && this.campoFecha.value && this.campoPrecio.value && this.campoTipo && this.campoTipo.value!=-1 && this.campoDescripcion.value && this.campoImagen.files[0]!=null) 
-			{
-				this.controlador.actualizarCRUD(
-					this.listado.value,
-					this.campoNombre.value, 
-					this.campoFecha.value, 
-					this.campoPrecio.value,
-					this.campoDescripcion.value, 
-					this.campoTipo.value,
-					this.campoImagen.files[0], 
-					this.seguro1.checked,
-					this.seguro2.checked,
-					this.seguro3.checked
-				);
-			}
+			cont++;
+			this.listado.style.border = colorOk;
+		}
+		else
+		{
+			this.listado.style.border = colorMal;
+		}
+
+		// Validación nombre
+		if (this.campoNombre.value) 
+		{
+			cont++;
+			this.campoNombre.style.border = colorOk;
+		}
+		else 
+		{
+			this.campoNombre.style.border = colorMal;
+		}
+
+		// Validación fecha
+		if (this.campoFecha.value) 
+		{
+			cont++;
+			this.campoFecha.style.border = colorOk;
+		}
+		else 
+		{
+			this.campoFecha.style.border = colorMal;
+		}
+
+		// Validación precio
+		if (this.campoPrecio.value && !isNaN(this.campoPrecio.value)) 
+		{
+			cont++;
+			this.campoPrecio.style.border = colorOk;
+		}
+		else 
+		{
+			this.campoPrecio.style.border = colorMal;
+		}
+
+		// Validación tipo
+		if (this.campoTipo.value != -1)
+		{
+			cont++;
+			this.campoTipo.style.border = colorOk;
+		}
+		else
+		{
+			this.campoTipo.style.border = colorMal;
+		}
+
+		// Validación descripción
+		if (this.campoDescripcion.value)
+		{
+			cont++;
+			this.campoDescripcion.style.border = colorOk;
+		}
+		else
+		{
+			this.campoDescripcion.style.border = colorMal;
+		}
+
+		// Validación imagen
+		if (this.campoImagen.files[0] != null)
+		{
+			cont++;
+			this.campoImagen.style.border = colorOk;
+		}
+		else
+		{
+			this.campoImagen.style.border = colorMal;
+		}
+
+		let p = this.div.getElementsByClassName('pAviso')[0];
+
+		if(cont == 7) 
+		{
+			p.style.display = 'none';
+
+			this.controlador.actualizarCRUD(
+				this.listado.value,
+				this.campoNombre.value, 
+				this.campoFecha.value, 
+				this.campoPrecio.value,
+				this.campoDescripcion.value, 
+				this.campoTipo.value,
+				this.campoImagen.files[0], 
+				this.seguro1.checked,
+				this.seguro2.checked,
+				this.seguro3.checked
+			);
+		}
+		else
+		{
+			p.style.display = 'block';
 		}
 	}
 

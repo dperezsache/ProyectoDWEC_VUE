@@ -43,75 +43,77 @@ export class VistaAlta extends Vista
 	**/
 	aceptar() 
 	{
+		const colorOk = '1px solid #ADACAC'; 
+		const colorMal = '1px solid crimson';
 		let cont = 0;
 
 		// Validación nombre
 		if (this.campoNombre.value) 
 		{
 			cont++;
-			this.campoNombre.style.border = '1px solid lightgray';
+			this.campoNombre.style.border = colorOk;
 		}
 		else 
 		{
-			this.campoNombre.style.border = '1px solid red';
+			this.campoNombre.style.border = colorMal;
 		}
 
 		// Validación fecha
 		if (this.campoFecha.value) 
 		{
 			cont++;
-			this.campoFecha.style.border = '1px solid lightgray';
+			this.campoFecha.style.border = colorOk;
 		}
 		else 
 		{
-			this.campoFecha.style.border = '1px solid red';
+			this.campoFecha.style.border = colorMal;
 		}
 
 		// Validación precio
 		if (this.campoPrecio.value && !isNaN(this.campoPrecio.value)) 
 		{
 			cont++;
-			this.campoPrecio.style.border = '1px solid lightgray';
+			this.campoPrecio.style.border = colorOk;
 		}
 		else 
 		{
-			this.campoPrecio.style.border = '1px solid red';
+			this.campoPrecio.style.border = colorMal;
 		}
 
 		// Validación tipo
 		if (this.campoTipo.value != -1)
 		{
 			cont++;
-			this.campoTipo.style.border = '1px solid lightgray';
+			this.campoTipo.style.border = colorOk;
 		}
 		else
 		{
-			this.campoTipo.style.border = '1px solid red';
+			this.campoTipo.style.border = colorMal;
 		}
 
 		// Validación descripción
 		if (this.campoDescripcion.value)
 		{
 			cont++;
-			this.campoDescripcion.style.border = '1px solid lightgray';
+			this.campoDescripcion.style.border = colorOk;
 		}
 		else
 		{
-			this.campoDescripcion.style.border = '1px solid red';
+			this.campoDescripcion.style.border = colorMal;
 		}
 
 		// Validación imagen
 		if (this.campoImagen.files[0] != null)
 		{
 			cont++;
-			this.campoImagen.style.border = '1px solid lightgray';
+			this.campoImagen.style.border = colorOk;
 		}
 		else
 		{
-			this.campoImagen.style.border = '1px solid red';
+			this.campoImagen.style.border = colorMal;
 		}
 
-		let p = this.div.getElementsByTagName('p')[0];
+		let p = this.div.getElementsByClassName('pAviso')[0];
 
 		if(cont == 6) 
 		{
