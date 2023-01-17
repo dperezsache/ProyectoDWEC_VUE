@@ -87,7 +87,6 @@ class Controlador
     aceptarCRUD(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
     {
         this.modelo.insertar(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3);
-        this.pulsarBotonListado();
     }
 
     /**

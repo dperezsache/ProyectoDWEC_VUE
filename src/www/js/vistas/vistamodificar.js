@@ -36,6 +36,7 @@ export class VistaModificar extends Vista
 		this.seguro3 = this.div.getElementsByTagName('input')[6];
 		this.botonAceptar = this.div.getElementsByTagName('button')[0];
 		this.botonCancelar = this.div.getElementsByTagName('button')[1];
+		this.parrafoAviso = this.div.getElementsByClassName('pAviso')[0];
 		
 		// Asignar eventos.
 		this.listado.onclick = this.actualizarForm.bind(this);
@@ -190,11 +191,12 @@ export class VistaModificar extends Vista
 			this.campoImagen.style.border = colorMal;
 		}
 
-		let p = this.div.getElementsByClassName('pAviso')[0];
+		window.scrollTo(0, 0);	// Mover al top de la página.
+		this.parrafoAviso.style.display = 'block';
 
 		if(cont == 7) 
 		{
-			p.style.display = 'none';
+			this.parrafoAviso.innerText = '✔️ Componente actualizado correctamente ✔️';
 
 			this.controlador.actualizarCRUD(
 				this.listado.value,
@@ -211,7 +213,7 @@ export class VistaModificar extends Vista
 		}
 		else
 		{
-			p.style.display = 'block';
+			this.parrafoAviso.innerText = '⚠️ Rellena correctamente los campos indicados ⚠️';
 		}
 	}
 
@@ -238,5 +240,11 @@ export class VistaModificar extends Vista
 	{
 		while(this.listado.firstElementChild)
 			this.listado.firstElementChild.remove();
+	}
+
+	mostrar(ver)
+	{
+		super.mostrar(ver);
+		this.parrafoAviso.style.display = 'none';
 	}
 }

@@ -33,6 +33,7 @@ export class VistaAlta extends Vista
 		this.seguro3 = this.div.getElementsByTagName('input')[6];
 		this.botonAceptar = this.div.getElementsByTagName('button')[0];
 		this.botonCancelar = this.div.getElementsByTagName('button')[1];
+		this.parrafoAviso = this.div.getElementsByClassName('pAviso')[0];
 		
 		this.botonAceptar.onclick = this.aceptar.bind(this);
 		this.botonCancelar.onclick = this.cancelar.bind(this);
@@ -113,11 +114,12 @@ export class VistaAlta extends Vista
 			this.campoImagen.style.border = colorMal;
 		}
 
-		let p = this.div.getElementsByClassName('pAviso')[0];
+		window.scrollTo(0, 0);	// Mover al top de la página.
+		this.parrafoAviso.style.display = 'block';
 
 		if(cont == 6) 
 		{
-			p.style.display = 'none';
+			this.parrafoAviso.innerText = '✔️ Componente añadido correctamente ✔️';
 			
 			this.controlador.aceptarCRUD(
 				this.campoNombre.value, 
@@ -133,7 +135,7 @@ export class VistaAlta extends Vista
 		}
 		else
 		{
-			p.style.display = 'block';
+			this.parrafoAviso.innerText = '⚠️ Rellena correctamente los campos indicados ⚠️';
 		}
 	}
 
@@ -151,5 +153,11 @@ export class VistaAlta extends Vista
 		this.seguro1.checked = false;
 		this.seguro2.checked = false;
 		this.seguro3.checked = false;
+	}
+
+	mostrar(ver)
+	{
+		super.mostrar(ver);
+		this.parrafoAviso.style.display = 'none';
 	}
 }

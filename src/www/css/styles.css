@@ -168,6 +168,7 @@ label#labelBuscar {
 div#divListado,
 div#divAlta,
 div#divModificar {
+    margin-top: 20px;
     margin-bottom: 250px;
 }
 

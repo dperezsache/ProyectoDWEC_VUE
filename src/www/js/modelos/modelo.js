@@ -170,6 +170,36 @@ export class Modelo
 	}
 
 	/**
+		Busca componentes que contengan el nombre o parte del nombre.
+		@param {String} nombre Nombre del componente.
+	**/
+	buscar(nombre)
+	{
+		if(!nombre)
+		{
+			this.obtenerRegistros();
+		}
+		else
+		{
+			const peticion = this.db.transaction('tablaComponentes', 'readonly').objectStore('tablaComponentes').getAll();
+
+			peticion.onsuccess = () => {
+				const componentes = peticion.result;
+				this.listaComponentes = [];	// Limpiar la lista de componentes
+	
+				for(let componente of componentes)
+				{
+					if(componente.nombre.includes(nombre)) 
+						this.listaComponentes.push(componente);
+				}
+
+				this.avisar();
+			}
+		}
+	}
+
+
+	/**
 		Devuelve la lista local de componentes.
 		@returns {Array} Lista.
 	**/
