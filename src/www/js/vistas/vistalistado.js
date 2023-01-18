@@ -78,9 +78,10 @@ export class VistaListado extends Vista
 				// Fecha
 				let divFecha = document.createElement('div');
 				divFecha.className = 'pFechaItem';
-
+				
 				let pFecha = document.createElement('p');
-				pFecha.innerHTML = 'Fecha de lanzamiento: <span class="spanFecha">' + componente.fecha + '</span>';
+				let fecha = new Date(componente.fecha);
+				pFecha.innerHTML = 'Fecha de lanzamiento: <span class="spanFecha">' + fecha.getDate() + '/' + fecha.getMonth()+1 + '/' + fecha.getFullYear() + '</span>';
 				divFecha.appendChild(pFecha);
 				contenedor.appendChild(divFecha);
 

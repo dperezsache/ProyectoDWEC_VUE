@@ -34,9 +34,6 @@ export class VistaDivBotones
 	pulsarListado() 
 	{
 		this.controlador.pulsarBotonListado();
-		this.botonListado.style.backgroundColor = 'lightyellow';
-		this.botonModificar.style.backgroundColor = 'white';
-		this.botonAlta.style.backgroundColor = 'white';
 	}
 
 	/**
@@ -45,9 +42,6 @@ export class VistaDivBotones
 	pulsarAlta() 
 	{
 		this.controlador.pulsarBotonAlta();
-		this.botonListado.style.backgroundColor = 'white';
-		this.botonModificar.style.backgroundColor = 'white';
-		this.botonAlta.style.backgroundColor = 'lightyellow';
 	}
 	
 	/**
@@ -56,8 +50,5 @@ export class VistaDivBotones
 	pulsarModificar() 
 	{
 		this.controlador.pulsarBotonModificar();
-		this.botonListado.style.backgroundColor = 'white';
-		this.botonModificar.style.backgroundColor = 'lightyellow';
-		this.botonAlta.style.backgroundColor = 'white';
 	}
 }
