@@ -85,8 +85,9 @@ export class VistaListado extends Vista
 				divFecha.className = 'pFechaItem';
 				
 				let pFecha = document.createElement('p');
-				let fecha = new Date(componente.fecha);
-				pFecha.innerHTML = 'Fecha de lanzamiento: <span class="spanFecha">' + fecha.getDate() + '/' + fecha.getMonth()+1 + '/' + fecha.getFullYear() + '</span>';
+				let trozos = componente.fecha.split('-');
+
+				pFecha.innerHTML = 'Fecha de lanzamiento: <span class="spanFecha">' + trozos[2] + '/' + trozos[1] + '/' + trozos[0] + '</span>';
 				divFecha.appendChild(pFecha);
 				contenedor.appendChild(divFecha);
 
@@ -145,11 +146,10 @@ export class VistaListado extends Vista
 	 */
 	borrarElementos() 
 	{
-		while(this.div.lastElementChild)
+		while(this.div.childNodes.length > 1)
 		{
-			if (this.div.lastElementChild == this.pAviso) break;
-			else this.div.lastElementChild.remove();
-		}
+			this.div.removeChild(this.div.lastChild);
+		} 
 	}
 
 	/**
