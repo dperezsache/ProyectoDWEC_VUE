@@ -67,10 +67,7 @@ export class VistaListado extends Vista
 				// Precio
 				let pPrecio = document.createElement('p');
 				pPrecio.className = 'pPrecioItem';
-
 				let precio = parseFloat(componente.precio).toFixed(2);
-				console.log(precio)
-
 				pPrecio.innerText = precio;
 				pPrecio.innerText = precio + '€';
 				pPrecio.innerText = pPrecio.innerText.replace('.', ',');
@@ -85,20 +82,59 @@ export class VistaListado extends Vista
 				divDesc.appendChild(pDesc);
 				contenedor.appendChild(divDesc);
 
+				// Tipo
+				let ulInfo = document.createElement('ul');
+				let liTipo = document.createElement('li');
+				let tipo;
+				switch(parseInt(componente.tipo))
+				{
+					case 1:
+						tipo = 'Procesador';
+						break;
+					case 2:
+						tipo = 'Tarjeta gráfica';
+						break;
+					case 3:
+						tipo = 'Memoria RAM';
+						break;
+					case 4:
+						tipo = 'Fuente de alimentación';
+						break;
+					case 5:
+						tipo = 'Placa base';
+						break;
+					case 6:
+						tipo = 'Disco duro';
+						break;
+					case 7:
+						tipo = 'Torre';
+						break;
+					case 8:
+						tipo = 'Otro';
+						break;
+					default:
+						tipo = '';
+						break;
+				}
+				liTipo.innerHTML = 'Tipo de producto: <span class="spanFecha">' + tipo + '</span>';
+				ulInfo.appendChild(liTipo);
+
 				// Fecha
-				let divFecha = document.createElement('div');
-				divFecha.className = 'pFechaItem';
-				
-				let pFecha = document.createElement('p');
+				let liFecha = document.createElement('li');
 				let trozos = componente.fecha.split('-');
+				liFecha.innerHTML = 'Fecha de lanzamiento: <span class="spanFecha">' + trozos[2] + '/' + trozos[1] + '/' + trozos[0] + '</span>';
+				ulInfo.appendChild(liFecha);
+				contenedor.appendChild(ulInfo);
 
-				pFecha.innerHTML = 'Fecha de lanzamiento: <span class="spanFecha">' + trozos[2] + '/' + trozos[1] + '/' + trozos[0] + '</span>';
-				divFecha.appendChild(pFecha);
-				contenedor.appendChild(divFecha);
-
+				// Separador
+				let hr = document.createElement('hr');
+				hr.className = 'hrItems';
+				hr.style.width = '50%'; 
+				contenedor.appendChild(hr);
+				
 				// Checkboxes
 				let ul = document.createElement('ul');
-
+				ul.style.listStyleType = "'- '"; 
 				let li1 = document.createElement('li');
 				if (componente.seguro1) li1.innerText = 'Se ofrece seguro contra robos.';
 				else li1.innerText = 'No se ofrece seguro contra robos.';
@@ -120,7 +156,8 @@ export class VistaListado extends Vista
 
 				// Botón eliminar
 				let botonEliminar = document.createElement('button');
-				botonEliminar.className = 'buttonBorrar';
+				botonEliminar.className = 'boton';
+				botonEliminar.style.marginRight = '10px';
 				let spanEliminar = document.createElement('span');
 				spanEliminar.className = 'material-icons';
 				spanEliminar.innerText = 'delete';
@@ -130,7 +167,7 @@ export class VistaListado extends Vista
 
 				// Botón editar
 				let botonEditar = document.createElement('button');
-				botonEditar.className = 'buttonEditar';
+				botonEditar.className = 'boton';
 				let spanEditar = document.createElement('span');
 				spanEditar.className = 'material-icons';
 				spanEditar.innerText = 'edit';

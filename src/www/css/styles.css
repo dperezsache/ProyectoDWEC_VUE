@@ -90,6 +90,22 @@ form input[type="file"] {
     opacity: 1;
 }
 
+button.boton {
+    height: 32px;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+    border: 1px solid #ADACAC;
+    border-radius: 0px;
+}
+
+button.boton:hover {
+    background-color: #f3f3f3;
+}
+
+button.boton:active {
+    background-color: #e9e9e9;
+}
+
 img#imgLogo {
     width: 192px;
     margin-left: 20px;
@@ -128,14 +144,6 @@ div#divBusqueda input {
     border: 1px solid #ADACAC;
     border-radius: 0px;
     vertical-align: middle;
-}
-
-div#divBusqueda button {
-    height: 32px;
-    vertical-align: middle;
-    background-color: #FFFFFF;
-    border: 1px solid #ADACAC;
-    border-radius: 0px;
 }
 
 button#botonAceptar,
@@ -182,10 +190,6 @@ div#divBotones button:hover {
 
 div#divBotones button:active {
     background-color: #e9e9e9;
-}
-
-label#labelBuscar {
-    margin-left: 20px;
 }
 
 div#divListado,

@@ -65,7 +65,6 @@ export class VistaModificar extends Vista
 
 			if(dato != null) 
 			{
-				console.log(dato.tipo)
 				this.campoNombre.value = dato.nombre;
 				this.campoFecha.value = dato.fecha;
 				this.campoPrecio.value = dato.precio;
