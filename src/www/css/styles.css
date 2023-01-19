@@ -138,6 +138,30 @@ div#divBusqueda button {
     border-radius: 0px;
 }
 
+button#botonAceptar,
+button#botonActualizar {
+    color: white;
+    font-weight: bolder;
+    background-color: green;
+}
+
+button#botonCancelar,
+button#botonBorrar {
+    color: white;
+    font-weight: bolder;
+    background-color: red;
+}
+
+button#botonAceptar:hover,
+button#botonActualizar:hover {
+    background-color: rgb(0, 95, 0);
+}
+
+button#botonCancelar:hover,
+button#botonBorrar:hover {
+    background-color: rgb(200, 0, 0);
+}
+
 div#divBotones {
     display: flex;
     justify-content: center;
@@ -174,7 +198,6 @@ div#divModificar {
 p.pAviso{
     display: block;
     text-align: center;
-    display: none;
 }
 
 p#pTotal {
@@ -262,7 +285,7 @@ span.spanFecha {
 }
 
 /* MEDIA QUERY MÓVIL */
-@media (max-width:750px) {
+@media (max-width:760px) {
     img#imgLogo {
         margin-left: 0;
         margin-bottom: 20px;
@@ -272,16 +295,21 @@ span.spanFecha {
         display: block;
     }
 
-    label#labelBuscar {
-        text-align: left;
+    div#divBusqueda input {
+        width: 80%;
     }
 
     label#labelBuscar {
+        text-align: left;
         margin: 0;
     }
 
+    button#buttonListado {
+        margin-left: 5px !important;
+    }
+
     button#buttonModificar {
-        margin-right: 0 !important;
+        margin-right: 5px !important;
     }
 
     button#buttonListado span,

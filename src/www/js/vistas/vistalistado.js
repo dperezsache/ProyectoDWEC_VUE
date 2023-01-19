@@ -35,7 +35,7 @@ export class VistaListado extends Vista
 	actualizar() 
 	{
 		this.borrarElementos();
-
+		
 		let componentes = this.modelo.getLista();
 
 		if(componentes != null && componentes.length > 0) 
@@ -67,7 +67,12 @@ export class VistaListado extends Vista
 				// Precio
 				let pPrecio = document.createElement('p');
 				pPrecio.className = 'pPrecioItem';
-				pPrecio.innerText = componente.precio + '€';
+
+				let precio = parseFloat(componente.precio).toFixed(2);
+				console.log(precio)
+
+				pPrecio.innerText = precio;
+				pPrecio.innerText = precio + '€';
 				pPrecio.innerText = pPrecio.innerText.replace('.', ',');
 				contenedor.appendChild(pPrecio);
 
@@ -148,7 +153,8 @@ export class VistaListado extends Vista
 	{
 		while(this.div.childNodes.length > 1)
 		{
-			this.div.removeChild(this.div.lastChild);
+			if (this.div.lastChild === this.pAviso) break;
+			else this.div.removeChild(this.div.lastChild);
 		} 
 	}
 

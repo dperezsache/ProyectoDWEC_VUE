@@ -34,8 +34,8 @@ export class VistaModificar extends Vista
 		this.seguro1 = this.div.getElementsByTagName('input')[4];
 		this.seguro2 = this.div.getElementsByTagName('input')[5];
 		this.seguro3 = this.div.getElementsByTagName('input')[6];
-		this.botonAceptar = this.div.getElementsByTagName('button')[0];
-		this.botonCancelar = this.div.getElementsByTagName('button')[1];
+		this.botonCancelar = this.div.getElementsByTagName('button')[0];
+		this.botonAceptar = this.div.getElementsByTagName('button')[1];
 		this.parrafoAviso = this.div.getElementsByClassName('pAviso')[0];
 		
 		// Asignar eventos.
@@ -126,7 +126,7 @@ export class VistaModificar extends Vista
 		}
 
 		// Validación nombre
-		if (this.campoNombre.value) 
+		if (this.campoNombre.value && this.campoNombre.value.length <= 50) 
 		{
 			cont++;
 			this.campoNombre.style.border = colorOk;
@@ -148,7 +148,7 @@ export class VistaModificar extends Vista
 		}
 
 		// Validación precio
-		if (this.campoPrecio.value && !isNaN(this.campoPrecio.value)) 
+		if (this.campoPrecio.value && !isNaN(this.campoPrecio.value) && this.campoPrecio.value > 0) 
 		{
 			cont++;
 			this.campoPrecio.style.border = colorOk;
@@ -170,7 +170,7 @@ export class VistaModificar extends Vista
 		}
 
 		// Validación descripción
-		if (this.campoDescripcion.value)
+		if (this.campoDescripcion.value && this.campoDescripcion.value.length <= 500)
 		{
 			cont++;
 			this.campoDescripcion.style.border = colorOk;

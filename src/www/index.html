@@ -16,7 +16,7 @@
                 <img src="../../diseno/logo.png" alt="Logo de CoolPC" id="imgLogo"/>
                 <div id="divBusqueda">
                     <label id="labelBuscar" for="buscar">
-                        Búsqueda <input id="buscar" name="buscar" type="text" maxlength="50"/>
+                        Búsqueda<br/> <input id="buscar" name="buscar" type="text" maxlength="50"/>
                     </label>
                     <button type="button">
                         <span class="material-icons">search</span>
@@ -43,25 +43,25 @@
         <div id="divListado">
             <p class="pAviso">No hay ningún registro.</p>
         </div>
+
         <!-- Alta -->
         <div id="divAlta">
             <p class="pAviso"></p>
             <form id="formAlta">
                 <label for="nombre">
-                    Nombre <input type="text" name="nombre" pattern="^[A-Z][a-z]{3,50}$" maxlength="50"/>
+                    Nombre <input type="text" name="nombre"/>
                 </label>
                 <label for="fecha">
                     Fecha <input type="date" name="fecha"/>
                 </label>
                 <label for="precio">
-                    Precio <input type="number" name="precio" step=".01"/>
+                    Precio <input type="number" name="precio" step="0.1"/>
                 </label>
                 <label for="descripcion">
-                    Descripción <textarea name="descripcion" maxlength="500" rows="8" cols="50"></textarea>
+                    Descripción <textarea name="descripcion" rows="8" cols="50"></textarea>
                 </label>
                 <label for="categoria">
-                    Categoría
-                    <select name="categoria">
+                    Categoría <select name="categoria">
                         <option value="-1" disabled selected>-- Selecciona --</option>
                         <option value="1">CPU</option>
                         <option value="2">GPU</option>
@@ -91,8 +91,8 @@
                 </fieldset>
                 
                 <div class="divBotonesForm">
-                    <button type="button" id="botonAceptar">Aceptar</button>
                     <button type="button" id="botonCancelar">Cancelar</button>
+                    <button type="button" id="botonAceptar">Aceptar</button>
                 </div>
             </form>
         </div>
@@ -105,20 +105,19 @@
                     Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
                 </label>
                 <label for="nuevoNombre">
-                    Nuevo nombre <input type="text" name="nuevoNombre" maxlength="50"/>
+                    Nuevo nombre <input type="text" name="nuevoNombre"/>
                 </label>
                 <label for="nuevaFecha">
                     Nueva fecha <input type="date" name="nuevaFecha"/>
                 </label>
                 <label for="nuevoPrecio">
-                    Nuevo precio <input type="number" name="nuevoPrecio" step=".01"/>
+                    Nuevo precio <input type="number" name="nuevoPrecio" step="0.1"/>
                 </label>
                 <label for="nuevaDescripcion">
-                    Nueva descripción <textarea name="nuevaDescripcion" maxlength="500" rows="8" cols="50"></textarea>
+                    Nueva descripción <textarea name="nuevaDescripcion" rows="8" cols="50"></textarea>
                 </label>
                 <label for="nuevaCategoria">
-                    Nueva categoría
-                    <select name="nuevaCategoria">
+                    Nueva categoría <select name="nuevaCategoria">
                         <option value="-1" disabled selected>-- Selecciona --</option>
                         <option value="1">CPU</option>
                         <option value="2">GPU</option>
@@ -146,12 +145,13 @@
                     </label>
                 </fieldset>
                 <div class="divBotonesForm">
-                    <button type="button" id="botonActualizar">Aceptar</button>
                     <button type="button" id="botonBorrar">Cancelar</button>
+                    <button type="button" id="botonActualizar">Aceptar</button>
                 </div>
             </form>
         </div>
 
+        <!-- FOOTER -->
         <footer>
             <img id="imgFooter" src="../../diseno/logo-icono.png" alt="Logo de CoolPC"/>
             <p>
@@ -160,6 +160,7 @@
                 </a>
             </p>
         </footer>
+
         <script type="module" src="js/controladores/app.js"></script>
     </body>
 </html>
