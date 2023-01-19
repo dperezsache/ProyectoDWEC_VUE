@@ -129,7 +129,7 @@ export class VistaListado extends Vista
 				// Separador
 				let hr = document.createElement('hr');
 				hr.className = 'hrItems';
-				hr.style.width = '50%'; 
+				hr.style.width = '350px'; 
 				contenedor.appendChild(hr);
 				
 				// Checkboxes
@@ -146,8 +146,8 @@ export class VistaListado extends Vista
 				ul.appendChild(li2);
 
 				let li3 = document.createElement('li');
-				if (componente.seguro3) li3.innerText = 'Se ofrece seguro contra caídas no accidentales.';
-				else li3.innerText = 'No se ofrece seguro contra caídas no accidentales.';
+				if (componente.seguro3) li3.innerText = 'Se ofrece seguro contra caídas.';
+				else li3.innerText = 'No se ofrece seguro contra caídas.';
 				ul.appendChild(li3);
 				contenedor.appendChild(ul);
 
