@@ -1,40 +1,27 @@
 {
-  "id": "73e6c613-4afe-4108-b510-e6a85d8d64ac",
+  "id": "3672509c-009a-4c55-8da8-b625b7c4560e",
   "version": "2.0",
   "name": "CoolPC",
   "url": "https://dperezsache.github.io",
   "tests": [{
-    "id": "cf404444-3d66-4a4b-a460-62a48d8aa86d",
+    "id": "84bebdb1-c689-430d-b096-f3bd448db0c0",
     "name": "test",
     "commands": [{
-      "id": "ffd06fa6-29c7-4dd5-9870-afe823a106de",
+      "id": "14481739-91ae-4145-bfff-6b00e6d4f132",
       "comment": "",
       "command": "open",
       "target": "/ProyectoDWEC/src/www/",
       "targets": [],
       "value": ""
     }, {
-      "id": "d31ae8ed-d465-40b5-941d-50414de1da92",
+      "id": "a5147751-1b61-4a6d-b0b9-a1790e842712",
       "comment": "",
       "command": "setWindowSize",
-      "target": "2576x1408",
+      "target": "1382x744",
       "targets": [],
       "value": ""
     }, {
-      "id": "2690b809-8b67-4444-86a1-3c304c7247ae",
-      "comment": "",
-      "command": "click",
-      "target": "id=buttonListado",
-      "targets": [
-        ["id=buttonListado", "id"],
-        ["css=#buttonListado", "css:finder"],
-        ["xpath=//button[@id='buttonListado']", "xpath:attributes"],
-        ["xpath=//div[@id='divBotones']/button", "xpath:idRelative"],
-        ["xpath=//div[2]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "0db8e120-26e1-4e71-94cb-0d19f7a2b227",
+      "id": "ce7a0497-dd37-47ca-a4f9-0b59b705857a",
       "comment": "",
       "command": "click",
       "target": "id=buttonAlta",
@@ -47,7 +34,7 @@
       ],
       "value": ""
     }, {
-      "id": "1f024392-fc94-497f-97e7-af018a1b18bc",
+      "id": "5e7fca79-4701-4a3f-bf02-e632658f1b58",
       "comment": "",
       "command": "click",
       "target": "name=nombre",
@@ -60,7 +47,7 @@
       ],
       "value": ""
     }, {
-      "id": "0680b31f-5142-4747-a730-9f577d1e70d9",
+      "id": "cc7072f8-cddb-4bc7-8886-40e69a3a1e81",
       "comment": "",
       "command": "type",
       "target": "name=nombre",
@@ -71,22 +58,9 @@
         ["xpath=//form[@id='formAlta']/label/input", "xpath:idRelative"],
         ["xpath=//form/label/input", "xpath:position"]
       ],
-      "value": "AMD Ryzen 5600X"
+      "value": "Memoria RAM"
     }, {
-      "id": "c430f024-9a3b-4f32-8ef9-a65686ca14de",
-      "comment": "",
-      "command": "click",
-      "target": "name=fecha",
-      "targets": [
-        ["name=fecha", "name"],
-        ["css=#formAlta > label:nth-child(2) > input", "css:finder"],
-        ["xpath=//input[@name='fecha']", "xpath:attributes"],
-        ["xpath=//form[@id='formAlta']/label[2]/input", "xpath:idRelative"],
-        ["xpath=//label[2]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "f402eeed-619d-45d8-9244-c37554282276",
+      "id": "812edd5d-b5ea-4400-916b-c1535b141811",
       "comment": "",
       "command": "type",
       "target": "name=fecha",
@@ -97,9 +71,9 @@
         ["xpath=//form[@id='formAlta']/label[2]/input", "xpath:idRelative"],
         ["xpath=//label[2]/input", "xpath:position"]
       ],
-      "value": "0002-05-12"
+      "value": "0002-01-12"
     }, {
-      "id": "9621f638-65dc-4986-adb7-f307feaf2f0a",
+      "id": "3eeb9cd6-e5b6-4cff-9311-aba993bc6882",
       "comment": "",
       "command": "type",
       "target": "name=fecha",
@@ -110,9 +84,9 @@
         ["xpath=//form[@id='formAlta']/label[2]/input", "xpath:idRelative"],
         ["xpath=//label[2]/input", "xpath:position"]
       ],
-      "value": "0020-05-12"
+      "value": "0020-01-12"
     }, {
-      "id": "cab0bbb9-cd1e-4a5f-8c3b-d4c0639e6e94",
+      "id": "71ba3b62-62d6-433a-a320-3c44ee1e3a5c",
       "comment": "",
       "command": "type",
       "target": "name=fecha",
@@ -123,9 +97,9 @@
         ["xpath=//form[@id='formAlta']/label[2]/input", "xpath:idRelative"],
         ["xpath=//label[2]/input", "xpath:position"]
       ],
-      "value": "0202-05-12"
+      "value": "0201-01-12"
     }, {
-      "id": "81afe7fc-5318-457c-9591-eaa68e057648",
+      "id": "cd074e2a-ebe7-498e-97b2-2e68450c2b16",
       "comment": "",
       "command": "type",
       "target": "name=fecha",
@@ -136,22 +110,9 @@
         ["xpath=//form[@id='formAlta']/label[2]/input", "xpath:idRelative"],
         ["xpath=//label[2]/input", "xpath:position"]
       ],
-      "value": "2020-05-12"
+      "value": "2018-01-12"
     }, {
-      "id": "4aa373e9-6b1c-4987-b242-24274354c769",
-      "comment": "",
-      "command": "click",
-      "target": "name=precio",
-      "targets": [
-        ["name=precio", "name"],
-        ["css=#formAlta > label:nth-child(3) > input", "css:finder"],
-        ["xpath=//input[@name='precio']", "xpath:attributes"],
-        ["xpath=//form[@id='formAlta']/label[3]/input", "xpath:idRelative"],
-        ["xpath=//label[3]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "06a1686d-1cc6-4eb3-84de-55a2089d1e62",
+      "id": "10e268fc-cc4c-429b-ae01-ee4ab57cae21",
       "comment": "",
       "command": "type",
       "target": "name=precio",
@@ -162,9 +123,9 @@
         ["xpath=//form[@id='formAlta']/label[3]/input", "xpath:idRelative"],
         ["xpath=//label[3]/input", "xpath:position"]
       ],
-      "value": "150"
+      "value": "750.5"
     }, {
-      "id": "1c0c6f0a-117f-4048-9e7c-d40c7778f53e",
+      "id": "3249719a-41d7-44ab-a2ce-13ef0099b329",
       "comment": "",
       "command": "click",
       "target": "name=descripcion",
@@ -177,7 +138,7 @@
       ],
       "value": ""
     }, {
-      "id": "98fae0d9-0a79-475f-9332-d4d6c5abedfb",
+      "id": "f5578cd7-bbcc-458c-a483-e570efe8b026",
       "comment": "",
       "command": "type",
       "target": "name=descripcion",
@@ -188,9 +149,9 @@
         ["xpath=//form[@id='formAlta']/label[4]/textarea", "xpath:idRelative"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Procesador muy bueno"
+      "value": "Memoria muy cara "
     }, {
-      "id": "ee27667c-1148-40af-b8fa-0496505d47fb",
+      "id": "64e018aa-16c6-471e-a8fc-dd5891573e2b",
       "comment": "",
       "command": "click",
       "target": "name=categoria",
@@ -203,27 +164,27 @@
       ],
       "value": ""
     }, {
-      "id": "9de5659c-d6c6-48e1-b64f-751e5766c2fd",
+      "id": "18d1571e-14dd-47d6-9a4b-84289e223f5e",
       "comment": "",
       "command": "select",
       "target": "name=categoria",
       "targets": [],
-      "value": "label=CPU"
+      "value": "label=RAM"
     }, {
-      "id": "12627bb4-2400-4584-a67b-3adc2983d3d5",
+      "id": "99375dee-f476-4188-ab3a-20ba204359e7",
       "comment": "",
       "command": "click",
-      "target": "css=label:nth-child(5) option:nth-child(2)",
+      "target": "css=label:nth-child(5) option:nth-child(4)",
       "targets": [
-        ["css=label:nth-child(5) option:nth-child(2)", "css:finder"],
-        ["xpath=//option[@value='1']", "xpath:attributes"],
-        ["xpath=//form[@id='formAlta']/label[5]/select/option[2]", "xpath:idRelative"],
-        ["xpath=//option[2]", "xpath:position"],
-        ["xpath=//option[contains(.,'CPU')]", "xpath:innerText"]
+        ["css=label:nth-child(5) option:nth-child(4)", "css:finder"],
+        ["xpath=//option[@value='3']", "xpath:attributes"],
+        ["xpath=//form[@id='formAlta']/label[5]/select/option[4]", "xpath:idRelative"],
+        ["xpath=//option[4]", "xpath:position"],
+        ["xpath=//option[contains(.,'RAM')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "c8d1c870-7070-47e4-8605-eb825cb2a5a8",
+      "id": "ac47561d-a7bc-4e7d-af69-a21069507475",
       "comment": "",
       "command": "click",
       "target": "name=subirImagen",
@@ -236,7 +197,7 @@
       ],
       "value": ""
     }, {
-      "id": "65a2743a-c07c-4c02-85fc-e541d3ab49b2",
+      "id": "fdd74549-77ad-47d0-a26e-ae12558cebca",
       "comment": "",
       "command": "type",
       "target": "name=subirImagen",
@@ -247,21 +208,9 @@
         ["xpath=//form[@id='formAlta']/label[6]/input", "xpath:idRelative"],
         ["xpath=//label[6]/input", "xpath:position"]
       ],
-      "value": "C:\\fakepath\\Captura de pantalla_20230117_152729.png"
+      "value": "C:\\fakepath\\Captura.PNG"
     }, {
-      "id": "ae5f2435-faf8-44a7-8d18-abebd30daffb",
-      "comment": "",
-      "command": "click",
-      "target": "css=fieldset:nth-child(7) > .labelCheckbox:nth-child(3)",
-      "targets": [
-        ["css=fieldset:nth-child(7) > .labelCheckbox:nth-child(3)", "css:finder"],
-        ["xpath=//form[@id='formAlta']/fieldset/label[2]", "xpath:idRelative"],
-        ["xpath=//fieldset/label[2]", "xpath:position"],
-        ["xpath=//label[contains(.,'Seguro contra roturas ')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "89995690-8d87-4464-9172-84f8296053ef",
+      "id": "26ae3068-a9b4-421b-898d-e488a8bf819f",
       "comment": "",
       "command": "click",
       "target": "name=seguro2",
@@ -274,7 +223,32 @@
       ],
       "value": ""
     }, {
-      "id": "3efa5a16-d244-46cc-a525-eedbd7fd89d8",
+      "id": "2073dd5d-87f5-476f-8e46-964d5054d27a",
+      "comment": "",
+      "command": "click",
+      "target": "css=fieldset:nth-child(7) > .labelCheckbox:nth-child(4)",
+      "targets": [
+        ["css=fieldset:nth-child(7) > .labelCheckbox:nth-child(4)", "css:finder"],
+        ["xpath=//form[@id='formAlta']/fieldset/label[3]", "xpath:idRelative"],
+        ["xpath=//fieldset/label[3]", "xpath:position"],
+        ["xpath=//label[contains(.,'Seguro contra caídas ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8964f904-bd4d-4b0f-9d95-fbc701a0b664",
+      "comment": "",
+      "command": "click",
+      "target": "name=seguro3",
+      "targets": [
+        ["name=seguro3", "name"],
+        ["css=fieldset:nth-child(7) > .labelCheckbox:nth-child(4) > input", "css:finder"],
+        ["xpath=//input[@name='seguro3']", "xpath:attributes"],
+        ["xpath=//form[@id='formAlta']/fieldset/label[3]/input", "xpath:idRelative"],
+        ["xpath=//fieldset/label[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2aaca91-901a-47b5-ad52-64b1f9a0dfe9",
       "comment": "",
       "command": "click",
       "target": "id=botonAceptar",
@@ -288,7 +262,14 @@
       ],
       "value": ""
     }, {
-      "id": "bec63a99-78d0-4fe4-8fae-ef8dea3ba6c5",
+      "id": "1711a4b3-6e6b-418a-9dce-b1fc976b84aa",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0a5f24b6-6d94-4f5a-ada5-06d878887bf9",
       "comment": "",
       "command": "click",
       "target": "id=buttonListado",
@@ -301,44 +282,19 @@
       ],
       "value": ""
     }, {
-      "id": "2e52680b-a899-460d-89a5-9aff96091eaa",
+      "id": "30fc151b-0ac3-495e-933a-449786f1ba45",
       "comment": "",
       "command": "click",
-      "target": "css=.buttonEditar > .material-icons",
+      "target": "css=.divItem:nth-child(2) .boton:nth-child(1) > .material-icons",
       "targets": [
-        ["css=.buttonEditar > .material-icons", "css:finder"],
-        ["xpath=//div[@id='divListado']/div/div[3]/button[2]/span", "xpath:idRelative"],
-        ["xpath=//div[3]/button[2]/span", "xpath:position"]
+        ["css=.divItem:nth-child(2) .boton:nth-child(1) > .material-icons", "css:finder"],
+        ["xpath=//div[@id='divListado']/div/div[2]/button/span", "xpath:idRelative"],
+        ["xpath=//div/div/div[2]/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'delete')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "38b64829-3b32-4dcf-83ae-d204ecdf3df2",
-      "comment": "",
-      "command": "click",
-      "target": "id=buttonModificar",
-      "targets": [
-        ["id=buttonModificar", "id"],
-        ["css=#buttonModificar", "css:finder"],
-        ["xpath=//button[@id='buttonModificar']", "xpath:attributes"],
-        ["xpath=//div[@id='divBotones']/button[3]", "xpath:idRelative"],
-        ["xpath=//button[3]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "9c0ae235-698b-4427-b4e9-ae456bf24aa5",
-      "comment": "",
-      "command": "click",
-      "target": "id=buttonAlta",
-      "targets": [
-        ["id=buttonAlta", "id"],
-        ["css=#buttonAlta", "css:finder"],
-        ["xpath=//button[@id='buttonAlta']", "xpath:attributes"],
-        ["xpath=//div[@id='divBotones']/button[2]", "xpath:idRelative"],
-        ["xpath=//button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "362f69c0-5387-437d-9935-450076e586e3",
+      "id": "5fdc2d6a-fc76-4f59-9970-6d4105e46ea3",
       "comment": "",
       "command": "click",
       "target": "id=buttonModificar",
@@ -351,7 +307,7 @@
       ],
       "value": ""
     }, {
-      "id": "5889fc45-8025-40d8-b80f-198ae4dded73",
+      "id": "50aa2e10-e157-4026-adcb-ac48f92d0a99",
       "comment": "",
       "command": "click",
       "target": "name=actualizar",
@@ -364,20 +320,27 @@
       ],
       "value": ""
     }, {
-      "id": "a2942f41-ec56-4aa9-83ed-5568be4e768c",
+      "id": "2476f74d-1641-4360-821a-a23a3886786c",
       "comment": "",
-      "command": "click",
+      "command": "select",
       "target": "name=actualizar",
+      "targets": [],
+      "value": "label=Memoria RAM"
+    }, {
+      "id": "84de921f-3c9f-4794-b2ea-d7d5bb7db6e5",
+      "comment": "",
+      "command": "click",
+      "target": "css=label:nth-child(1) option:nth-child(2)",
       "targets": [
-        ["name=actualizar", "name"],
-        ["css=label:nth-child(1) > select", "css:finder"],
-        ["xpath=//select[@name='actualizar']", "xpath:attributes"],
-        ["xpath=//form[@id='formModificar']/label/select", "xpath:idRelative"],
-        ["xpath=//div[3]/form/label/select", "xpath:position"]
+        ["css=label:nth-child(1) option:nth-child(2)", "css:finder"],
+        ["xpath=(//option[@value='2'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/label/select/option[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/form/label/select/option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Memoria RAM')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "c9cc5d46-398f-40dd-ac0d-9a9c44c25951",
+      "id": "67bb6359-52a4-45a7-9298-56f6837fcf6c",
       "comment": "",
       "command": "click",
       "target": "name=nuevoPrecio",
@@ -390,20 +353,7 @@
       ],
       "value": ""
     }, {
-      "id": "4f15a35f-ec70-464f-9a8c-4171432bb784",
-      "comment": "",
-      "command": "click",
-      "target": "name=nuevoPrecio",
-      "targets": [
-        ["name=nuevoPrecio", "name"],
-        ["css=#formModificar > label:nth-child(4) > input", "css:finder"],
-        ["xpath=//input[@name='nuevoPrecio']", "xpath:attributes"],
-        ["xpath=//form[@id='formModificar']/label[4]/input", "xpath:idRelative"],
-        ["xpath=//label[4]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "926b77cb-d8eb-4da7-a1b9-6f604e20ba83",
+      "id": "ec00579b-ffef-4ecd-8441-0ccfcfe575c7",
       "comment": "",
       "command": "type",
       "target": "name=nuevoPrecio",
@@ -414,22 +364,61 @@
         ["xpath=//form[@id='formModificar']/label[4]/input", "xpath:idRelative"],
         ["xpath=//label[4]/input", "xpath:position"]
       ],
-      "value": "120"
+      "value": "750"
     }, {
-      "id": "db29deb3-647e-4c77-97c3-64dd48b80783",
+      "id": "8fb3a5ad-aa2f-4d33-8df6-bf5a284d4b18",
       "comment": "",
       "command": "click",
-      "target": "name=nuevoSeguro1",
+      "target": "name=nuevaDescripcion",
       "targets": [
-        ["name=nuevoSeguro1", "name"],
-        ["css=fieldset:nth-child(8) > .labelCheckbox:nth-child(2) > input", "css:finder"],
-        ["xpath=//input[@name='nuevoSeguro1']", "xpath:attributes"],
-        ["xpath=//form[@id='formModificar']/fieldset/label/input", "xpath:idRelative"],
-        ["xpath=//div[3]/form/fieldset/label/input", "xpath:position"]
+        ["name=nuevaDescripcion", "name"],
+        ["css=label:nth-child(5) > textarea", "css:finder"],
+        ["xpath=//textarea[@name='nuevaDescripcion']", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/label[5]/textarea", "xpath:idRelative"],
+        ["xpath=//label[5]/textarea", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "884b2e9c-af04-4a29-aace-8e3c082713be",
+      "id": "d284d4ce-e905-4463-8782-e57345981c66",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoNombre",
+      "targets": [
+        ["name=nuevoNombre", "name"],
+        ["css=#formModificar > label:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='nuevoNombre']", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/label[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/form/label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e15c77db-9cff-49b2-8802-67998defd1b2",
+      "comment": "",
+      "command": "type",
+      "target": "name=nuevoNombre",
+      "targets": [
+        ["name=nuevoNombre", "name"],
+        ["css=#formModificar > label:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='nuevoNombre']", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/label[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/form/label[2]/input", "xpath:position"]
+      ],
+      "value": "Memoria RAM x2"
+    }, {
+      "id": "ae6c1121-123f-44a5-840f-2e262fcf3507",
+      "comment": "",
+      "command": "click",
+      "target": "name=nuevoSeguro2",
+      "targets": [
+        ["name=nuevoSeguro2", "name"],
+        ["css=fieldset:nth-child(8) > .labelCheckbox:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@name='nuevoSeguro2']", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/fieldset/label[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/form/fieldset/label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e9999e07-c527-4c92-ae73-c49794df1bb2",
       "comment": "",
       "command": "click",
       "target": "name=nuevoSeguro3",
@@ -442,33 +431,7 @@
       ],
       "value": ""
     }, {
-      "id": "f867467c-0bf0-46ef-b455-f96a492b1b18",
-      "comment": "",
-      "command": "click",
-      "target": "name=nuevaImagen",
-      "targets": [
-        ["name=nuevaImagen", "name"],
-        ["css=label:nth-child(7) > input", "css:finder"],
-        ["xpath=//input[@name='nuevaImagen']", "xpath:attributes"],
-        ["xpath=//form[@id='formModificar']/label[7]/input", "xpath:idRelative"],
-        ["xpath=//label[7]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "3dbbb434-90aa-4171-8b5f-532832a7fd13",
-      "comment": "",
-      "command": "type",
-      "target": "name=nuevaImagen",
-      "targets": [
-        ["name=nuevaImagen", "name"],
-        ["css=label:nth-child(7) > input", "css:finder"],
-        ["xpath=//input[@name='nuevaImagen']", "xpath:attributes"],
-        ["xpath=//form[@id='formModificar']/label[7]/input", "xpath:idRelative"],
-        ["xpath=//label[7]/input", "xpath:position"]
-      ],
-      "value": "C:\\fakepath\\Captura de pantalla_20230117_152729.png"
-    }, {
-      "id": "07c670ac-9cb8-4bfa-aeb1-e193f86a08c7",
+      "id": "02d0010d-54ce-481f-9474-1c460f89f4e3",
       "comment": "",
       "command": "click",
       "target": "id=botonActualizar",
@@ -481,47 +444,46 @@
       ],
       "value": ""
     }, {
-      "id": "50a1c45a-f83b-45a6-97e8-f1fab8d2c00d",
+      "id": "7caaefca-15e5-4023-ac8b-7471d32fbe94",
       "comment": "",
       "command": "click",
-      "target": "id=botonBorrar",
+      "target": "name=nuevaImagen",
       "targets": [
-        ["id=botonBorrar", "id"],
-        ["css=#botonBorrar", "css:finder"],
-        ["xpath=//button[@id='botonBorrar']", "xpath:attributes"],
-        ["xpath=//form[@id='formModificar']/div/button", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div/button", "xpath:position"]
+        ["name=nuevaImagen", "name"],
+        ["css=label:nth-child(7) > input", "css:finder"],
+        ["xpath=//input[@name='nuevaImagen']", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/label[7]/input", "xpath:idRelative"],
+        ["xpath=//label[7]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "38a8b8a4-d982-45a9-af08-a8c2f55e3959",
+      "id": "1e20c62c-c53a-45ae-b62b-2f739b623965",
+      "comment": "",
+      "command": "type",
+      "target": "name=nuevaImagen",
+      "targets": [
+        ["name=nuevaImagen", "name"],
+        ["css=label:nth-child(7) > input", "css:finder"],
+        ["xpath=//input[@name='nuevaImagen']", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/label[7]/input", "xpath:idRelative"],
+        ["xpath=//label[7]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Captura.PNG"
+    }, {
+      "id": "b83edf1c-b7d6-4e8e-a6e9-7bdda1e3b0af",
       "comment": "",
       "command": "click",
-      "target": "id=buttonAlta",
+      "target": "id=botonActualizar",
       "targets": [
-        ["id=buttonAlta", "id"],
-        ["css=#buttonAlta", "css:finder"],
-        ["xpath=//button[@id='buttonAlta']", "xpath:attributes"],
-        ["xpath=//div[@id='divBotones']/button[2]", "xpath:idRelative"],
-        ["xpath=//button[2]", "xpath:position"]
+        ["id=botonActualizar", "id"],
+        ["css=#botonActualizar", "css:finder"],
+        ["xpath=//button[@id='botonActualizar']", "xpath:attributes"],
+        ["xpath=//form[@id='formModificar']/div/button[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/form/div/button[2]", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "0be8ffb6-6876-4dfb-b3f1-185165cd6288",
-      "comment": "",
-      "command": "click",
-      "target": "id=botonCancelar",
-      "targets": [
-        ["id=botonCancelar", "id"],
-        ["css=#botonCancelar", "css:finder"],
-        ["xpath=//button[@id='botonCancelar']", "xpath:attributes"],
-        ["xpath=//form[@id='formAlta']/div/button", "xpath:idRelative"],
-        ["xpath=//form/div/button", "xpath:position"],
-        ["xpath=//button[contains(.,'Cancelar')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "9088e87e-d56f-4a89-9baf-32ebf5cfe141",
+      "id": "35d1823a-e41b-482e-96f7-816c3d5b164e",
       "comment": "",
       "command": "click",
       "target": "id=buttonListado",
@@ -533,119 +495,15 @@
         ["xpath=//div[2]/button", "xpath:position"]
       ],
       "value": ""
-    }, {
-      "id": "1fc77534-52ed-4727-ae4e-ef4a6d1f4eba",
-      "comment": "",
-      "command": "click",
-      "target": "id=buscar",
-      "targets": [
-        ["id=buscar", "id"],
-        ["name=buscar", "name"],
-        ["css=#buscar", "css:finder"],
-        ["xpath=//input[@id='buscar']", "xpath:attributes"],
-        ["xpath=//label[@id='labelBuscar']/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "07c336f1-5f20-4d9b-ad48-fcbbfd20c921",
-      "comment": "",
-      "command": "type",
-      "target": "id=buscar",
-      "targets": [
-        ["id=buscar", "id"],
-        ["name=buscar", "name"],
-        ["css=#buscar", "css:finder"],
-        ["xpath=//input[@id='buscar']", "xpath:attributes"],
-        ["xpath=//label[@id='labelBuscar']/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": "l"
-    }, {
-      "id": "9c970679-4404-4691-a3bd-e37fe7a7dc94",
-      "comment": "",
-      "command": "click",
-      "target": "css=#divBusqueda .material-icons",
-      "targets": [
-        ["css=#divBusqueda .material-icons", "css:finder"],
-        ["xpath=//div[@id='divBusqueda']/button/span", "xpath:idRelative"],
-        ["xpath=//span", "xpath:position"],
-        ["xpath=//span[contains(.,'search')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "7b9baa83-7840-4de9-9dd2-527da7b95cea",
-      "comment": "",
-      "command": "click",
-      "target": "id=buscar",
-      "targets": [
-        ["id=buscar", "id"],
-        ["name=buscar", "name"],
-        ["css=#buscar", "css:finder"],
-        ["xpath=//input[@id='buscar']", "xpath:attributes"],
-        ["xpath=//label[@id='labelBuscar']/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "42675d94-c083-455a-9124-894dde5cd445",
-      "comment": "",
-      "command": "type",
-      "target": "id=buscar",
-      "targets": [
-        ["id=buscar", "id"],
-        ["name=buscar", "name"],
-        ["css=#buscar", "css:finder"],
-        ["xpath=//input[@id='buscar']", "xpath:attributes"],
-        ["xpath=//label[@id='labelBuscar']/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "1cc3e5eb-e4b7-40f6-9757-75968f85a4a2",
-      "comment": "",
-      "command": "click",
-      "target": "css=#divBusqueda .material-icons",
-      "targets": [
-        ["css=#divBusqueda .material-icons", "css:finder"],
-        ["xpath=//div[@id='divBusqueda']/button/span", "xpath:idRelative"],
-        ["xpath=//span", "xpath:position"],
-        ["xpath=//span[contains(.,'search')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "5159018a-a85e-407d-a5f8-03be5fba8d99",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=#divBusqueda .material-icons",
-      "targets": [
-        ["css=#divBusqueda .material-icons", "css:finder"],
-        ["xpath=//div[@id='divBusqueda']/button/span", "xpath:idRelative"],
-        ["xpath=//span", "xpath:position"],
-        ["xpath=//span[contains(.,'search')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "1365b680-46e3-4b9f-ab9d-f07c0a4c0ab1",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=#divBusqueda .material-icons",
-      "targets": [
-        ["css=#divBusqueda .material-icons", "css:finder"],
-        ["xpath=//div[@id='divBusqueda']/button/span", "xpath:idRelative"],
-        ["xpath=//span", "xpath:position"],
-        ["xpath=//span[contains(.,'search')]", "xpath:innerText"]
-      ],
-      "value": ""
     }]
   }],
   "suites": [{
-    "id": "e7f98dba-81e1-40aa-a18d-e99b1cdbbb25",
+    "id": "d280a4af-5c4a-4f45-982d-66a472a63935",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["cf404444-3d66-4a4b-a460-62a48d8aa86d"]
+    "tests": ["84bebdb1-c689-430d-b096-f3bd448db0c0"]
   }],
   "urls": ["https://dperezsache.github.io/"],
   "plugins": []
