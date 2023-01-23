@@ -13,7 +13,7 @@ class Controlador
 	 */
     constructor() 
     {
-        window.onload = this.iniciar.bind(this);
+		$(window).on('load', this.iniciar.bind(this));
     }
 
     /**
@@ -24,11 +24,11 @@ class Controlador
     {
         this.modelo = new Modelo(this);
 
-        this.divBotones = document.getElementById('divBotones');
-        this.divBarraBusqueda = document.getElementById('divBusqueda');
-        this.divAlta = document.getElementById('divAlta');
-        this.divListado = document.getElementById('divListado');
-        this.divModificar = document.getElementById('divModificar');
+        this.divBotones = $('#divBotones');
+        this.divBarraBusqueda = $('#divBusqueda');
+        this.divAlta = $('#divAlta');
+        this.divListado = $('#divListado');
+        this.divModificar =  $('#divModificar');
 
         this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
         this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda);
@@ -115,7 +115,7 @@ class Controlador
 	editarCRUD(id) 
     {
 		this.pulsarBotonModificar();
-		this.vistaModificar.listado.value = id;
+		this.vistaModificar.listado.val(id);
 		this.vistaModificar.actualizarForm();
 	}
 

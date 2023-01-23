@@ -25,7 +25,7 @@ export class VistaListado extends Vista
 		this.modelo = this.controlador.getModelo();
 		this.modelo.registrar(this.actualizar.bind(this));
 
-		this.pAviso = this.div.getElementsByClassName('pAviso')[0];
+		this.pAviso = this.div.find('.pAviso').eq(0);
 	}
 
 	/**
@@ -40,51 +40,51 @@ export class VistaListado extends Vista
 
 		if(componentes != null && componentes.length > 0) 
 		{
-			this.pAviso.style.display = 'none';
+			this.pAviso.hide();
 
 			for(let componente of componentes) 
 			{
 				// DIV
-				let contenedor = document.createElement('div');
-				contenedor.className = 'divItem';
-				this.div.appendChild(contenedor);
+				let contenedor = $('<div></div>');
+				contenedor.addClass('divItem');
+				this.div.append(contenedor);
 
 				// Imagen
-				let img = document.createElement('img');
-				img.width = '256px';
-				img.height = '256px';
-				img.style.display = 'block';
-				img.src = componente.imagen;
-				img.alt = componente.nombre;
-				contenedor.appendChild(img);
+				let img = $('<img></img>');
+				img.width('256px');
+				img.height('256px');
+				img.css('display', 'block');
+				img.attr('src', componente.imagen);
+				img.attr('alt', componente.nombre);
+				contenedor.append(img);
 
 				// Nombre
-				let pNombre = document.createElement('p');
-				pNombre.className = 'pNombreItem';
-				pNombre.innerText = componente.nombre;
-				contenedor.appendChild(pNombre);
+				let pNombre = $('<p></p>');
+				pNombre.addClass('pNombreItem');
+				pNombre.text(componente.nombre);
+				contenedor.append(pNombre);
 
 				// Precio
-				let pPrecio = document.createElement('p');
-				pPrecio.className = 'pPrecioItem';
+				let pPrecio = $('<p></p>');
+				pPrecio.addClass('pPrecioItem');
 				let precio = parseFloat(componente.precio).toFixed(2);
-				pPrecio.innerText = precio;
-				pPrecio.innerText = precio + '€';
-				pPrecio.innerText = pPrecio.innerText.replace('.', ',');
-				contenedor.appendChild(pPrecio);
+				pPrecio.text(precio);
+				pPrecio.text(precio + '€');
+				pPrecio.text(pPrecio.text().replace('.', ','));
+				contenedor.append(pPrecio);
 
 				// Descripción
-				let divDesc = document.createElement('div');
-				divDesc.className = 'divDescItem';
+				let divDesc = $('<div></div>');
+				divDesc.addClass('divDescItem');
 
-				let pDesc = document.createElement('p');
-				pDesc.innerText = componente.descripcion;
-				divDesc.appendChild(pDesc);
-				contenedor.appendChild(divDesc);
+				let pDesc = $('<p></p>');
+				pDesc.text(componente.descripcion);
+				divDesc.append(pDesc);
+				contenedor.append(divDesc);
 
 				// Tipo
-				let ulInfo = document.createElement('ul');
-				let liTipo = document.createElement('li');
+				let ulInfo = $('<ul></ul>');
+				let liTipo = $('<li></li>');
 				let tipo;
 				switch(parseInt(componente.tipo))
 				{
@@ -116,70 +116,70 @@ export class VistaListado extends Vista
 						tipo = '';
 						break;
 				}
-				liTipo.innerHTML = 'Tipo de producto: <span class="spanFecha">' + tipo + '</span>';
-				ulInfo.appendChild(liTipo);
+				liTipo.html('Tipo de producto: <span class="spanFecha">' + tipo + '</span>');
+				ulInfo.append(liTipo);
 
 				// Fecha
-				let liFecha = document.createElement('li');
+				let liFecha = $('<li></li>');
 				let trozos = componente.fecha.split('-');
-				liFecha.innerHTML = 'Fecha de lanzamiento: <span class="spanFecha">' + trozos[2] + '/' + trozos[1] + '/' + trozos[0] + '</span>';
-				ulInfo.appendChild(liFecha);
-				contenedor.appendChild(ulInfo);
+				liFecha.html('Fecha de lanzamiento: <span class="spanFecha">' + trozos[2] + '/' + trozos[1] + '/' + trozos[0] + '</span>');
+				ulInfo.append(liFecha);
+				contenedor.append(ulInfo);
 
 				// Separador
-				let hr = document.createElement('hr');
-				hr.className = 'hrItems';
-				hr.style.width = '350px'; 
-				contenedor.appendChild(hr);
+				let hr = $('<hr/>');
+				hr.addClass('hrItems');
+				hr.width('350px'); 
+				contenedor.append(hr);
 				
 				// Checkboxes
-				let ul = document.createElement('ul');
-				ul.style.listStyleType = "'- '"; 
-				let li1 = document.createElement('li');
-				if (componente.seguro1) li1.innerText = 'Se ofrece seguro contra robos.';
-				else li1.innerText = 'No se ofrece seguro contra robos.';
-				ul.appendChild(li1);
+				let ul = $('<ul></ul>');
+				ul.css('listStyleType', "'- '"); 
+				let li1 = $('<li></li>');
+				if (componente.seguro1) li1.text('Se ofrece seguro contra robos.');
+				else li1.text('No se ofrece seguro contra robos.');
+				ul.append(li1);
 
-				let li2 = document.createElement('li');
-				if (componente.seguro2) li2.innerText = 'Se ofrece seguro contra roturas.';
-				else li2.innerText = 'No se ofrece seguro contra roturas.';
-				ul.appendChild(li2);
+				let li2 = $('<li></li>');
+				if (componente.seguro2) li2.text('Se ofrece seguro contra roturas.');
+				else li2.text('No se ofrece seguro contra roturas.');
+				ul.append(li2);
 
-				let li3 = document.createElement('li');
-				if (componente.seguro3) li3.innerText = 'Se ofrece seguro contra caídas.';
-				else li3.innerText = 'No se ofrece seguro contra caídas.';
-				ul.appendChild(li3);
-				contenedor.appendChild(ul);
+				let li3 = $('<li></li>');
+				if (componente.seguro3) li3.text('Se ofrece seguro contra caídas.');
+				else li3.text('No se ofrece seguro contra caídas.');
+				ul.append(li3);
+				contenedor.append(ul);
 
 				// Botones
-				let divBotones = document.createElement('div');
+				let divBotones = $('<div></div>');
 
 				// Botón eliminar
-				let botonEliminar = document.createElement('button');
-				botonEliminar.className = 'boton';
-				botonEliminar.style.marginRight = '10px';
-				let spanEliminar = document.createElement('span');
-				spanEliminar.className = 'material-icons';
-				spanEliminar.innerText = 'delete';
-				spanEliminar.onclick = this.eliminar.bind(this, componente.id)
-				botonEliminar.appendChild(spanEliminar);
-				divBotones.appendChild(botonEliminar);
+				let botonEliminar = $('<button></button>');
+				botonEliminar.addClass('boton');
+				botonEliminar.css('marginRight', '10px');
+				let spanEliminar = $('<span></span>');
+				spanEliminar.addClass('material-icons');
+				spanEliminar.text('delete');
+				spanEliminar.on('click', this.eliminar.bind(this, componente.id));
+				botonEliminar.append(spanEliminar);
+				divBotones.append(botonEliminar);
 
 				// Botón editar
-				let botonEditar = document.createElement('button');
-				botonEditar.className = 'boton';
-				let spanEditar = document.createElement('span');
-				spanEditar.className = 'material-icons';
-				spanEditar.innerText = 'edit';
-				spanEditar.onclick = this.editar.bind(this, componente.id);
-				botonEditar.appendChild(spanEditar);
-				divBotones.appendChild(botonEditar);
-				contenedor.appendChild(divBotones);
+				let botonEditar = $('<button></button>');
+				botonEditar.addClass('boton');
+				let spanEditar = $('<span></span>');
+				spanEditar.addClass('material-icons');
+				spanEditar.text('edit');
+				spanEditar.on('click', this.editar.bind(this, componente.id));
+				botonEditar.append(spanEditar);
+				divBotones.append(botonEditar);
+				contenedor.append(divBotones);
 			}
 		}
 		else
 		{
-			this.pAviso.style.display = 'block';
+			this.pAviso.show();
 		}
 	}
 
@@ -188,7 +188,7 @@ export class VistaListado extends Vista
 	 */
 	borrarElementos() 
 	{
-		while(this.div.childNodes.length > 1)
+		while(this.div.children().length > 1)
 		{
 			if (this.div.lastChild === this.pAviso) break;
 			else this.div.removeChild(this.div.lastChild);

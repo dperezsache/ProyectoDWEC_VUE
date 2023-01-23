@@ -19,13 +19,13 @@ export class VistaDivBotones
 		this.controlador = controlador;
 		this.div = div;
 		
-		this.botonListado = this.div.getElementsByTagName('button')[0];
-		this.botonAlta = this.div.getElementsByTagName('button')[1];
-        this.botonModificar = this.div.getElementsByTagName('button')[2];
+		this.botonListado = this.div.find('#buttonListado');
+		this.botonAlta = this.div.find('#buttonAlta');
+        this.botonModificar = this.div.find('#buttonModificar');
 		
-		this.botonListado.onclick = this.pulsarListado.bind(this);
-		this.botonAlta.onclick = this.pulsarAlta.bind(this);
-		this.botonModificar.onclick = this.pulsarModificar.bind(this);
+		this.botonListado.on('click', this.pulsarListado.bind(this));
+		this.botonAlta.on('click', this.pulsarAlta.bind(this));
+		this.botonModificar.on('click', this.pulsarModificar.bind(this));
 	}
 
     /**

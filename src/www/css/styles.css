@@ -136,7 +136,7 @@ footer p {
 }
 
 div#divBusqueda {
-    display: inline-block;
+    display: block;
 }
 
 div#divCabecera {

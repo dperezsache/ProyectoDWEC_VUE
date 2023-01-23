@@ -22,21 +22,21 @@ export class VistaAlta extends Vista
         super(controlador, div);
 
 		// Coger referencias de los elementos
-		this.campoNombre = this.div.getElementsByTagName('input')[0];
-		this.campoFecha = this.div.getElementsByTagName('input')[1];
-		this.campoPrecio = this.div.getElementsByTagName('input')[2];
-		this.campoDescripcion = this.div.getElementsByTagName('textarea')[0];
-		this.campoTipo = this.div.getElementsByTagName('select')[0];
-		this.campoImagen = this.div.getElementsByTagName('input')[3];
-		this.seguro1 = this.div.getElementsByTagName('input')[4];
-		this.seguro2 = this.div.getElementsByTagName('input')[5];
-		this.seguro3 = this.div.getElementsByTagName('input')[6];
-		this.botonCancelar = this.div.getElementsByTagName('button')[0];
-		this.botonAceptar = this.div.getElementsByTagName('button')[1];
-		this.parrafoAviso = this.div.getElementsByClassName('pAviso')[0];
+		this.campoNombre = this.div.find('input').eq(0);
+		this.campoFecha = this.div.find('input').eq(1);
+		this.campoPrecio = this.div.find('input').eq(2);
+		this.campoDescripcion = this.div.find('textarea').eq(0);
+		this.campoTipo = this.div.find('select').eq(0);
+		this.campoImagen = this.div.find('input').eq(3);
+		this.seguro1 = this.div.find('input').eq(4);
+		this.seguro2 = this.div.find('input').eq(5);
+		this.seguro3 = this.div.find('input').eq(6);
+		this.botonCancelar = this.div.find('button').eq(0);
+		this.botonAceptar = this.div.find('button').eq(1);
+		this.parrafoAviso = this.div.find('.pAviso').eq(0);
 		
-		this.botonAceptar.onclick = this.aceptar.bind(this);
-		this.botonCancelar.onclick = this.cancelar.bind(this);
+		this.botonAceptar.on('click', this.aceptar.bind(this));
+		this.botonCancelar.on('click', this.cancelar.bind(this));
     }
 
 	/**
@@ -49,95 +49,95 @@ export class VistaAlta extends Vista
 		let cont = 0;
 
 		// Validación nombre
-		if (this.campoNombre.value && this.campoNombre.value.length <= 50) 
+		if (this.campoNombre.val() && this.campoNombre.val().length <= 50) 
 		{
 			cont++;
-			this.campoNombre.style.border = colorOk;
+			this.campoNombre.css('border', colorOk);
 		}
 		else 
 		{
-			this.campoNombre.style.border = colorMal;
+			this.campoNombre.css('border', colorMal);
 		}
 
 		// Validación fecha
-		if (this.campoFecha.value) 
+		if (this.campoFecha.val()) 
 		{
 			cont++;
-			this.campoFecha.style.border = colorOk;
+			this.campoFecha.css('border', colorOk);
 		}
 		else 
 		{
-			this.campoFecha.style.border = colorMal;
+			this.campoFecha.css('border', colorMal);
 		}
 
 		// Validación precio
-		if (this.campoPrecio.value && !isNaN(this.campoPrecio.value) && this.campoPrecio.value > 0) 
+		if (this.campoPrecio.val() && !isNaN(this.campoPrecio.val()) && this.campoPrecio.val() > 0) 
 		{
 			cont++;
-			this.campoPrecio.style.border = colorOk;
+			this.campoPrecio.css('border', colorOk);
 		}
 		else 
 		{
-			this.campoPrecio.style.border = colorMal;
+			this.campoPrecio.css('border', colorMal);
 		}
 
 		// Validación tipo
-		if (this.campoTipo.value != -1)
+		if (this.campoTipo.val() != -1)
 		{
 			cont++;
-			this.campoTipo.style.border = colorOk;
+			this.campoTipo.css('border', colorOk);
 		}
 		else
 		{
-			this.campoTipo.style.border = colorMal;
+			this.campoTipo.css('border', colorMal);
 		}
 
 		// Validación descripción
-		if (this.campoDescripcion.value && this.campoDescripcion.value.length <= 500)
+		if (this.campoDescripcion.val() && this.campoDescripcion.val().length <= 500)
 		{
 			cont++;
-			this.campoDescripcion.style.border = colorOk;
+			this.campoDescripcion.css('border', colorOk);
 		}
 		else
 		{
-			this.campoDescripcion.style.border = colorMal;
+			this.campoDescripcion.css('border', colorMal);
 		}
 
 		// Validación imagen
 		if (this.campoImagen.files[0] != null)
 		{
 			cont++;
-			this.campoImagen.style.border = colorOk;
+			this.campoImagen.style.css('border', colorOk);
 		}
 		else
 		{
-			this.campoImagen.style.border = colorMal;
+			this.campoImagen.style.css('border', colorMal);
 		}
 
 		window.scrollTo(0, 0);	// Mover al top de la página.
-		this.parrafoAviso.style.display = 'block';
+		this.parrafoAviso.show();
 
 		if(cont == 6) 
 		{
-			this.parrafoAviso.innerText = '✔️ Componente añadido correctamente ✔️';
+			this.parrafoAviso.text('✔️ Componente añadido correctamente ✔️');
 			
 			this.controlador.aceptarCRUD(
-				this.campoNombre.value, 
-				this.campoFecha.value, 
-				this.campoPrecio.value,
-				this.campoDescripcion.value, 
-				this.campoTipo.value,
+				this.campoNombre.val(), 
+				this.campoFecha.val(), 
+				this.campoPrecio.val(),
+				this.campoDescripcion.val(), 
+				this.campoTipo.val(),
 				this.campoImagen.files[0], 
-				this.seguro1.checked,
-				this.seguro2.checked,
-				this.seguro3.checked
+				this.seguro1.is(':checked'),
+				this.seguro2.is(':checked'),
+				this.seguro3.is(':checked')
 			);
 
 			this.cancelar();	// Borrar los campos una vez añadido el elemento.
 		}
 		else
 		{
-			this.parrafoAviso.innerText = '⚠️ Rellena correctamente los campos indicados ⚠️';
+			this.parrafoAviso.text('⚠️ Rellena correctamente los campos indicados ⚠️');
 		}
 	}
 
@@ -146,20 +146,20 @@ export class VistaAlta extends Vista
 	**/
 	cancelar() 
 	{
-		this.campoNombre.value = '';
-		this.campoFecha.value = '';
-		this.campoPrecio.value = '';
-		this.campoDescripcion.value = '';
-		this.campoTipo.value = -1;
-		this.campoImagen.value = '';
-		this.seguro1.checked = false;
-		this.seguro2.checked = false;
-		this.seguro3.checked = false;
+		this.campoNombre.val('');
+		this.campoFecha.val('');
+		this.campoPrecio.val('');
+		this.campoDescripcion.val('');
+		this.campoTipo.val(-1);
+		this.campoImagen.val('');
+		this.seguro1.prop('checked', false);
+		this.seguro2.prop('checked', false);
+		this.seguro3.prop('checked', false);
 	}
 
 	mostrar(ver)
 	{
 		super.mostrar(ver);
-		this.parrafoAviso.style.display = 'none';
+		this.parrafoAviso.hide();
 	}
 }

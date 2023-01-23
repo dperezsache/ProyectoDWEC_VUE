@@ -21,10 +21,10 @@ export class VistaBarraBusqueda extends Vista
 	{
         super(controlador, div);
 
-		this.campoBuscar = this.div.getElementsByTagName('input')[0];
-		this.botonBuscar = this.div.getElementsByTagName('button')[0];
+		this.campoBuscar = this.div.find('input').eq(0);
+		this.botonBuscar = this.div.find('button').eq(0);
 
-		this.botonBuscar.onclick = this.busqueda.bind(this);
+		this.botonBuscar.on('click', this.busqueda.bind(this));
     }
 
 	/**
@@ -32,6 +32,6 @@ export class VistaBarraBusqueda extends Vista
 	**/
 	busqueda()
 	{
-		this.controlador.buscarComponentes(this.campoBuscar.value);
+		this.controlador.buscarComponentes(this.campoBuscar.val());
 	}
 }
