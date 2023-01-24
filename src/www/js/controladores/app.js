@@ -4,6 +4,7 @@ import { VistaDivBotones } from "../vistas/vistadivbotones.js";
 import { VistaListado } from "../vistas/vistalistado.js";
 import { VistaModificar } from "../vistas/vistamodificar.js";
 import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
+import { VistaFooter } from "../vistas/vistafooter.js";
 
 class Controlador 
 {
@@ -29,12 +30,14 @@ class Controlador
         this.divAlta = $('#divAlta');
         this.divListado = $('#divListado');
         this.divModificar =  $('#divModificar');
+        this.divFooter = $('#divFooter');
 
         this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
         this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda, false);
         this.vistaAlta = new VistaAlta(this, this.divAlta, true);
         this.vistaListado = new VistaListado(this, this.divListado, true);
         this.vistaModificar = new VistaModificar(this, this.divModificar, true);
+        this.vistaFooter = new VistaFooter(this, this.divFooter, true);
 
         this.pulsarBotonListado();    // Iniciar desde la vista de listado.
     }

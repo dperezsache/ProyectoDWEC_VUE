@@ -16,6 +16,8 @@ export class Modelo
 		this.callbacks = [];
 		this.listaComponentes;
 		this.db;
+		this.datosTiempo;
+		this.infoAEMET();
 		this.conectarDB();
     }
 
@@ -209,5 +211,48 @@ export class Modelo
 	getLista() 
 	{
 		return this.listaComponentes;
+	}
+
+	/**
+	 * Devuelve los datos del tiempo.
+	 */
+	getDatosTiempo()
+	{
+		return this.datosTiempo;
+	}
+
+	/**
+	 * Carga los datos la predicción meteorológica de Badajoz.
+	 */
+	infoAEMET()
+	{
+		const settings = {
+			'async': true,
+			'crossDomain': true,
+			'url': 'https://opendata.aemet.es/opendata/api/prediccion/provincia/hoy/06/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYXZpZHNhY2hlMDhAZ21haWwuY29tIiwianRpIjoiZTQ2ZDNlNWEtMjQ1Ni00ZDUyLTg0ZjYtYjc2ZjFjOThkOTAyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE2NzQ1NzM5NjMsInVzZXJJZCI6ImU0NmQzZTVhLTI0NTYtNGQ1Mi04NGY2LWI3NmYxYzk4ZDkwMiIsInJvbGUiOiIifQ.mFEFzKjKcpHxvyinDg6iXDen6I2cdKBExm0Qb_ke5aY',
+			'method': 'GET',
+			'headers': {
+				'cache-control': 'no-cache'
+			}
+		};
+
+		$.ajax(settings)
+		.done((response) => {
+			if(response.estado == 200) {
+				// Obtener los datos de la respuesta
+				$.ajax(response.datos)
+					.done((response) => {
+						this.datosTiempo = response;
+						this.avisar();
+					})
+					.fail(() => {
+						this.datosTiempo =  null;
+						this.avisar();
+					})
+			}
+		}).fail(() => {
+			this.datosTiempo =  null;
+			this.avisar();
+		})
 	}
 }
