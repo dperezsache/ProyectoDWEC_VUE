@@ -27,14 +27,18 @@ export class VistaFooter extends Vista
 		this.modelo.registrar(this.informacionTiempo.bind(this));
     }
 
+    /**
+     * Procesar datos del tiempo y mostrarlos.
+     */
     informacionTiempo()
     {
         let datos = this.modelo.getDatosTiempo();
 
         if(datos != null)
         {
+            datos = datos.split('BADAJOZ');
             this.pInformacion.show();
-            this.pInformacion.text(datos);
+            this.pInformacion.text('BADAJOZ:' + datos[2]);
         }
         else
         {
