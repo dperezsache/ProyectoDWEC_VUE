@@ -13,9 +13,11 @@ export class Vista
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
+		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
 	**/
-    constructor(controlador, div) 
+    constructor(controlador, div, efecto) 
 	{
+		this.efecto = efecto;
 		this.controlador = controlador;
         this.div = div;
     }
@@ -28,11 +30,13 @@ export class Vista
 	{
 		if(ver) 
 		{
-			this.div.show(250);
+			if (this.efecto) this.div.show('fast', 'linear');
+			else this.div.show();
         }
 		else 
 		{
-			this.div.hide(250);
+			if (this.efecto) this.div.hide('fast', 'linear');
+			else this.div.hide();
         }
 	}
 }

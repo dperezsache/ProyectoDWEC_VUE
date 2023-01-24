@@ -11,12 +11,13 @@ import {Vista} from './vista.js';
 **/
 export class VistaModificar extends Vista
 {
-    /**
+	/**
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
+		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
 	**/
-    constructor(controlador, div) 
+    constructor(controlador, div, efecto) 
 	{
         super(controlador, div);
 
@@ -180,7 +181,7 @@ export class VistaModificar extends Vista
 		}
 
 		// Validación imagen
-		if (this.campoImagen.files[0] != null)
+		if (this.campoImagen.prop('files')[0] != null)
 		{
 			cont++;
 			this.campoImagen.css('border', colorOk);
@@ -204,7 +205,7 @@ export class VistaModificar extends Vista
 				this.campoPrecio.val(),
 				this.campoDescripcion.val(), 
 				this.campoTipo.val(),
-				this.campoImagen.files[0], 
+				this.campoImagen.prop('files')[0], 
 				this.seguro1.is(':checked'),
 				this.seguro2.is(':checked'),
 				this.seguro3.is(':checked')

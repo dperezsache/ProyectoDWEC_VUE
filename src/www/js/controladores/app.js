@@ -31,10 +31,10 @@ class Controlador
         this.divModificar =  $('#divModificar');
 
         this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
-        this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda);
-        this.vistaAlta = new VistaAlta(this, this.divAlta);
-        this.vistaListado = new VistaListado(this, this.divListado);
-        this.vistaModificar = new VistaModificar(this, this.divModificar);
+        this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda, false);
+        this.vistaAlta = new VistaAlta(this, this.divAlta, true);
+        this.vistaListado = new VistaListado(this, this.divListado, true);
+        this.vistaModificar = new VistaModificar(this, this.divModificar, true);
 
         this.pulsarBotonListado();    // Iniciar desde la vista de listado.
     }

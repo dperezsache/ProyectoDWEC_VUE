@@ -16,10 +16,11 @@ export class VistaBarraBusqueda extends Vista
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
+		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
 	**/
-    constructor(controlador, div) 
+    constructor(controlador, div, efecto) 
 	{
-        super(controlador, div);
+        super(controlador, div, efecto);
 
 		this.campoBuscar = this.div.find('input').eq(0);
 		this.botonBuscar = this.div.find('button').eq(0);

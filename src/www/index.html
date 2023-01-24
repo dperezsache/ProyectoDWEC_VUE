@@ -11,12 +11,12 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     </head>
     <body>
-        <header>
+        <header role="navigation">
             <div id="divCabecera">
                 <img src="../../diseno/logo.png" draggable="false" alt="Logo de CoolPC" id="imgLogo"/>
                 <div id="divBusqueda">
                     <label id="labelBuscar" for="buscar">
-                        Búsqueda<br/> <input id="buscar" name="buscar" type="text" maxlength="50"/>
+                        Búsqueda<br/> <input id="buscar" aria-label="Búsqueda" name="buscar" type="text" maxlength="50"/>
                     </label>
                     <button type="button" class="boton">
                         <span class="material-icons">search</span>
@@ -40,25 +40,25 @@
         </header>
         
         <!-- Listado -->
-        <div id="divListado">
+        <div id="divListado" role="list">
             <p class="pAviso">No hay ningún registro.</p>
         </div>
 
         <!-- Alta -->
         <div id="divAlta">
             <p class="pAviso"></p>
-            <form id="formAlta">
+            <form id="formAlta" role="form">
                 <label for="nombre">
-                    Nombre <input type="text" name="nombre"/>
+                    Nombre <input aria-label="Nombre" type="text" name="nombre"/>
                 </label>
                 <label for="fecha">
-                    Fecha <input type="date" name="fecha"/>
+                    Fecha <input aria-label="Fecha" type="date" name="fecha"/>
                 </label>
                 <label for="precio">
-                    Precio <input type="number" name="precio" step="0.1"/>
+                    Precio <input aria-label="Precio" type="number" name="precio" step="0.1"/>
                 </label>
                 <label for="descripcion">
-                    Descripción <textarea name="descripcion" rows="8" cols="50"></textarea>
+                    Descripción <textarea aria-label="Descripción" name="descripcion" rows="8" cols="50"></textarea>
                 </label>
                 <label for="categoria">
                     Categoría <select name="categoria">
@@ -74,19 +74,19 @@
                     </select>  
                 </label>
                 <label for="subirImagen">
-                    Subir imagen <input type="file" name="subirImagen" accept="image/png, image/jpeg"/>
+                    Subir imagen <input type="file" aria-label="Imagen" name="subirImagen" accept="image/png, image/jpeg"/>
                 </label>
 
                 <fieldset>
                     <legend>Seguros que tiene el producto</legend>
                     <label for="seguro1" class="labelCheckbox">
-                        Seguro contra robos <input type="checkbox" name="seguro1"/>
+                        Seguro contra robos <input type="checkbox" aria-label="Seguro contra robos" name="seguro1"/>
                     </label>
                     <label for="seguro2" class="labelCheckbox">
-                        Seguro contra roturas <input type="checkbox" name="seguro2"/>
+                        Seguro contra roturas <input type="checkbox" aria-label="Seguro contra roturas" name="seguro2"/>
                     </label>
                     <label for="seguro3" class="labelCheckbox">
-                        Seguro contra caídas <input type="checkbox" name="seguro3"/>
+                        Seguro contra caídas <input type="checkbox" aria-label="Seguro contra caídas" name="seguro3"/>
                     </label>
                 </fieldset>
                 
@@ -100,21 +100,21 @@
         <!-- Modificar -->
         <div id="divModificar">
             <p class="pAviso"></p>
-            <form id="formModificar">
+            <form id="formModificar" role="form">
                 <label for="actualizar">
                     Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
                 </label>
                 <label for="nuevoNombre">
-                    Nuevo nombre <input type="text" name="nuevoNombre"/>
+                    Nuevo nombre <input type="text" aria-label="Nuevo nombre" name="nuevoNombre"/>
                 </label>
                 <label for="nuevaFecha">
-                    Nueva fecha <input type="date" name="nuevaFecha"/>
+                    Nueva fecha <input type="date" aria-label="Nueva fecha" name="nuevaFecha"/>
                 </label>
                 <label for="nuevoPrecio">
-                    Nuevo precio <input type="number" name="nuevoPrecio" step="0.1"/>
+                    Nuevo precio <input type="number" aria-label="Nuevo precio" name="nuevoPrecio" step="0.1"/>
                 </label>
                 <label for="nuevaDescripcion">
-                    Nueva descripción <textarea name="nuevaDescripcion" rows="8" cols="50"></textarea>
+                    Nueva descripción <textarea name="nuevaDescripcion" aria-label="Nueva descripción" rows="8" cols="50"></textarea>
                 </label>
                 <label for="nuevaCategoria">
                     Nueva categoría <select name="nuevaCategoria">
@@ -130,18 +130,18 @@
                     </select>  
                 </label>
                 <label for="nuevaImagen">
-                    Subir nueva imagen <input type="file" name="nuevaImagen" accept="image/png, image/jpeg"/>
+                    Subir nueva imagen <input type="file" aria-label="Nueva imagen" name="nuevaImagen" accept="image/png, image/jpeg"/>
                 </label>
                 <fieldset>
                     <legend>Seguros que tiene el producto</legend>
                     <label for="nuevoSeguro1" class="labelCheckbox">
-                        Seguro contra robos <input type="checkbox" name="nuevoSeguro1"/>
+                        Seguro contra robos <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro1"/>
                     </label>
                     <label for="nuevoSeguro2" class="labelCheckbox">
-                        Seguro contra roturas <input type="checkbox" name="nuevoSeguro2"/>
+                        Seguro contra roturas <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro2"/>
                     </label>
                     <label for="nuevoSeguro3" class="labelCheckbox">
-                        Seguro contra caídas <input type="checkbox" name="nuevoSeguro3"/>
+                        Seguro contra caídas <input type="checkbox" aria-label="Seguro contra caídas" name="nuevoSeguro3"/>
                     </label>
                 </fieldset>
                 <div class="divBotonesForm">

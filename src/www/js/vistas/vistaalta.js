@@ -16,10 +16,11 @@ export class VistaAlta extends Vista
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
+		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
 	**/
-	constructor(controlador, div) 
+	constructor(controlador, div, efecto) 
 	{
-        super(controlador, div);
+        super(controlador, div, efecto);
 
 		// Coger referencias de los elementos
 		this.campoNombre = this.div.find('input').eq(0);
@@ -104,14 +105,14 @@ export class VistaAlta extends Vista
 		}
 
 		// Validación imagen
-		if (this.campoImagen.files[0] != null)
+		if (this.campoImagen.prop('files')[0] != null)
 		{
 			cont++;
-			this.campoImagen.style.css('border', colorOk);
+			this.campoImagen.css('border', colorOk);
 		}
 		else
 		{
-			this.campoImagen.style.css('border', colorMal);
+			this.campoImagen.css('border', colorMal);
 		}
 
 		window.scrollTo(0, 0);	// Mover al top de la página.
@@ -127,7 +128,7 @@ export class VistaAlta extends Vista
 				this.campoPrecio.val(),
 				this.campoDescripcion.val(), 
 				this.campoTipo.val(),
-				this.campoImagen.files[0], 
+				this.campoImagen.prop('files')[0], 
 				this.seguro1.is(':checked'),
 				this.seguro2.is(':checked'),
 				this.seguro3.is(':checked')
@@ -157,9 +158,9 @@ export class VistaAlta extends Vista
 		this.seguro3.prop('checked', false);
 	}
 
-	mostrar(ver)
+	mostrar(ver, efecto)
 	{
-		super.mostrar(ver);
+		super.mostrar(ver, efecto);
 		this.parrafoAviso.hide();
 	}
 }

@@ -16,10 +16,11 @@ export class VistaListado extends Vista
 		Constructor de la clase.
 		@param {Controlador} controlador Controlador de la vista.
 		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
+		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
 	**/
-    constructor(controlador, div) 
+    constructor(controlador, div, efecto) 
 	{
-        super(controlador, div);
+        super(controlador, div, efecto);
 		
 		// Hacemos que VistaListado "observe" al Modelo.
 		this.modelo = this.controlador.getModelo();
@@ -190,8 +191,14 @@ export class VistaListado extends Vista
 	{
 		while(this.div.children().length > 1)
 		{
-			if (this.div.lastChild === this.pAviso) break;
-			else this.div.removeChild(this.div.lastChild);
+			if (this.div.children().last() === this.pAviso) 
+			{
+				break;
+			}
+			else 
+			{
+				this.div.children().last().remove();
+			}
 		} 
 	}
 
