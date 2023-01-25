@@ -246,12 +246,11 @@ export class VistaModificar extends Vista
 	}
 
 	/**
-		Borra los options del select.
+		Borra todos los options del select.
 	**/
 	borrarListado()
 	{
-		while(this.listado.firstElementChild)
-			this.listado.firstElementChild.remove();
+		this.listado.empty();
 	}
 
 	mostrar(ver)
