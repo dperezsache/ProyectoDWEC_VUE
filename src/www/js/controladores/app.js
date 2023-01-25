@@ -23,6 +23,7 @@ class Controlador
      */
     iniciar() 
     {
+		$("#dlg_hello").dialog();
         this.modelo = new Modelo(this);
 
         this.divBotones = $('#divBotones');

@@ -38,7 +38,17 @@ export class VistaAlta extends Vista
 		
 		this.botonAceptar.on('click', this.aceptar.bind(this));
 		this.botonCancelar.on('click', this.cancelar.bind(this));
-    }
+
+		// JQUERY UI
+		this.campoFecha.datepicker({
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			showButtonPanel: true,
+			changeYear: true
+		});
+
+		this.campoTipo.selectmenu();
+	}
 
 	/**
 		Atención al click sobre el botón Aceptar de la vista.
@@ -61,7 +71,7 @@ export class VistaAlta extends Vista
 		}
 
 		// Validación fecha
-		if (this.campoFecha.val()) 
+		if (this.campoFecha.val() && this.campoFecha.val().match(/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/)) 
 		{
 			cont++;
 			this.campoFecha.css('border', colorOk);

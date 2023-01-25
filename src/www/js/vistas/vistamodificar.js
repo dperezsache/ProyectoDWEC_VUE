@@ -19,7 +19,7 @@ export class VistaModificar extends Vista
 	**/
     constructor(controlador, div, efecto) 
 	{
-        super(controlador, div);
+        super(controlador, div, efecto);
 
 		this.modelo = this.controlador.getModelo();
 		this.modelo.registrar(this.cargarListado.bind(this));
@@ -43,6 +43,16 @@ export class VistaModificar extends Vista
 		this.listado.on('click', this.actualizarForm.bind(this));
 		this.botonAceptar.on('click', this.aceptar.bind(this));
 		this.botonCancelar.on('click', this.cancelar.bind(this));
+
+		// JQUERY UI
+		this.campoFecha.datepicker({
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			showButtonPanel: true,
+			changeYear: true
+		});
+
+		this.campoTipo.selectmenu();
     }
 
 	/**
@@ -137,7 +147,7 @@ export class VistaModificar extends Vista
 		}
 
 		// Validación fecha
-		if (this.campoFecha.val()) 
+		if (this.campoFecha.val() && this.campoFecha.val().match(/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/)) 
 		{
 			cont++;
 			this.campoFecha.css('border', colorOk);

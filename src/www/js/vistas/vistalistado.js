@@ -122,8 +122,7 @@ export class VistaListado extends Vista
 
 				// Fecha
 				let liFecha = $('<li></li>');
-				let trozos = componente.fecha.split('-');
-				liFecha.html('Fecha de lanzamiento: <span class="spanFecha">' + trozos[2] + '/' + trozos[1] + '/' + trozos[0] + '</span>');
+				liFecha.html('Fecha de lanzamiento: <span class="spanFecha">' + componente.fecha + '</span>');
 				ulInfo.append(liFecha);
 				contenedor.append(ulInfo);
 
@@ -160,8 +159,7 @@ export class VistaListado extends Vista
 				botonEliminar.addClass('boton');
 				botonEliminar.css('marginRight', '10px');
 				let spanEliminar = $('<span></span>');
-				spanEliminar.addClass('material-icons');
-				spanEliminar.text('delete');
+				spanEliminar.addClass('ui-icon ui-icon-trash');
 				spanEliminar.on('click', this.eliminar.bind(this, componente.id));
 				botonEliminar.append(spanEliminar);
 				divBotones.append(botonEliminar);
@@ -170,8 +168,7 @@ export class VistaListado extends Vista
 				let botonEditar = $('<button></button>');
 				botonEditar.addClass('boton');
 				let spanEditar = $('<span></span>');
-				spanEditar.addClass('material-icons');
-				spanEditar.text('edit');
+				spanEditar.addClass('ui-icon ui-icon-pencil');
 				spanEditar.on('click', this.editar.bind(this, componente.id));
 				botonEditar.append(spanEditar);
 				divBotones.append(botonEditar);

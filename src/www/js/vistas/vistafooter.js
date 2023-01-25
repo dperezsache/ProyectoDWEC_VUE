@@ -37,8 +37,16 @@ export class VistaFooter extends Vista
         if(datos != null)
         {
             datos = datos.split('BADAJOZ');
-            this.pInformacion.show();
-            this.pInformacion.text('BADAJOZ:' + datos[2]);
+            
+            if(datos[2] != null) 
+            {
+                this.pInformacion.show();
+                this.pInformacion.text('BADAJOZ:' + datos[2]);
+            }
+            else
+            {
+                this.pInformacion.hide();
+            }
         }
         else
         {
