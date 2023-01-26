@@ -120,6 +120,11 @@ p#pTiempo {
     padding: 0 10px;
 }
 
+button#buttonTiempo {
+    display: block;
+    margin: 5px auto;
+}
+
 img#imgLogo {
     width: 192px;
     margin-left: 20px;

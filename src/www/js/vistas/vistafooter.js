@@ -21,10 +21,14 @@ export class VistaFooter extends Vista
 	{
         super(controlador, div, efecto);
         this.pInformacion = $('#pTiempo');
+        this.botonTiempo = $('#buttonTiempo');
 
         // Hacemos que VistaFooter "observe" al Modelo.
 		this.modelo = this.controlador.getModelo();
 		this.modelo.registrar(this.informacionTiempo.bind(this));
+
+        this.botonTiempo.on('click', this.mostrarOcultarTiempo.bind(this));
+        this.pInformacion.hide();
     }
 
     /**
@@ -40,17 +44,31 @@ export class VistaFooter extends Vista
             
             if(datos[2] != null) 
             {
-                this.pInformacion.show();
                 this.pInformacion.text('BADAJOZ:' + datos[2]);
             }
             else
             {
-                this.pInformacion.hide();
+                this.pInformacion.text('');
             }
         }
         else
         {
+            this.pInformacion.text('');
+        }
+    }
+
+    /**
+     * Muestra/oculta el panel del tiempo
+     */
+    mostrarOcultarTiempo()
+    {
+        if(this.pInformacion.is(':visible'))
+        {
             this.pInformacion.hide();
+        }
+        else
+        {
+            this.pInformacion.show();
         }
     }
 }
