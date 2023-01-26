@@ -10,156 +10,159 @@
         <link rel="stylesheet" type="text/css" href="../jquery-ui-1.13.2.custom/jquery-ui.css"/>
         <link rel="stylesheet" type="text/css" href="../jquery-ui-1.13.2.custom/jquery-ui.structure.css"/>
         <link rel="stylesheet" type="text/css" href="../jquery-ui-1.13.2.custom/jquery-ui.theme.css"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
         <link rel="icon" type="image/x-icon" href="../../diseno/logo-icono.png"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     </head>
     <body>
-        <header role="navigation">
-            <div id="divCabecera">
-                <img src="../../diseno/logo.png" draggable="false" alt="Logo de CoolPC" id="imgLogo"/>
-                <div id="divBusqueda">
-                    <label id="labelBuscar" for="buscar">
-                        Búsqueda<br/> 
-                        <input tabindex="4" id="buscar" aria-label="Búsqueda" name="buscar" type="text" maxlength="50"/>
-                    </label>
-                    <button tabindex="5" type="button" class="boton">
-                        <span class="material-icons">search</span>
-                    </button>
+        <header>
+            <nav>
+                <div id="divCabecera">
+                    <img src="../../diseno/logo.png" draggable="false" alt="Logo de CoolPC" id="imgLogo"/>
+                    <div id="divBusqueda" role="">
+                        <label id="labelBuscar" for="buscar">
+                            Búsqueda<br/> 
+                            <input id="buscar" role="searchbox" aria-label="Búsqueda" name="buscar" type="text" maxlength="50"/>
+                        </label>
+                        <button type="button" class="boton">
+                            <span class="material-icons" role="img" aria-label="Buscar">search</span>
+                        </button>
+                    </div>
+                    <div id="divBotones" role="menubar">
+                        <button type="button" id="buttonListado" role="menuitem">
+                            Listado de componentes 
+                            <span class="material-icons" role="img" aria-label="Listar">list</span>
+                        </button>
+                        <button type="button" id="buttonAlta" role="menuitem">
+                            Alta de componente
+                            <span class="material-icons" role="img" aria-label="Añadir">add</span>
+                        </button>
+                        <button type="button" id="buttonModificar" role="menuitem">
+                            Modificar componente
+                            <span class="material-icons" role="img" aria-label="Editar">edit</span>
+                        </button>
+                    </div>
                 </div>
-                <div id="divBotones">
-                    <button tabindex="1" type="button" id="buttonListado">
-                        Listado de componentes 
-                        <span class="material-icons">list</span>
-                    </button>
-                    <button tabindex="2" type="button" id="buttonAlta">
-                        Alta de componente
-                        <span class="material-icons">add</span>
-                    </button>
-                    <button tabindex="3" type="button" id="buttonModificar">
-                        Modificar componente
-                        <span class="material-icons">edit</span>
-                    </button>
-                </div>
-            </div>
+            </nav>
         </header>
 
-        <!-- Listado -->
-        <div id="divListado" role="list">
-            <p class="pAviso" aria-label="Aviso">No hay ningún registro.</p>
-        </div>
+        <main>
+            <!-- Listado -->
+            <div id="divListado" role="list">
+                <p class="pAviso">No hay ningún registro.</p>
+            </div>
 
-        <!-- Alta -->
-        <div id="divAlta" role="form">
-            <p class="pAviso"></p>
-            <form id="formAlta>
-                <label for="nombre">
-                    Nombre <input aria-label="Nombre" type="text" name="nombre"/>
-                </label>
-                <label for="fecha">
-                    Fecha <input aria-label="Fecha" type="text" name="fecha"/>
-                </label>
-                <label for="precio">
-                    Precio <input aria-label="Precio" type="number" name="precio" step="0.1"/>
-                </label>
-                <label for="descripcion">
-                    Descripción <textarea aria-label="Descripción" name="descripcion" rows="8" cols="50"></textarea>
-                </label>
-                <label for="subirImagen">
-                    Subir imagen <input aria-label="Subir imagen" type="file" name="subirImagen" accept="image/png, image/jpeg"/>
-                </label>
-                <fieldset>
-                    <legend>Seguros que tiene el producto</legend>
-                    <label for="seguro1" class="labelCheckbox">
-                        Seguro contra robos <input type="checkbox" aria-label="Seguro contra robos" name="seguro1"/>
+            <!-- Alta -->
+            <div id="divAlta">
+                <p class="pAviso"></p>
+                <form id="formAlta">
+                    <label for="nombre">
+                        Nombre <input aria-label="Nombre" type="text" name="nombre"/>
                     </label>
-                    <label for="seguro2" class="labelCheckbox">
-                        Seguro contra roturas <input type="checkbox" aria-label="Seguro contra roturas" name="seguro2"/>
+                    <label for="fecha">
+                        Fecha <input aria-label="Fecha" type="text" name="fecha"/>
                     </label>
-                    <label for="seguro3" class="labelCheckbox">
-                        Seguro contra caídas <input type="checkbox" aria-label="Seguro contra caídas" name="seguro3"/>
+                    <label for="precio">
+                        Precio <input aria-label="Precio" type="number" name="precio" step="0.1"/>
                     </label>
-                </fieldset>
-                <label for="categoria">
-                    Categoría <select name="categoria">
-                        <option value="-1" disabled selected>-- Selecciona --</option>
-                        <option value="1">CPU</option>
-                        <option value="2">GPU</option>
-                        <option value="3">RAM</option>
-                        <option value="4">Fuente de alimentación</option>
-                        <option value="5">Placa base</option>
-                        <option value="6">Disco duro</option>
-                        <option value="7">Torre</option>
-                        <option value="8">Otro</option>
-                    </select>  
-                </label>
-                <div class="divBotonesForm">
-                    <button type="button" id="botonCancelar">Cancelar</button>
-                    <button type="button" id="botonAceptar">Aceptar</button>
-                </div>
-            </form>
-        </div>
+                    <label for="descripcion">
+                        Descripción <textarea aria-label="Descripción" name="descripcion" rows="8" cols="50"></textarea>
+                    </label>
+                    <label for="subirImagen">
+                        Subir imagen <input type="file" aria-label="Imagen" name="subirImagen" accept="image/png, image/jpeg"/>
+                    </label>
+                    <fieldset>
+                        <legend>Seguros que tiene el producto</legend>
+                        <label for="seguro1" class="labelCheckbox">
+                            Seguro contra robos <input type="checkbox" aria-label="Seguro contra robos" name="seguro1"/>
+                        </label>
+                        <label for="seguro2" class="labelCheckbox">
+                            Seguro contra roturas <input type="checkbox" aria-label="Seguro contra roturas" name="seguro2"/>
+                        </label>
+                        <label for="seguro3" class="labelCheckbox">
+                            Seguro contra caídas <input type="checkbox" aria-label="Seguro contra caídas" name="seguro3"/>
+                        </label>
+                    </fieldset>
+                    <label for="categoria">
+                        Categoría <select name="categoria">
+                            <option value="-1" disabled selected>-- Selecciona --</option>
+                            <option value="1">CPU</option>
+                            <option value="2">GPU</option>
+                            <option value="3">RAM</option>
+                            <option value="4">Fuente de alimentación</option>
+                            <option value="5">Placa base</option>
+                            <option value="6">Disco duro</option>
+                            <option value="7">Torre</option>
+                            <option value="8">Otro</option>
+                        </select>  
+                    </label>
+                    <div class="divBotonesForm">
+                        <button type="button" id="botonCancelar">Cancelar</button>
+                        <button type="button" id="botonAceptar">Aceptar</button>
+                    </div>
+                </form>
+            </div>
 
-        <!-- Modificar -->
-        <div id="divModificar" role="form">
-            <p class="pAviso"></p>
-            <form id="formModificar">
-                <label for="actualizar">
-                    Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
-                </label>
-                <label for="nuevoNombre">
-                    Nuevo nombre <input type="text" aria-label="Nuevo nombre" name="nuevoNombre"/>
-                </label>
-                <label for="nuevaFecha">
-                    Nueva fecha <input type="text" aria-label="Nueva fecha" name="nuevaFecha"/>
-                </label>
-                <label for="nuevoPrecio">
-                    Nuevo precio <input type="number" aria-label="Nuevo precio" name="nuevoPrecio" step="0.1"/>
-                </label>
-                <label for="nuevaDescripcion">
-                    Nueva descripción <textarea name="nuevaDescripcion" aria-label="Nueva descripción" rows="8" cols="50"></textarea>
-                </label>
-                <label for="nuevaImagen">
-                    Subir nueva imagen <input type="file" aria-label="Nueva imagen" name="nuevaImagen" accept="image/png, image/jpeg"/>
-                </label>
-                <fieldset>
-                    <legend>Seguros que tiene el producto</legend>
-                    <label for="nuevoSeguro1" class="labelCheckbox">
-                        Seguro contra robos <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro1"/>
+            <!-- Modificar -->
+            <div id="divModificar">
+                <p class="pAviso"></p>
+                <form id="formModificar">
+                    <label for="actualizar">
+                        Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
                     </label>
-                    <label for="nuevoSeguro2" class="labelCheckbox">
-                        Seguro contra roturas <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro2"/>
+                    <label for="nuevoNombre">
+                        Nuevo nombre <input type="text" aria-label="Nuevo nombre" name="nuevoNombre"/>
                     </label>
-                    <label for="nuevoSeguro3" class="labelCheckbox">
-                        Seguro contra caídas <input type="checkbox" aria-label="Seguro contra caídas" name="nuevoSeguro3"/>
+                    <label for="nuevaFecha">
+                        Nueva fecha <input type="text" aria-label="Nueva fecha" name="nuevaFecha"/>
                     </label>
-                </fieldset>
-                <label for="nuevaCategoria">
-                    Nueva categoría <select name="nuevaCategoria">
-                        <option value="-1" disabled selected>-- Selecciona --</option>
-                        <option value="1">CPU</option>
-                        <option value="2">GPU</option>
-                        <option value="3">RAM</option>
-                        <option value="4">Fuente de alimentación</option>
-                        <option value="5">Placa base</option>
-                        <option value="6">Disco duro</option>
-                        <option value="7">Torre</option>
-                        <option value="8">Otro</option>
-                    </select>  
-                </label>
-                <div class="divBotonesForm">
-                    <button type="button" id="botonBorrar">Cancelar</button>
-                    <button type="button" id="botonActualizar">Aceptar</button>
-                </div>
-            </form>
-        </div>
+                    <label for="nuevoPrecio">
+                        Nuevo precio <input type="number" aria-label="Nuevo precio" name="nuevoPrecio" step="0.1"/>
+                    </label>
+                    <label for="nuevaDescripcion">
+                        Nueva descripción <textarea name="nuevaDescripcion" aria-label="Nueva descripción" rows="8" cols="50"></textarea>
+                    </label>
+                    <label for="nuevaImagen">
+                        Subir nueva imagen <input type="file" aria-label="Nueva imagen" name="nuevaImagen" accept="image/png, image/jpeg"/>
+                    </label>
+                    <fieldset>
+                        <legend>Seguros que tiene el producto</legend>
+                        <label for="nuevoSeguro1" class="labelCheckbox">
+                            Seguro contra robos <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro1"/>
+                        </label>
+                        <label for="nuevoSeguro2" class="labelCheckbox">
+                            Seguro contra roturas <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro2"/>
+                        </label>
+                        <label for="nuevoSeguro3" class="labelCheckbox">
+                            Seguro contra caídas <input type="checkbox" aria-label="Seguro contra caídas" name="nuevoSeguro3"/>
+                        </label>
+                    </fieldset>
+                    <label for="nuevaCategoria">
+                        Nueva categoría <select name="nuevaCategoria">
+                            <option value="-1" disabled selected>-- Selecciona --</option>
+                            <option value="1">CPU</option>
+                            <option value="2">GPU</option>
+                            <option value="3">RAM</option>
+                            <option value="4">Fuente de alimentación</option>
+                            <option value="5">Placa base</option>
+                            <option value="6">Disco duro</option>
+                            <option value="7">Torre</option>
+                            <option value="8">Otro</option>
+                        </select>  
+                    </label>
+                    <div class="divBotonesForm">
+                        <button type="button" id="botonBorrar">Cancelar</button>
+                        <button type="button" id="botonActualizar">Aceptar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
 
-        <!-- FOOTER -->
         <footer>
             <div id="divFooter">
                 <img id="imgFooter" src="../../diseno/logo-icono.png" alt="Logo de CoolPC"/>
                 <p>
                     <a href="https://achecker.achecks.ca/checker/index.php?uri=referer&gid=WCAG2-AA">
-                        <img src="https://achecker.achecks.ca/images/icon_W2_aa.jpg" alt="WCAG 2.0 (Level AA)" height="32" width="102"/>
+                        <img id="imgAChecker" src="assets/icon_W2_aa.jpg" alt="WCAG 2.0 (Level AA)" tabindex="0" role="link"/>
                     </a>
                 </p>
                 <p id="pTiempo"></p>
