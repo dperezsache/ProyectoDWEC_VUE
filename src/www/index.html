@@ -10,8 +10,8 @@
         <link rel="stylesheet" type="text/css" href="../jquery-ui-1.13.2.custom/jquery-ui.css"/>
         <link rel="stylesheet" type="text/css" href="../jquery-ui-1.13.2.custom/jquery-ui.structure.css"/>
         <link rel="stylesheet" type="text/css" href="../jquery-ui-1.13.2.custom/jquery-ui.theme.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
         <link rel="icon" type="image/x-icon" href="../../diseno/logo-icono.png"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     </head>
     <body>
         <header role="navigation">
@@ -19,22 +19,23 @@
                 <img src="../../diseno/logo.png" draggable="false" alt="Logo de CoolPC" id="imgLogo"/>
                 <div id="divBusqueda">
                     <label id="labelBuscar" for="buscar">
-                        Búsqueda<br/> <input id="buscar" aria-label="Búsqueda" name="buscar" type="text" maxlength="50"/>
+                        Búsqueda<br/> 
+                        <input tabindex="4" id="buscar" aria-label="Búsqueda" name="buscar" type="text" maxlength="50"/>
                     </label>
-                    <button type="button" class="boton">
+                    <button tabindex="5" type="button" class="boton">
                         <span class="material-icons">search</span>
                     </button>
                 </div>
                 <div id="divBotones">
-                    <button type="button" id="buttonListado">
+                    <button tabindex="1" type="button" id="buttonListado">
                         Listado de componentes 
                         <span class="material-icons">list</span>
                     </button>
-                    <button type="button" id="buttonAlta">
+                    <button tabindex="2" type="button" id="buttonAlta">
                         Alta de componente
                         <span class="material-icons">add</span>
                     </button>
-                    <button type="button" id="buttonModificar">
+                    <button tabindex="3" type="button" id="buttonModificar">
                         Modificar componente
                         <span class="material-icons">edit</span>
                     </button>
@@ -44,13 +45,13 @@
 
         <!-- Listado -->
         <div id="divListado" role="list">
-            <p class="pAviso">No hay ningún registro.</p>
+            <p class="pAviso" aria-label="Aviso">No hay ningún registro.</p>
         </div>
 
         <!-- Alta -->
-        <div id="divAlta">
+        <div id="divAlta" role="form">
             <p class="pAviso"></p>
-            <form id="formAlta" role="form">
+            <form id="formAlta>
                 <label for="nombre">
                     Nombre <input aria-label="Nombre" type="text" name="nombre"/>
                 </label>
@@ -64,7 +65,7 @@
                     Descripción <textarea aria-label="Descripción" name="descripcion" rows="8" cols="50"></textarea>
                 </label>
                 <label for="subirImagen">
-                    Subir imagen <input type="file" aria-label="Imagen" name="subirImagen" accept="image/png, image/jpeg"/>
+                    Subir imagen <input aria-label="Subir imagen" type="file" name="subirImagen" accept="image/png, image/jpeg"/>
                 </label>
                 <fieldset>
                     <legend>Seguros que tiene el producto</legend>
@@ -99,9 +100,9 @@
         </div>
 
         <!-- Modificar -->
-        <div id="divModificar">
+        <div id="divModificar" role="form">
             <p class="pAviso"></p>
-            <form id="formModificar" role="form">
+            <form id="formModificar">
                 <label for="actualizar">
                     Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
                 </label>
