@@ -1,6 +1,34 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: www/js/vistas/vistalistado.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: www/js/vistas/vistalistado.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
 	@file Contiene la vista del listado.
-	@author David Pérez Saché <dperezsache.guadalupe@alumnado.fundacionloyola.net>
+	@author David Pérez Saché &lt;dperezsache.guadalupe@alumnado.fundacionloyola.net>
 	@license GPL-3.0-or-later
 **/
 
@@ -39,21 +67,21 @@ export class VistaListado extends Vista
 		
 		let componentes = this.modelo.getLista();
 
-		if(componentes != null && componentes.length > 0) 
+		if(componentes != null &amp;&amp; componentes.length > 0) 
 		{
 			this.pAviso.hide();
 
 			for(let componente of componentes) 
 			{
 				// DIV
-				let contenedor = $('<div></div>');
+				let contenedor = $('&lt;div>&lt;/div>');
 				contenedor.attr('role', 'listitem');
 				contenedor.attr('tabindex', '0');
 				contenedor.addClass('divItem');
 				this.div.append(contenedor);
 
 				// Imagen
-				let img = $('<img></img>');
+				let img = $('&lt;img>&lt;/img>');
 				img.width('256px');
 				img.height('256px');
 				img.css('display', 'block');
@@ -62,14 +90,14 @@ export class VistaListado extends Vista
 				contenedor.append(img);
 
 				// Nombre
-				let pNombre = $('<p></p>');
+				let pNombre = $('&lt;p>&lt;/p>');
 				pNombre.addClass('pNombreItem');
 				pNombre.attr('tabindex', '0');
 				pNombre.text(componente.nombre);
 				contenedor.append(pNombre);
 
 				// Precio
-				let pPrecio = $('<p></p>');
+				let pPrecio = $('&lt;p>&lt;/p>');
 				pPrecio.addClass('pPrecioItem');
 				pPrecio.attr('tabindex', '0');
 
@@ -80,18 +108,18 @@ export class VistaListado extends Vista
 				contenedor.append(pPrecio);
 
 				// Descripción
-				let divDesc = $('<div></div>');
+				let divDesc = $('&lt;div>&lt;/div>');
 				divDesc.addClass('divDescItem');
 
-				let pDesc = $('<p></p>');
+				let pDesc = $('&lt;p>&lt;/p>');
 				pDesc.attr('tabindex', '0');
 				pDesc.text(componente.descripcion);
 				divDesc.append(pDesc);
 				contenedor.append(divDesc);
 
 				// Tipo
-				let ulInfo = $('<ul></ul>');
-				let liTipo = $('<li></li>');
+				let ulInfo = $('&lt;ul>&lt;/ul>');
+				let liTipo = $('&lt;li>&lt;/li>');
 				liTipo.attr('tabindex', '0');
 
 				let tipo;
@@ -125,39 +153,39 @@ export class VistaListado extends Vista
 						tipo = '';
 						break;
 				}
-				liTipo.html('Tipo de producto: <span class="spanFecha">' + tipo + '</span>');
+				liTipo.html('Tipo de producto: &lt;span class="spanFecha">' + tipo + '&lt;/span>');
 				ulInfo.append(liTipo);
 
 				// Fecha
-				let liFecha = $('<li></li>');
+				let liFecha = $('&lt;li>&lt;/li>');
 				liFecha.attr('tabindex', '0');
-				liFecha.html('Fecha de lanzamiento: <span class="spanFecha">' + componente.fecha + '</span>');
+				liFecha.html('Fecha de lanzamiento: &lt;span class="spanFecha">' + componente.fecha + '&lt;/span>');
 				ulInfo.append(liFecha);
 				contenedor.append(ulInfo);
 
 				// Separador
-				let hr = $('<hr/>');
+				let hr = $('&lt;hr/>');
 				hr.addClass('hrItems');
 				hr.width('350px'); 
 				contenedor.append(hr);
 				
 				// Checkboxes
-				let ul = $('<ul></ul>');
+				let ul = $('&lt;ul>&lt;/ul>');
 				ul.css('listStyleType', "'- '"); 
 
-				let li1 = $('<li></li>');
+				let li1 = $('&lt;li>&lt;/li>');
 				li1.attr('tabindex', '0');
 				if (componente.seguro1) li1.text('Se ofrece seguro contra robos.');
 				else li1.text('No se ofrece seguro contra robos.');
 				ul.append(li1);
 
-				let li2 = $('<li></li>');
+				let li2 = $('&lt;li>&lt;/li>');
 				li2.attr('tabindex', '0');
 				if (componente.seguro2) li2.text('Se ofrece seguro contra roturas.');
 				else li2.text('No se ofrece seguro contra roturas.');
 				ul.append(li2);
 
-				let li3 = $('<li></li>');
+				let li3 = $('&lt;li>&lt;/li>');
 				li3.attr('tabindex', '0');
 				if (componente.seguro3) li3.text('Se ofrece seguro contra caídas.');
 				else li3.text('No se ofrece seguro contra caídas.');
@@ -165,14 +193,14 @@ export class VistaListado extends Vista
 				contenedor.append(ul);
 
 				// Botones
-				let divBotones = $('<div></div>');
+				let divBotones = $('&lt;div>&lt;/div>');
 
 				// Botón eliminar
-				let botonEliminar = $('<button></button>');
+				let botonEliminar = $('&lt;button>&lt;/button>');
 				botonEliminar.addClass('boton');
 				botonEliminar.css('marginRight', '10px');
 
-				let spanEliminar = $('<span></span>');
+				let spanEliminar = $('&lt;span>&lt;/span>');
 				spanEliminar.addClass('ui-icon ui-icon-trash');
 				spanEliminar.attr('role', 'img');
 				spanEliminar.attr('aria-label', 'Eliminar');
@@ -182,10 +210,10 @@ export class VistaListado extends Vista
 				divBotones.append(botonEliminar);
 
 				// Botón editar
-				let botonEditar = $('<button></button>');
+				let botonEditar = $('&lt;button>&lt;/button>');
 				botonEditar.addClass('boton');
 
-				let spanEditar = $('<span></span>');
+				let spanEditar = $('&lt;span>&lt;/span>');
 				spanEditar.addClass('ui-icon ui-icon-pencil');
 				spanEditar.attr('role', 'img');
 				spanEditar.attr('aria-label', 'Editar');
@@ -237,4 +265,26 @@ export class VistaListado extends Vista
 	{
 		this.controlador.editarCRUD(id);
 	}
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controlador.html">Controlador</a></li><li><a href="Modelo.html">Modelo</a></li><li><a href="Vista.html">Vista</a></li><li><a href="VistaAlta.html">VistaAlta</a></li><li><a href="VistaBarraBusqueda.html">VistaBarraBusqueda</a></li><li><a href="VistaDivBotones.html">VistaDivBotones</a></li><li><a href="VistaFooter.html">VistaFooter</a></li><li><a href="VistaListado.html">VistaListado</a></li><li><a href="VistaModificar.html">VistaModificar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Jan 26 2023 19:35:14 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

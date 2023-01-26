@@ -303,6 +303,11 @@ span.spanFecha {
     text-decoration: underline;
 }
 
+img#imgAChecker {
+    height: 32;
+    width: 102;
+}
+
 /* MEDIA QUERY MÓVIL */
 @media (max-width:760px) {
     img#imgLogo {

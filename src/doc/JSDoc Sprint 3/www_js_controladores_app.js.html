@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: www/js/controladores/app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: www/js/controladores/app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Modelo } from "../modelos/modelo.js";
+import { VistaAlta } from "../vistas/vistaalta.js";
+import { VistaDivBotones } from "../vistas/vistadivbotones.js";
+import { VistaListado } from "../vistas/vistalistado.js";
+import { VistaModificar } from "../vistas/vistamodificar.js";
+import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
+import { VistaFooter } from "../vistas/vistafooter.js";
+
+class Controlador 
+{
+    /**
+	 *	Constructor de la clase.
+	 *	Llama al método iniciar al cargarse la página.
+	 */
+    constructor() 
+    {
+		$(window).on('load', this.iniciar.bind(this));
+    }
+
+    /**
+     * Inicia la aplicación.
+     * Crea el modelo y las vistas.
+     */
+    iniciar() 
+    {
+		$("#dlg_hello").dialog();
+        this.modelo = new Modelo(this);
+
+        this.divBotones = $('#divBotones');
+        this.divBarraBusqueda = $('#divBusqueda');
+        this.divAlta = $('#divAlta');
+        this.divListado = $('#divListado');
+        this.divModificar =  $('#divModificar');
+        this.divFooter = $('#divFooter');
+
+        this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
+        this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda, false);
+        this.vistaAlta = new VistaAlta(this, this.divAlta, true);
+        this.vistaListado = new VistaListado(this, this.divListado, true);
+        this.vistaModificar = new VistaModificar(this, this.divModificar, true);
+        this.vistaFooter = new VistaFooter(this, this.divFooter, true);
+
+        this.pulsarBotonListado();    // Iniciar desde la vista de listado.
+    }
+
+    /**
+		Atención a la pulsación sobre el botón de listado
+	**/
+    pulsarBotonListado() 
+    {
+        this.vistaListado.mostrar(true);
+        this.vistaBarraBusqueda.mostrar(true);
+        this.vistaAlta.mostrar(false);
+        this.vistaModificar.mostrar(false);
+    }
+
+    /**
+		Atención a la pulsación sobre el botón de alta
+	**/
+    pulsarBotonAlta() 
+    {
+        this.vistaListado.mostrar(false);
+        this.vistaBarraBusqueda.mostrar(false);
+        this.vistaAlta.mostrar(true);
+        this.vistaModificar.mostrar(false);
+    }
+
+    /**
+		Atención a la pulsación sobre el botón de modificar
+	**/
+    pulsarBotonModificar() 
+    {
+        this.vistaListado.mostrar(false);
+        this.vistaBarraBusqueda.mostrar(false);
+        this.vistaAlta.mostrar(false);
+        this.vistaModificar.mostrar(true);
+    }
+
+    /**
+		Realizar búsqueda de componentes.
+		@param {String} nombre Nombre del componente.
+	**/
+	buscarComponentes(nombre)
+	{
+		this.modelo.buscar(nombre);
+	}
+
+    /**
+		Inserta el elemento en el modelo.
+    **/
+    aceptarCRUD(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
+    {
+        this.modelo.insertar(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3);
+    }
+
+    /**
+		Atención al click en el icono editar del CRUD.
+	**/
+	actualizarCRUD(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3)
+	{
+		this.modelo.procesarComponente(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3);
+	}
+
+    /**
+		Atención al click en el icono eliminar del CRUD.
+		Elimina el elemento en el modelo.
+		@param {Number} id ID del elemento a eliminar.
+	**/
+	eliminarCRUD(id) 
+    {
+		this.modelo.borrar(id);
+	}
+
+	/**
+		Atención al click en el icono editar del CRUD.
+		Manda al formulario de edición.
+		@param {Number} id ID del elemento a editar.
+	**/
+	editarCRUD(id) 
+    {
+		this.pulsarBotonModificar();
+		this.vistaModificar.listado.val(id);
+		this.vistaModificar.actualizarForm();
+	}
+
+    /**
+		Devuelve el modelo de la aplicación.
+		@return {Modelo} El modelo de la aplicación.
+	**/
+	getModelo() 
+    {
+		return this.modelo;
+	}
+}
+
+const app = new Controlador();</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controlador.html">Controlador</a></li><li><a href="Modelo.html">Modelo</a></li><li><a href="Vista.html">Vista</a></li><li><a href="VistaAlta.html">VistaAlta</a></li><li><a href="VistaBarraBusqueda.html">VistaBarraBusqueda</a></li><li><a href="VistaDivBotones.html">VistaDivBotones</a></li><li><a href="VistaFooter.html">VistaFooter</a></li><li><a href="VistaListado.html">VistaListado</a></li><li><a href="VistaModificar.html">VistaModificar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Jan 26 2023 19:35:14 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

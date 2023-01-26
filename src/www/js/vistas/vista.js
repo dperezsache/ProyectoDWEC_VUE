@@ -32,11 +32,13 @@ export class Vista
 		{
 			if (this.efecto) this.div.show('fast', 'linear');
 			else this.div.show();
+			this.div.attr('aria-hidden', 'false');
         }
 		else 
 		{
 			if (this.efecto) this.div.hide('fast', 'linear');
 			else this.div.hide();
+			this.div.attr('aria-hidden', 'true');
         }
 	}
 }
