@@ -65,10 +65,12 @@ export class VistaFooter extends Vista
         if(this.pInformacion.is(':visible'))
         {
             this.pInformacion.hide();
+            this.pInformacion.attr('aria-hidden', 'true');
         }
         else
         {
             this.pInformacion.show();
+            this.pInformacion.attr('aria-hidden', 'false');
         }
     }
 }

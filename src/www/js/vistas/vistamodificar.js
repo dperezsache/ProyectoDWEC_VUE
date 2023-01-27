@@ -45,6 +45,7 @@ export class VistaModificar extends Vista
 		this.botonCancelar.on('click', this.cancelar.bind(this));
 
 		// JQUERY UI
+		this.campoFecha.tooltip();
 		this.campoFecha.datepicker({
 			showOtherMonths: true,
 			selectOtherMonths: true,
@@ -53,6 +54,21 @@ export class VistaModificar extends Vista
 		});
 
 		this.campoTipo.selectmenu();
+		this.campoNombre.autocomplete({
+			source: [
+				'Disco duro',
+				'Memoria RAM',
+				'Tarjeta gráfica',
+				'Tarjeta de sonido',
+				'Procesador',
+				'Caja',
+				'Fuente de alimentación',
+				'Auriculares',
+				'Luces RGB',
+				'Placa base',
+				'Tarjeta de red'	
+			]
+		});
     }
 
 	/**

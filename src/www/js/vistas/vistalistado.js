@@ -42,6 +42,7 @@ export class VistaListado extends Vista
 		if(componentes != null && componentes.length > 0) 
 		{
 			this.pAviso.hide();
+			this.pAviso.attr('aria-hidden', 'true');
 
 			for(let componente of componentes) 
 			{
@@ -199,6 +200,7 @@ export class VistaListado extends Vista
 		else
 		{
 			this.pAviso.show();
+			this.pAviso.attr('aria-hidden', 'false');
 		}
 	}
 
