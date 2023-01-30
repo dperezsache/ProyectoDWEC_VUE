@@ -299,6 +299,7 @@ div.divDescItem {
 }
 
 hr.hrItems {
+    width: 350px;
     border: 0;
     height: 1px;
     background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(173,172,172,1) 15%, rgba(173,172,172,1) 50%, rgba(173,172,172,1) 85%, rgba(173,172,172,0) 100%);

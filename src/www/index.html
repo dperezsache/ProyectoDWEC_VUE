@@ -49,6 +49,16 @@
             <!-- Listado -->
             <div id="divListado" role="list">
                 <p class="pAviso">No hay ningún registro.</p>
+                <Producto 
+                    :nombreItem="'nombre'" 
+                    :urlFoto="'urlFoto'" 
+                    :precioItem="123" 
+                    :descripcionItem="'descripcion'" 
+                    :tipoProducto="'tipo'"
+                    :fechaLanzamiento="13/08/2023"
+                    :seguro1="true"
+                    :seguro2="false"
+                    :seguro3="false"/>
             </div>
 
             <!-- Alta -->
@@ -172,8 +182,20 @@
             </div>
         </footer>
 
+        <!-- JQuery -->
         <script src="js/jquery-3.6.3.min.js"></script>
+
+        <!-- JQuery UI -->
         <script src="../jquery-ui-1.13.2.custom/jquery-ui.js"></script>
+
+        <!-- VUE 3 -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="module" src="js/main.js"></script>
+
+        <!-- Componentes VUE -->
+        <script type="module" src="js/componentes/producto.js"></script>
+
+        <!-- Controlador -->
         <script type="module" src="js/controladores/app.js"></script>
     </body>
 </html>
