@@ -249,7 +249,9 @@ export class VistaModificar extends Vista
 		}
 		else
 		{
-			this.checkboxAviso.css('border', colorMal);
+			window.scrollTo(0, 0);	// Mover al top de la página.
+			this.parrafoAviso.show();
+			this.parrafoAviso.text('⚠️ Acepta el aviso de protección de datos para continuar ⚠️');
 		}
 	}
 

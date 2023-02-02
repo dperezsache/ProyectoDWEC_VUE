@@ -92,7 +92,10 @@ export class Modelo
 			};
 
 			const peticion = this.db.transaction('tablaComponentes', 'readwrite').objectStore('tablaComponentes').add(componente);
-			peticion.onsuccess = () => this.obtenerRegistros();
+			peticion.onsuccess = () => {
+				this.obtenerRegistros();
+				this.controlador.crearCookie2(peticion.result);
+			}
 		};
 	}
 

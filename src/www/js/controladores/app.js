@@ -43,6 +43,7 @@ class Controlador
         this.vistaFooter = new VistaFooter(this, this.divFooter, true);
 
         this.pulsarBotonListado();    // Iniciar desde la vista de listado.
+		this.crearCookie3();
     }
 
 	/**
@@ -61,8 +62,68 @@ class Controlador
 	{
 		let fecha = new Date();
 		fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
-		const caducidad = "expires=" + fecha.toUTCString();
-		document.cookie = "cookieAceptada" + "=" + true + ";" + caducidad + "; path=/"; 
+		const caducidad = 'expires=' + fecha.toUTCString();
+		document.cookie = 'cookies_aceptadas=' + true + ';' + caducidad + '; path=/'; 
+	}
+
+	/**
+	 * Generar cookie con el ID del último elemento dado de alta.
+	 * @param {Number} id Identificador del elemento.
+	 */
+	crearCookie2(id)
+	{
+		if(this.obtenerCookie('cookies_aceptadas'))
+		{
+			let fecha = new Date();
+			fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
+			const caducidad = 'expires=' + fecha.toUTCString();
+			document.cookie = 'id_ultima_insercion=' + id + ';' + caducidad + '; path=/'; 
+		}
+	}
+
+	/**
+	 * Generar o modificar cookie del nº de visitas del usuario.
+	 */
+	crearCookie3()
+	{
+		if(this.obtenerCookie('cookies_aceptadas'))
+		{
+			let resultado = this.obtenerCookie('numero_visitas');
+			
+			if(resultado != null || resultado != undefined)	// Recrear cookie con +1 de valor
+			{
+				let fecha = new Date();
+				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
+				const caducidad = 'expires=' + fecha.toUTCString();
+				document.cookie = 'numero_visitas=' + (parseInt(resultado) + 1) + ';' + caducidad + '; path=/'; 
+			}
+			else	// Generar cookie
+			{
+				let fecha = new Date();
+				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
+				const caducidad = 'expires=' + fecha.toUTCString();
+				document.cookie = 'numero_visitas=' + 1 + ';' + caducidad + '; path=/'; 
+			}
+		}
+	}
+
+	/**
+	 * Devuelve el valor de la cookie indicada.
+	 * @param {String} nombreCookie Nombre de la cookie.
+	 */
+	obtenerCookie(nombreCookie)
+	{
+		const cNombre = nombreCookie + '=';
+		const cDecodificada = decodeURIComponent(document.cookie);
+		const cArray = cDecodificada.split('; ');
+		
+		let valor;
+		cArray.forEach(val => {
+			if (val.indexOf(cNombre) === 0) 
+				valor = val.substring(cNombre.length);
+		});
+		
+		return valor;
 	}
 
     /**

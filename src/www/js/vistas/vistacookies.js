@@ -21,7 +21,7 @@ export class VistaCookies extends Vista
 	{
         super(controlador, div, efecto);
 
-		if(this.cookiesAceptadas())
+		if(this.controlador.obtenerCookie('cookies_aceptadas'))
 		{
 			this.mostrar(false);
 		}
@@ -34,7 +34,7 @@ export class VistaCookies extends Vista
     }
 
 	/**
-		Cancelar las cookies.
+		Ocultar el aviso de cookies.
 	**/
 	cancelar()
 	{
@@ -42,28 +42,10 @@ export class VistaCookies extends Vista
 	}
 
 	/**
-		Aceptar las cookies
+		Aceptar las cookies.
 	**/
 	aceptar()
 	{
 		this.controlador.pulsarBotonAceptarCookies();
-	}
-
-	/**
-	 * Comprueba si se han aceptado las cookies.
-	 * @returns {Boolean} True si se han aceptado las cookies previamente, false si no
-	 */
-	cookiesAceptadas()
-	{
-		const cNombre = 'cookieAceptada' + '=';
-		const cDecodificada = decodeURIComponent(document.cookie);
-		const cArray = cDecodificada.split('; ');
-		console.log(cArray)
-		let valor;
-		cArray.forEach(val => {
-			if (val.indexOf(cNombre) === 0) valor = val.substring(cNombre.length);
-		});
-
-		return valor;
 	}
 }
