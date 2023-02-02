@@ -20,6 +20,9 @@ export class VistaFooter extends Vista
 	constructor(controlador, div, efecto) 
 	{
         super(controlador, div, efecto);
+        this.divConfCookies = $('#divConfCookies');
+        this.botonCookies = $('#buttonCookies');
+        this.checkboxCookie = this.div.find('input').eq(0);
         this.pInformacion = $('#pTiempo');
         this.botonTiempo = $('#buttonTiempo');
 
@@ -27,8 +30,13 @@ export class VistaFooter extends Vista
 		this.modelo = this.controlador.getModelo();
 		this.modelo.registrar(this.informacionTiempo.bind(this));
 
+        this.botonCookies.on('click', this.mostrarOcultarConfCookies.bind(this));
+        this.mostrarOcultarConfCookies();
+
         this.botonTiempo.on('click', this.mostrarOcultarTiempo.bind(this));
-        this.pInformacion.hide();
+        this.mostrarOcultarTiempo();
+
+        this.checkboxCookie.on('click', this.permitirCookies.bind(this))
     }
 
     /**
@@ -72,5 +80,30 @@ export class VistaFooter extends Vista
             this.pInformacion.show();
             this.pInformacion.attr('aria-hidden', 'false');
         }
+    }
+
+    /**
+     * Muestra/oculta el panel de configuración de cookies
+     */
+    mostrarOcultarConfCookies()
+    {
+        if(this.divConfCookies.is(':visible'))
+        {
+            this.divConfCookies.hide();
+            this.divConfCookies.attr('aria-hidden', 'true');
+        }
+        else
+        {
+            this.divConfCookies.show();
+            this.divConfCookies.attr('aria-hidden', 'false');
+        }
+    }
+
+    /**
+     * Habilitar o no las cookies.
+     */
+    permitirCookies()
+    {
+        this.controlador.configuracionCookies(this.checkboxCookie.is(':checked'));
     }
 }

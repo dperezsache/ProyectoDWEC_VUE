@@ -37,6 +37,7 @@ div#divCookies {
     color: white;
     background-color: black;
     z-index: 1;
+    display: none;
 }
 
 div.cookies {
@@ -162,6 +163,12 @@ button.boton:active {
 
 div#divAvisosLegales {
     padding: 5px 20px;
+    margin: auto;
+    width: 90%;
+}
+
+div#divAvisosLegales h1 {
+    color: navy;
 }
 
 div#divAvisosLegales ul {
@@ -172,18 +179,24 @@ div#divAvisosLegales li {
     margin-bottom: inherit;
 }
 
-div#divLegalidad {
-    text-align: center;
-    margin: 20px 0;
+p#pLegalidad {
+    margin: 10px 0;
 }
 
-div#divLegalidad p a {
+div#divConfCookies label {
+    display: block;
+    margin: auto;
+    background-color: #eea551;
+    width: 500px;
+}
+
+div#divFooter a {
     color: black;
     font-weight: bold;
     text-decoration: none;
 }
 
-div#divLegalidad p a:hover {
+div#divFooter a:hover {
     color: crimson;
     text-decoration: underline;
 }
@@ -192,9 +205,10 @@ p#pTiempo {
     white-space: pre-line;
     margin-top: 10px;
     padding: 0 10px;
+    background-color: #eea551;
 }
 
-button#buttonTiempo {
+div#divFooter button {
     display: block;
     margin: 5px auto;
 }

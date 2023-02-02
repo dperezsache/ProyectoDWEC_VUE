@@ -21,11 +21,6 @@ export class VistaCookies extends Vista
 	{
         super(controlador, div, efecto);
 
-		if(this.controlador.obtenerCookie('cookies_aceptadas'))
-		{
-			this.mostrar(false);
-		}
-
 		this.botonCancelar = this.div.find('button').eq(0);
 		this.botonCancelar.on('click', this.cancelar.bind(this));
 
@@ -46,6 +41,7 @@ export class VistaCookies extends Vista
 	**/
 	aceptar()
 	{
-		this.controlador.pulsarBotonAceptarCookies();
+		this.mostrar(false);
+		this.controlador.crearCookie1();
 	}
 }

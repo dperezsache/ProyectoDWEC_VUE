@@ -52,7 +52,7 @@
                     <div class="cookieSubcontainer">
                         <div class="cookies">
                             <p>
-                                Utilizamos cookies para habilitar el funcionamiento y la seguridad adecuados de nuestros sitios web, 
+                                Utilizamos cookies para habilitar el funcionamiento y la seguridad adecuados de nuestro sitio web, 
                                 y para ayudarnos a ofrecerte la mejor experiencia de usuario posible. Al hacer clic en Aceptar, 
                                 aceptas el uso de estas cookies. Puedes cambiar la configuración de las cookies en cualquier momento.
                                 <a href="assets/politicaCookies.pdf">Más información.</a>
@@ -205,16 +205,19 @@
                         <img id="imgAChecker" src="assets/icon_W2_aa.jpg" alt="WCAG 2.0 (Level AA)" tabindex="0" role="link"/>
                     </a>
                 </p>
-                <button type="button" id="buttonTiempo" class="boton">
-                    Mostrar/ocultar predicción meteorológica
-                </button>
-                <p id="pTiempo"></p>
 
-                <div id="divLegalidad">
-                    <p>
-                        <a href="infoLegal.html">Aviso legal / LOPD / Aviso de propiedad intelectual</a>
-                    </p>
+                <p id="pLegalidad">
+                    <a href="infoLegal.html">Avisos legales / Protección de datos personales / Aviso de propiedad intelectual / Política de cookies</a>
+                    <button type="button" class="boton" id="buttonCookies">Gestionar cookies</button>
+                </p>
+                <div id="divConfCookies">
+                    <label for="checkboxCookie">
+                        <input type="checkbox" name="checkboxCookie"/> Permitir el uso de cookies (deshabilita o habilita las demás).
+                    </label>
                 </div>
+                
+                <button type="button" class="boton" id="buttonTiempo">Mostrar/ocultar predicción meteorológica</button>
+                <p id="pTiempo"></p>
             </div>
         </footer>
 

@@ -24,6 +24,10 @@ class Controlador
      */
     iniciar() 
     {
+		this.COOKIE_1 = 'cookies_aceptadas';
+		this.COOKIE_2 = 'id_ultima_insercion';
+		this.COOKIE_3 = 'numero_visitas';
+
         this.modelo = new Modelo(this);
 
         this.divBotones = $('#divBotones');
@@ -36,24 +40,25 @@ class Controlador
 
         this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
         this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda, false);
-		this.vistaCookies = new VistaCookies(this, this.divCookies, true);
+		
         this.vistaAlta = new VistaAlta(this, this.divAlta, true);
+		this.vistaCookies = new VistaCookies(this, this.divCookies, true);
         this.vistaListado = new VistaListado(this, this.divListado, true);
         this.vistaModificar = new VistaModificar(this, this.divModificar, true);
         this.vistaFooter = new VistaFooter(this, this.divFooter, true);
 
-        this.pulsarBotonListado();    // Iniciar desde la vista de listado.
-		this.crearCookie3();
-    }
+		if(!this.obtenerCookie(this.COOKIE_1))
+		{
+			this.vistaCookies.mostrar(true);
+		}
+		else
+		{
+			this.vistaFooter.checkboxCookie.prop('checked', true);
+		}
 
-	/**
-	 * Atención a la pulsación sobre el botón de aceptar cookies
-	 */
-	pulsarBotonAceptarCookies()
-	{
-		this.vistaCookies.mostrar(false);
-		this.crearCookie1();
-	}
+        this.pulsarBotonListado();    // Iniciar desde la vista de listado.
+		this.crearCookie3();		  // Aumentar contador de visitas (si están las cookies permitidas).
+    }
 
 	/**
 	 * Generar cookie con valor true al aceptar las cookies, de 30 días de duración.
@@ -63,7 +68,7 @@ class Controlador
 		let fecha = new Date();
 		fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 		const caducidad = 'expires=' + fecha.toUTCString();
-		document.cookie = 'cookies_aceptadas=' + true + ';' + caducidad + '; path=/'; 
+		document.cookie = this.COOKIE_1 + '=' + true + ';' + caducidad + '; path=/'; 
 	}
 
 	/**
@@ -72,12 +77,12 @@ class Controlador
 	 */
 	crearCookie2(id)
 	{
-		if(this.obtenerCookie('cookies_aceptadas'))
+		if(this.obtenerCookie(this.COOKIE_1))
 		{
 			let fecha = new Date();
 			fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 			const caducidad = 'expires=' + fecha.toUTCString();
-			document.cookie = 'id_ultima_insercion=' + id + ';' + caducidad + '; path=/'; 
+			document.cookie = this.COOKIE_2 + '=' + id + ';' + caducidad + '; path=/'; 
 		}
 	}
 
@@ -86,23 +91,23 @@ class Controlador
 	 */
 	crearCookie3()
 	{
-		if(this.obtenerCookie('cookies_aceptadas'))
+		if(this.obtenerCookie(this.COOKIE_1))
 		{
-			let resultado = this.obtenerCookie('numero_visitas');
+			let resultado = this.obtenerCookie(this.COOKIE_3);
 			
 			if(resultado != null || resultado != undefined)	// Recrear cookie con +1 de valor
 			{
 				let fecha = new Date();
 				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 				const caducidad = 'expires=' + fecha.toUTCString();
-				document.cookie = 'numero_visitas=' + (parseInt(resultado) + 1) + ';' + caducidad + '; path=/'; 
+				document.cookie = this.COOKIE_3 + '=' + (parseInt(resultado) + 1) + ';' + caducidad + '; path=/'; 
 			}
 			else	// Generar cookie
 			{
 				let fecha = new Date();
 				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 				const caducidad = 'expires=' + fecha.toUTCString();
-				document.cookie = 'numero_visitas=' + 1 + ';' + caducidad + '; path=/'; 
+				document.cookie = this.COOKIE_3 + '=' + 1 + ';' + caducidad + '; path=/'; 
 			}
 		}
 	}
@@ -116,14 +121,38 @@ class Controlador
 		const cNombre = nombreCookie + '=';
 		const cDecodificada = decodeURIComponent(document.cookie);
 		const cArray = cDecodificada.split('; ');
-		
 		let valor;
+
 		cArray.forEach(val => {
 			if (val.indexOf(cNombre) === 0) 
 				valor = val.substring(cNombre.length);
 		});
 		
 		return valor;
+	}
+
+	/**
+	 * Gestionar el permiso de cookies.
+	 * @param {Boolean} permitir Si se permiten o no.
+	 */
+	configuracionCookies(permitir)
+	{
+		if(!permitir)
+		{
+			if(this.obtenerCookie(this.COOKIE_1))
+				document.cookie = this.COOKIE_1 + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+			if(this.obtenerCookie(this.COOKIE_2))
+				document.cookie = this.COOKIE_2 + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+			if(this.obtenerCookie(this.COOKIE_3)) 
+				document.cookie = this.COOKIE_3 + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		}
+		else
+		{
+			if(!this.obtenerCookie(this.COOKIE_1))
+				this.crearCookie1();
+		}
 	}
 
     /**
