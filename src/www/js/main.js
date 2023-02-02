@@ -1,18 +1,24 @@
-import Producto from './componentes/producto.js'; 
+import producto from './componentes/producto.js'; 
 
 // Vista Listado
 const listado = Vue.createApp({
     components: {
-        Producto
+        producto
     }
-}).mount('#divListado');
+});
+
+const listadoMount = listado.mount('#divListado');
 
 // Vista Alta
 const alta = Vue.createApp({
 
-}).mount('#divAlta');
+});
+
+const altaMount = alta.mount('#divAlta');
 
 // Vista Modificar
 const modificar = Vue.createApp({
 
-}).mount('#divModificar');
+});
+
+const modificarMount = modificar.mount('#divModificar');

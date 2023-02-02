@@ -1,11 +1,11 @@
 export default {
     props: {
-        nombreItem: String,
-        urlFoto: String,
-        precioItem: Number,
-        descripcionItem: String,
-        tipoProducto: String,
-        fechaLanzamiento: Date,
+        nombre_item: String,
+        url_foto: String,
+        precio_item: Number,
+        descripcion_item: String,
+        tipo_producto: String,
+        fecha_lanzamiento: Date,
         seguro1: Boolean,
         seguro2: Boolean,
         seguro3: Boolean
@@ -13,18 +13,18 @@ export default {
     template:
     /*html*/
     `<div class="divItem" role="listitem" tabindex="0">
-        <!--<img style="width: 256px; height: 256px; display: block;" v-bind:src="urlFoto" v-bind:alt="nombreItem"/>-->
-        <p class="pNombreItem" tabindex="0">{{ this.nombreItem }}</p>
-        <p class="pPrecioItem" tabindex="0">{{ this.precioItem }}</p>
+        <img style="width: 256px; height: 256px; display: block;" v-bind:src="url_foto" v-bind:alt="nombre_item"/>
+        <p class="pnombre_item" tabindex="0">{{ this.nombre_item }}</p>
+        <p class="pprecio_item" tabindex="0">{{ this.precio_item }}</p>
         <div class="divDescItem">
-            <p tabindex="0">{{ this.descripcionItem }}</p>
+            <p tabindex="0">{{ this.descripcion_item }}</p>
         </div>
         <ul>
             <li tabindex="0">
-                Tipo de producto: <span class="spanFecha">{{ this.tipoProducto }}</span>
+                Tipo de producto: <span class="spanFecha">{{ this.tipo_producto }}</span>
             </li>
             <li tabindex="0">
-                Fecha lanzamiento: <span class="spanFecha">{{ this.fechaLanzamiento }}</span>
+                Fecha lanzamiento: <span class="spanFecha">{{ this.fecha_lanzamiento }}</span>
             </li>
         </ul>
         <hr class="hrItems"/>

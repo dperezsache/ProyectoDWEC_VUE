@@ -5,6 +5,7 @@
 **/
 
 import {Vista} from './vista.js';
+import producto from '../componentes/producto.js';
 
 /**
 	Vista del listado.
@@ -46,7 +47,56 @@ export class VistaListado extends Vista
 
 			for(let componente of componentes) 
 			{
-				/*let tipo;
+				// DIV
+				let contenedor = $('<div></div>');
+				contenedor.attr('role', 'listitem');
+				contenedor.attr('tabindex', '0');
+				contenedor.addClass('divItem');
+				this.div.append(contenedor);
+
+				// Imagen
+				let img = $('<img></img>');
+				img.width('256px');
+				img.height('256px');
+				img.css('display', 'block');
+				img.attr('src', componente.imagen);
+				img.attr('alt', componente.nombre);
+				contenedor.append(img);
+
+				// Nombre
+				let pNombre = $('<p></p>');
+				pNombre.addClass('pNombreItem');
+				pNombre.attr('tabindex', '0');
+				pNombre.text(componente.nombre);
+				contenedor.append(pNombre);
+
+				// Precio
+				let pPrecio = $('<p></p>');
+				pPrecio.addClass('pPrecioItem');
+				pPrecio.attr('tabindex', '0');
+
+				let precio = parseFloat(componente.precio).toFixed(2);
+				pPrecio.text(precio);
+				pPrecio.text(precio + '€');
+				pPrecio.text(pPrecio.text().replace('.', ','));
+				contenedor.append(pPrecio);
+
+				// Descripción
+				let divDesc = $('<div></div>');
+				divDesc.addClass('divDescItem');
+
+				let pDesc = $('<p></p>');
+				pDesc.attr('tabindex', '0');
+				pDesc.text(componente.descripcion);
+				divDesc.append(pDesc);
+				contenedor.append(divDesc);
+
+				// Tipo
+				let ulInfo = $('<ul></ul>');
+				let liTipo = $('<li></li>');
+				liTipo.attr('tabindex', '0');
+
+				let tipo;
 				switch(parseInt(componente.tipo))
 				{
 					case 1:
@@ -76,7 +126,76 @@ export class VistaListado extends Vista
 					default:
 						tipo = '';
 						break;
-				}*/
+				}
+				liTipo.html('Tipo de producto: <span class="spanFecha">' + tipo + '</span>');
+				ulInfo.append(liTipo);
+
+				// Fecha
+				let liFecha = $('<li></li>');
+				liFecha.attr('tabindex', '0');
+				liFecha.html('Fecha de lanzamiento: <span class="spanFecha">' + componente.fecha + '</span>');
+				ulInfo.append(liFecha);
+				contenedor.append(ulInfo);
+
+				// Separador
+				let hr = $('<hr/>');
+				hr.addClass('hrItems');
+				hr.width('350px'); 
+				contenedor.append(hr);
+				
+				// Checkboxes
+				let ul = $('<ul></ul>');
+				ul.css('listStyleType', "'- '"); 
+
+				let li1 = $('<li></li>');
+				li1.attr('tabindex', '0');
+				if (componente.seguro1) li1.text('Se ofrece seguro contra robos.');
+				else li1.text('No se ofrece seguro contra robos.');
+				ul.append(li1);
+
+				let li2 = $('<li></li>');
+				li2.attr('tabindex', '0');
+				if (componente.seguro2) li2.text('Se ofrece seguro contra roturas.');
+				else li2.text('No se ofrece seguro contra roturas.');
+				ul.append(li2);
+
+				let li3 = $('<li></li>');
+				li3.attr('tabindex', '0');
+				if (componente.seguro3) li3.text('Se ofrece seguro contra caídas.');
+				else li3.text('No se ofrece seguro contra caídas.');
+				ul.append(li3);
+				contenedor.append(ul);
+
+				// Botones
+				let divBotones = $('<div></div>');
+
+				// Botón eliminar
+				let botonEliminar = $('<button></button>');
+				botonEliminar.addClass('boton');
+				botonEliminar.css('marginRight', '10px');
+
+				let spanEliminar = $('<span></span>');
+				spanEliminar.addClass('ui-icon ui-icon-trash');
+				spanEliminar.attr('role', 'img');
+				spanEliminar.attr('aria-label', 'Eliminar');
+				spanEliminar.attr('tabindex', '0');
+				spanEliminar.on('click', this.eliminar.bind(this, componente.id));
+				botonEliminar.append(spanEliminar);
+				divBotones.append(botonEliminar);
+
+				// Botón editar
+				let botonEditar = $('<button></button>');
+				botonEditar.addClass('boton');
+
+				let spanEditar = $('<span></span>');
+				spanEditar.addClass('ui-icon ui-icon-pencil');
+				spanEditar.attr('role', 'img');
+				spanEditar.attr('aria-label', 'Editar');
+				spanEditar.attr('tabindex', '0');
+				spanEditar.on('click', this.editar.bind(this, componente.id));
+				botonEditar.append(spanEditar);
+				divBotones.append(botonEditar);
+				contenedor.append(divBotones);
 			}
 		}
 		else

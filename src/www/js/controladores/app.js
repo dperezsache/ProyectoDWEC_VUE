@@ -1,6 +1,7 @@
 import { Modelo } from "../modelos/modelo.js";
 import { VistaAlta } from "../vistas/vistaalta.js";
 import { VistaDivBotones } from "../vistas/vistadivbotones.js";
+import { VistaCookies } from "../vistas/vistacookies.js";
 import { VistaListado } from "../vistas/vistalistado.js";
 import { VistaModificar } from "../vistas/vistamodificar.js";
 import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
@@ -28,12 +29,14 @@ class Controlador
         this.divBotones = $('#divBotones');
         this.divBarraBusqueda = $('#divBusqueda');
         this.divAlta = $('#divAlta');
+		this.divCookies = $('#divCookies');
         this.divListado = $('#divListado');
         this.divModificar =  $('#divModificar');
         this.divFooter = $('#divFooter');
 
         this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
         this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda, false);
+		this.vistaCookies = new VistaCookies(this, this.divCookies, true);
         this.vistaAlta = new VistaAlta(this, this.divAlta, true);
         this.vistaListado = new VistaListado(this, this.divListado, true);
         this.vistaModificar = new VistaModificar(this, this.divModificar, true);
@@ -41,6 +44,26 @@ class Controlador
 
         this.pulsarBotonListado();    // Iniciar desde la vista de listado.
     }
+
+	/**
+	 * Atención a la pulsación sobre el botón de aceptar cookies
+	 */
+	pulsarBotonAceptarCookies()
+	{
+		this.vistaCookies.mostrar(false);
+		this.crearCookie1();
+	}
+
+	/**
+	 * Generar cookie con valor true al aceptar las cookies, de 30 días de duración.
+	 */
+	crearCookie1()
+	{
+		let fecha = new Date();
+		fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
+		const caducidad = "expires=" + fecha.toUTCString();
+		document.cookie = "cookieAceptada" + "=" + true + ";" + caducidad + "; path=/"; 
+	}
 
     /**
 		Atención a la pulsación sobre el botón de listado
