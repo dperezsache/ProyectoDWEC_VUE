@@ -1,38 +1,42 @@
 /**
-	@file Contiene la vista de la barra de búsqueda.
-	@author David Pérez Saché <dperezsache.guadalupe@alumnado.fundacionloyola.net>
-	@license GPL-3.0-or-later
-**/
-
-import {Vista} from './vista.js';
-
-/**
 	Vista de la barra de búsqueda.
 	Contiene todos los componentes que hayan.
 **/
-export class VistaBarraBusqueda extends Vista 
+export function VistaBarraBusqueda(controlador)
 {
-	/**
-		Constructor de la clase.
-		@param {Controlador} controlador Controlador de la vista.
-		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
-		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
-	**/
-    constructor(controlador, div, efecto) 
-	{
-        super(controlador, div, efecto);
-
-		this.campoBuscar = this.div.find('input').eq(0);
-		this.botonBuscar = this.div.find('button').eq(0);
-
-		this.botonBuscar.on('click', this.busqueda.bind(this));
-    }
-
-	/**
-		Realiza búsqueda de componentes
-	**/
-	busqueda()
-	{
-		this.controlador.buscarComponentes(this.campoBuscar.val());
-	}
+	return VistaBarraBusqueda = Vue.createApp({
+		data() {
+			return {
+				controlador: controlador,
+				clase: 'inactivo',
+				campoBuscar: ''
+			}
+		},
+		template:
+		/*html*/
+		`<div>
+			<label id="labelBuscar" for="buscar">
+				Búsqueda<br/> 
+				<input id="buscar" v-model="campoBuscar" role="searchbox" aria-label="Búsqueda" name="buscar" type="text" maxlength="50"/>
+			</label>
+			<button type="button" class="boton" @click="busqueda">
+				<span class="material-icons" role="img" aria-label="Buscar">search</span>
+			</button>
+		</div>`,
+		methods: {
+			/**
+				Realiza búsqueda de componentes
+			**/
+			busqueda() {
+				this.controlador.buscarComponentes(this.campoBuscar);
+			},
+			/**
+			 * Muestra/oculta vista
+			 */
+			mostrar(activo) {
+				if (activo) this.clase = 'activo';
+				else this.clase = 'inactivo';
+			}
+		}
+	});
 }
