@@ -6,7 +6,7 @@ export function VistaDivBotones(controlador)
 	return VistaDivBotones = Vue.createApp({
 		data() {
 			return {
-				controlador: controlador
+				controlador: controlador,
 			}
 		},
 		template:
@@ -32,7 +32,6 @@ export function VistaDivBotones(controlador)
 			pulsarListado() {
 				this.controlador.pulsarBotonListado();
 			},
-
 			/**
 				Atención a la pulsación sobre el enlace de CRUD
 			**/

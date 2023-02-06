@@ -1,109 +1,52 @@
 /**
-	@file Contiene la vista del pie de página.
-	@author David Pérez Saché <dperezsache.guadalupe@alumnado.fundacionloyola.net>
-	@license GPL-3.0-or-later
-**/
-
-import {Vista} from './vista.js';
-
-/**
 	Vista del footer.
 **/
-export class VistaFooter extends Vista 
+export function VistaFooter(controlador)
 {
-    /**
-		Constructor de la clase.
-		@param {Controlador} controlador Controlador de la vista.
-		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
-		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
-	**/
-	constructor(controlador, div, efecto) 
-	{
-        super(controlador, div, efecto);
-        this.divConfCookies = $('#divConfCookies');
-        this.botonCookies = $('#buttonCookies');
-        this.checkboxCookie = this.div.find('input').eq(0);
-        this.pInformacion = $('#pTiempo');
-        this.botonTiempo = $('#buttonTiempo');
+	return VistaFooter = Vue.createApp({
+		data() {
+			return {
+				controlador: controlador,
+                mostrarTiempo: false,
+                mostrarConfCookies: false,
+                cookiesPulsadas: false,
+                datosTiempo: ''
+			}
+		},
+		template:
+		/*html*/
+		`<div id="divFooter">
+            <img id="imgFooter" src="../../diseno/logo-icono.png" alt="Logo de CoolPC"/>
+            <p>
+                <a href="https://achecker.achecks.ca/checker/index.php?uri=referer&gid=WCAG2-AA">
+                    <img id="imgAChecker" src="assets/icon_W2_aa.jpg" alt="WCAG 2.0 (Level AA)" tabindex="0" role="link"/>
+                </a>
+            </p>
 
-        // Hacemos que VistaFooter "observe" al Modelo.
-		this.modelo = this.controlador.getModelo();
-		this.modelo.registrar(this.informacionTiempo.bind(this));
-
-        this.botonCookies.on('click', this.mostrarOcultarConfCookies.bind(this));
-        this.mostrarOcultarConfCookies();
-
-        this.botonTiempo.on('click', this.mostrarOcultarTiempo.bind(this));
-        this.mostrarOcultarTiempo();
-
-        this.checkboxCookie.on('click', this.permitirCookies.bind(this))
-    }
-
-    /**
-     * Procesar datos del tiempo y mostrarlos.
-     */
-    informacionTiempo()
-    {
-        let datos = this.modelo.getDatosTiempo();
-
-        if(datos != null)
-        {
-            datos = datos.split('BADAJOZ');
+            <p id="pLegalidad">
+                <a href="infoLegal.html">Avisos legales / Protección de datos personales / Aviso de propiedad intelectual / Política de cookies</a>
+                <button type="button" class="boton" id="buttonCookies" @click="toggleConfCookies">Gestionar cookies</button>
+            </p>
+            <div v-if="mostrarConfCookies" id="divConfCookies">
+                <label for="checkboxCookie">
+                    <input :checked="cookiesPulsadas" type="checkbox" name="checkboxCookie" @click="permitirCookies"/> Permitir el uso de cookies (deshabilita o habilita las demás).
+                </label>
+            </div>
             
-            if(datos[2] != null) 
-            {
-                this.pInformacion.text('BADAJOZ:' + datos[2]);
+            <button type="button" class="boton" id="buttonTiempo" @change="toggleTiempo">Mostrar/ocultar predicción meteorológica</button>
+            <p v-if="mostrarTiempo" id="pTiempo">{{datosTiempo}}</p>
+        </div>`,
+        methods: {
+            toggleTiempo() {
+                this.mostrarTiempo = !this.mostrarTiempo;
+            },
+            toggleConfCookies() {
+                this.mostrarConfCookies = !this.mostrarConfCookies;
+            },
+            permitirCookies() {
+                this.cookiesPulsadas = !this.cookiesPulsadas;
+                this.controlador.configuracionCookies(this.cookiesPulsadas);
             }
-            else
-            {
-                this.pInformacion.text('');
-            }
         }
-        else
-        {
-            this.pInformacion.text('');
-        }
-    }
-
-    /**
-     * Muestra/oculta el panel del tiempo
-     */
-    mostrarOcultarTiempo()
-    {
-        if(this.pInformacion.is(':visible'))
-        {
-            this.pInformacion.hide();
-            this.pInformacion.attr('aria-hidden', 'true');
-        }
-        else
-        {
-            this.pInformacion.show();
-            this.pInformacion.attr('aria-hidden', 'false');
-        }
-    }
-
-    /**
-     * Muestra/oculta el panel de configuración de cookies
-     */
-    mostrarOcultarConfCookies()
-    {
-        if(this.divConfCookies.is(':visible'))
-        {
-            this.divConfCookies.hide();
-            this.divConfCookies.attr('aria-hidden', 'true');
-        }
-        else
-        {
-            this.divConfCookies.show();
-            this.divConfCookies.attr('aria-hidden', 'false');
-        }
-    }
-
-    /**
-     * Habilitar o no las cookies.
-     */
-    permitirCookies()
-    {
-        this.controlador.configuracionCookies(this.checkboxCookie.is(':checked'));
-    }
+	});
 }

@@ -6,8 +6,6 @@ import { VistaListado } from "../vistas/vistalistado.js";
 import { VistaModificar } from "../vistas/vistamodificar.js";
 import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
 import { VistaFooter } from "../vistas/vistafooter.js";
-import Producto from '../componentes/producto.js'; 
-import { Vista } from "../vistas/vista.js";
 
 class Controlador 
 {
@@ -36,31 +34,34 @@ class Controlador
 		this.vistaBarraBusqueda = new VistaBarraBusqueda(this).mount('#divBusqueda');
 		this.vistaAlta = new VistaAlta(this).mount('#divAlta');
 		this.vistaListado = new VistaListado(this).mount('#divListado');
+		this.vistaCookies = new VistaCookies(this).mount('#divCookies');
+		this.vistaFooter = new VistaFooter(this).mount('footer');
 
         //this.divBotones = $('#divBotones');
         //this.divBarraBusqueda = $('#divBusqueda');
         //this.divAlta = $('#divAlta');
-		this.divCookies = $('#divCookies');
+		//this.divCookies = $('#divCookies');
         //this.divListado = $('#divListado');
         this.divModificar =  $('#divModificar');
-        this.divFooter = $('#divFooter');
+        //this.divFooter = $('#divFooter');
 
         //this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
         //this.vistaBarraBusqueda = new VistaBarraBusqueda(this, this.divBarraBusqueda, false);
         //this.vistaAlta = new VistaAlta(this, this.divAlta, true);
-		this.vistaCookies = new VistaCookies(this, this.divCookies, true);
+		//this.vistaCookies = new VistaCookies(this, this.divCookies, true);
         //this.vistaListado = new VistaListado(this, this.divListado, true);
         this.vistaModificar = new VistaModificar(this, this.divModificar, true);
-        this.vistaFooter = new VistaFooter(this, this.divFooter, true);
+        //this.vistaFooter = new VistaFooter(this, this.divFooter, true);
 
 		// Cookies
 		if(!this.obtenerCookie(this.COOKIE_1))
 		{
-			this.vistaCookies.mostrar(true);
+			this.vistaCookies.checkCookies = true;
 		}
 		else
 		{
-			this.vistaFooter.checkboxCookie.prop('checked', true);
+			this.vistaFooter.cookiesPulsadas = true;
+			console.log('cookies: ',this.vistaFooter.cookiesPulsadas)
 		}
 
 		this.crearCookie3();		  // Aumentar contador de visitas (si están las cookies permitidas).
@@ -68,10 +69,13 @@ class Controlador
 		this.modelo.registrar(this.enviarListado.bind(this))
 	}
 
+	/**
+	 * Enviar datos del listado a la vista de listar.
+	 */
 	enviarListado()
 	{
-		console.log(this.modelo.getLista())
 		this.vistaListado.datos = this.modelo.getLista();
+		console.log(this.vistaListado.datos);
 	}
 
 	/**
@@ -174,10 +178,10 @@ class Controlador
 	**/
     pulsarBotonListado() 
     {
-        this.vistaListado.mostrar(true);
-        this.vistaBarraBusqueda.mostrar(true);
-        this.vistaAlta.mostrar(false);
-        this.vistaModificar.mostrar(false);
+        this.vistaListado.mostrar = true;
+        this.vistaBarraBusqueda.mostrar = true;
+        //this.vistaAlta.mostrar = false;
+        //this.vistaModificar.mostrar = false;
     }
 
     /**
@@ -185,10 +189,10 @@ class Controlador
 	**/
     pulsarBotonAlta() 
     {
-        this.vistaListado.mostrar(false);
-        this.vistaBarraBusqueda.mostrar(false);
-        this.vistaAlta.mostrar(true);
-        this.vistaModificar.mostrar(false);
+        this.vistaListado.mostrar = false;
+        this.vistaBarraBusqueda.mostrar = false;
+        //this.vistaAlta.mostrar(true);
+        //this.vistaModificar.mostrar(false);
     }
 
     /**
@@ -196,10 +200,10 @@ class Controlador
 	**/
     pulsarBotonModificar() 
     {
-        this.vistaListado.mostrar(false);
-        this.vistaBarraBusqueda.mostrar(false);
-        this.vistaAlta.mostrar(false);
-        this.vistaModificar.mostrar(true);
+        this.vistaListado.mostrar = false;
+        this.vistaBarraBusqueda.mostrar = false;
+        //this.vistaAlta.mostrar(false);
+        //this.vistaModificar.mostrar(true);
     }
 
     /**

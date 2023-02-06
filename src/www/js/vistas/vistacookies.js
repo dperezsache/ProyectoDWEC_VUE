@@ -1,47 +1,49 @@
 /**
-	@file Contiene la vista de las cookies.
-	@author David Pérez Saché <dperezsache.guadalupe@alumnado.fundacionloyola.net>
-	@license GPL-3.0-or-later
+	Vista de la barra de búsqueda.
+	Contiene todos los componentes que hayan.
 **/
-
-import {Vista} from './vista.js';
-
-/**
-	Vista Cookies.
-**/
-export class VistaCookies extends Vista 
+export function VistaCookies(controlador)
 {
-	/**
-		Constructor de la clase.
-		@param {Controlador} controlador Controlador de la vista.
-		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
-		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
-	**/
-    constructor(controlador, div, efecto) 
-	{
-        super(controlador, div, efecto);
+	return VistaCookies = Vue.createApp({
+		data() {
+			return {
+				controlador: controlador,
+				mostrar: true,
+			}
+		},
+		template:
+		/*html*/
+		`<div v-if="mostrar" class="cookieContainer">
+			<div class="cookieSubcontainer">
+				<div class="cookies">
+					<p>
+						Utilizamos cookies para habilitar el funcionamiento y la seguridad adecuados de nuestro sitio web, 
+						y para ayudarnos a ofrecerte la mejor experiencia de usuario posible. Al hacer clic en Aceptar, 
+						aceptas el uso de estas cookies. Puedes cambiar la configuración de las cookies en cualquier momento.
+						<a href="assets/politicaCookies.pdf">Más información.</a>
+					</p>
+					<div>
+						<button class="buttonCookie" @click="cancelar">Rechazar</button>
+						<button class="buttonCookie" @click="aceptar">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>`,
+		methods: {
+			/**
+			 * Ocultar el aviso de cookies.
+			 */
+			cancelar() {
+				this.mostrar = false;
+			},
 
-		this.botonCancelar = this.div.find('button').eq(0);
-		this.botonCancelar.on('click', this.cancelar.bind(this));
-
-		this.botonAceptar = this.div.find('button').eq(1);
-		this.botonAceptar.on('click', this.aceptar.bind(this));
-    }
-
-	/**
-		Ocultar el aviso de cookies.
-	**/
-	cancelar()
-	{
-		this.mostrar(false);
-	}
-
-	/**
-		Aceptar las cookies.
-	**/
-	aceptar()
-	{
-		this.mostrar(false);
-		this.controlador.crearCookie1();
-	}
+			/**
+			 * Aceptar las cookies.
+			 */
+			aceptar() {
+				this.mostrar = false;
+				this.controlador.crearCookie1();
+			}
+		}
+	});
 }

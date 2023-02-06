@@ -26,24 +26,7 @@
 
         <main>
             <!-- Cookies -->
-            <div id="divCookies">
-                <div class="cookieContainer">
-                    <div class="cookieSubcontainer">
-                        <div class="cookies">
-                            <p>
-                                Utilizamos cookies para habilitar el funcionamiento y la seguridad adecuados de nuestro sitio web, 
-                                y para ayudarnos a ofrecerte la mejor experiencia de usuario posible. Al hacer clic en Aceptar, 
-                                aceptas el uso de estas cookies. Puedes cambiar la configuración de las cookies en cualquier momento.
-                                <a href="assets/politicaCookies.pdf">Más información.</a>
-                            </p>
-                            <div>
-                                <button class="buttonCookie">Rechazar</button>
-                                <button class="buttonCookie">Aceptar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="divCookies"></div>
 
             <!-- Listado -->
             <div id="divListado" role="list"></div>
@@ -110,29 +93,7 @@
             </div>
         </main>
 
-        <footer>
-            <div id="divFooter">
-                <img id="imgFooter" src="../../diseno/logo-icono.png" alt="Logo de CoolPC"/>
-                <p>
-                    <a href="https://achecker.achecks.ca/checker/index.php?uri=referer&gid=WCAG2-AA">
-                        <img id="imgAChecker" src="assets/icon_W2_aa.jpg" alt="WCAG 2.0 (Level AA)" tabindex="0" role="link"/>
-                    </a>
-                </p>
-
-                <p id="pLegalidad">
-                    <a href="infoLegal.html">Avisos legales / Protección de datos personales / Aviso de propiedad intelectual / Política de cookies</a>
-                    <button type="button" class="boton" id="buttonCookies">Gestionar cookies</button>
-                </p>
-                <div id="divConfCookies">
-                    <label for="checkboxCookie">
-                        <input type="checkbox" name="checkboxCookie"/> Permitir el uso de cookies (deshabilita o habilita las demás).
-                    </label>
-                </div>
-                
-                <button type="button" class="boton" id="buttonTiempo">Mostrar/ocultar predicción meteorológica</button>
-                <p id="pTiempo"></p>
-            </div>
-        </footer>
+        <footer></footer>
 
         <!-- JQuery -->
         <script src="js/jquery-3.6.3.min.js"></script>
@@ -142,9 +103,6 @@
 
         <!-- VUE 3 -->
         <script src="js/vue.global.js"></script>
-
-        <!-- Componentes VUE -->
-        <script type="module" src="js/componentes/producto.js"></script>
 
         <!-- Controlador -->
         <script type="module" src="js/controladores/app.js"></script>

@@ -8,13 +8,13 @@ export function VistaBarraBusqueda(controlador)
 		data() {
 			return {
 				controlador: controlador,
-				clase: 'inactivo',
+				mostrar: false,
 				campoBuscar: ''
 			}
 		},
 		template:
 		/*html*/
-		`<div>
+		`<div v-if="mostrar">
 			<label id="labelBuscar" for="buscar">
 				Búsqueda<br/> 
 				<input id="buscar" v-model="campoBuscar" role="searchbox" aria-label="Búsqueda" name="buscar" type="text" maxlength="50"/>
@@ -25,18 +25,11 @@ export function VistaBarraBusqueda(controlador)
 		</div>`,
 		methods: {
 			/**
-				Realiza búsqueda de componentes
-			**/
+			 * Realiza búsqueda de componentes
+			 */
 			busqueda() {
 				this.controlador.buscarComponentes(this.campoBuscar);
 			},
-			/**
-			 * Muestra/oculta vista
-			 */
-			mostrar(activo) {
-				if (activo) this.clase = 'activo';
-				else this.clase = 'inactivo';
-			}
 		}
 	});
 }
