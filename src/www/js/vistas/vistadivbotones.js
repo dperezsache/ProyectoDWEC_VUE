@@ -1,8 +1,7 @@
 /**
 	Implementa una vista del menú de botones.
 **/
-export function VistaDivBotones(controlador)
-{
+export function VistaDivBotones(controlador) {
 	return VistaDivBotones = Vue.createApp({
 		data() {
 			return {

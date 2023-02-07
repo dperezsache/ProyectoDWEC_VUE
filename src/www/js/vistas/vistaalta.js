@@ -1,10 +1,9 @@
-export function VistaAlta(controlador)
-{
+export function VistaAlta(controlador) {
 	return VistaAlta = Vue.createApp({
 		data() {
 			return {
 				controlador: controlador,
-				clase: 'inactivo',
+				mostrar: false,
 				nombre: '',
 				fecha: '',
 				precio: 0,
@@ -13,20 +12,23 @@ export function VistaAlta(controlador)
 				seguro1: false,
 				seguro2: false,
 				seguro3: false,
-				categoria: '',
-				checkboxAvisoAlta: false
+				categoria: -1,
+				checkboxAlta: false,
+				subirImagen: null,
+				parrafoTexto: '',
+				mostrarParrafo: false
 			}
 		},
 		template:
 		/*html*/
-		`<div>
-			<p class="pAviso"></p>
+		`<div id="divA" v-if="mostrar">
+			<p v-if="mostrarParrafo" class="pAviso">{{this.parrafoTexto}}</p>
 			<form id="formAlta">
 				<label for="nombre">
 					Nombre <input v-model="nombre" aria-label="Nombre" type="text" name="nombre"/>
 				</label>
 				<label for="fecha">
-					Fecha <input v-model="fecha" aria-label="Fecha" type="text" title="La fecha en la que se lanzó el producto." name="fecha"/>
+					Fecha <input v-model="fecha" aria-label="Fecha" type="date" title="La fecha en la que se lanzó el producto." name="fecha"/>
 				</label>
 				<label for="precio">
 					Precio en € <input v-model="precio" aria-label="Precio" type="number" name="precio" step="0.1"/>
@@ -63,118 +65,107 @@ export function VistaAlta(controlador)
 					</select>  
 				</label>
 				<label for="checkboxAvisoAlta">
-					<input v-model="checkboxAvisoAlta" type="checkbox" aria-label="Checkbox privacidad" name="checkboxAvisoAlta"/>
+					<input v-model="checkboxAlta" type="checkbox" aria-label="Checkbox privacidad" name="checkboxAvisoAlta"/>
 					Acepto sin reservas la <a href="infoLegal.html">política de protección de datos personales.</a>
 				</label>
 				<div class="divBotonesForm">
-					<button type="reset" id="botonCancelar">Cancelar</button>
+					<button type="button" id="botonCancelar" @click="cancelar">Cancelar</button>
 					<button type="button" id="botonAceptar" @click="aceptar">Aceptar</button>
 				</div>
 			</form>
 		</div>`,
 		methods: {
 			imagenChange(e) {
-				let files = e.target.files || e.dataTransfer.files;
-  				console.log(files);
+				this.subirImagen = e.target.files || e.dataTransfer.files;
+  				console.log(this.subirImagen);
 			},
 			aceptar() {
 				const colorOk = '1px solid #ADACAC'; 
 				const colorMal = '1px solid crimson';
-		
-				if(this.checkboxAviso.is(':checked'))
-				{
+
+				if(this.checkboxAlta) {
 					let cont = 0;
 		
 					// Validación nombre
-					if (this.campoNombre.val() && this.campoNombre.val().length <= 50) {
+					if (this.nombre && this.nombre.length <= 50) {
 						cont++;
-						this.campoNombre.css('border', colorOk);
-					}
-					else {
-						this.campoNombre.css('border', colorMal);
 					}
 		
 					// Validación fecha
-					if (this.campoFecha.val()) {
+					if (this.fecha) {
 						cont++;
-						this.campoFecha.css('border', colorOk);
-					}
-					else {
-						this.campoFecha.css('border', colorMal);
 					}
 		
 					// Validación precio
-					if (this.campoPrecio.val() && !isNaN(this.campoPrecio.val()) && this.campoPrecio.val() > 0) {
+					if (this.precio && !isNaN(this.precio) && this.precio > 0) {
 						cont++;
-						this.campoPrecio.css('border', colorOk);
-					}
-					else {
-						this.campoPrecio.css('border', colorMal);
 					}
 		
 					// Validación tipo
-					if (this.campoTipo.val() != -1){
+					if (this.categoria != -1){
 						cont++;
-						this.campoTipo.css('border', colorOk);
-					}
-					else {
-						this.campoTipo.css('border', colorMal);
 					}
 		
 					// Validación descripción
-					if (this.campoDescripcion.val() && this.campoDescripcion.val().length <= 500){
+					if (this.descripcion && this.descripcion.length <= 500){
 						cont++;
-						this.campoDescripcion.css('border', colorOk);
-					}
-					else {
-						this.campoDescripcion.css('border', colorMal);
 					}
 		
 					// Validación imagen
-					if (this.campoImagen.prop('files')[0] != null) {
+					if (this.subirImagen[0] != null) {
 						cont++;
-						this.campoImagen.css('border', colorOk);
 					}
-					else {
-						this.campoImagen.css('border', colorMal);
-					}
-		
+					
 					window.scrollTo(0, 0);	// Mover al top de la página.
-					this.parrafoAviso.show();
-		
+					this.mostrarParrafo = true;
+
+					console.log(this.nombre, 
+						this.fecha, 
+						this.precio,
+						this.descripcion, 
+						this.categoria,
+						this.subirImagen[0], 
+						this.seguro1,
+						this.seguro2,
+						this.seguro3)
+
 					if(cont == 6) {
-						this.parrafoAviso.text('✔️ Componente añadido correctamente ✔️');
-						
+						this.parrafoTexto = '✔️ Componente añadido correctamente ✔️';
+						console.log('alta OK')
 						this.controlador.aceptarCRUD(
-							this.campoNombre.val(), 
-							this.campoFecha.val(), 
-							this.campoPrecio.val(),
-							this.campoDescripcion.val(), 
-							this.campoTipo.val(),
-							this.campoImagen.prop('files')[0], 
-							this.seguro1.is(':checked'),
-							this.seguro2.is(':checked'),
-							this.seguro3.is(':checked')
+							this.nombre, 
+							this.fecha, 
+							this.precio,
+							this.descripcion, 
+							this.categoria,
+							this.subirImagen[0], 
+							this.seguro1,
+							this.seguro2,
+							this.seguro3
 						);
 		
 						this.cancelar();	// Borrar los campos una vez añadido el elemento.
 					}
 					else {
-						this.parrafoAviso.text('⚠️ Rellena correctamente los campos indicados ⚠️');
+						this.parrafoTexto = '⚠️ Rellena correctamente los campos indicados ⚠️';
 					}
 				}
 				else {
 					window.scrollTo(0, 0);	// Mover al top de la página.
-					this.parrafoAviso.show();
-					this.parrafoAviso.text('⚠️ Acepta el aviso de protección de datos para continuar ⚠️');
+					this.parrafoTexto = '⚠️ Acepta el aviso de protección de datos para continuar ⚠️';
 				}
 			},
-			/**
-			 * Muestra/oculta vista
-			 */
-			mostrar(activo) {
-				if (activo) this.clase = 'activo';
-				else this.clase = 'inactivo';
+			cancelar() {
+				this.nombre = ''; 
+				this.fecha = '';
+				this.precio = 0;
+				this.descripcion = ''; 
+				this.categoria = -1;
+				this.subirImagen[0] = null; 
+				this.seguro1 = false;
+				this.seguro2 = false;
+				this.seguro3 = false;
+				this.checkboxAlta = false;
 			}
 		}
 	});

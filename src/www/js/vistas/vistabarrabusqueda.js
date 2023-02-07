@@ -2,8 +2,7 @@
 	Vista de la barra de búsqueda.
 	Contiene todos los componentes que hayan.
 **/
-export function VistaBarraBusqueda(controlador)
-{
+export function VistaBarraBusqueda(controlador) {
 	return VistaBarraBusqueda = Vue.createApp({
 		data() {
 			return {

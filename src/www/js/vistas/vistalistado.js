@@ -12,7 +12,7 @@ export function VistaListado(controlador) {
 		},
 		template:
 		/*html*/
-		`<div v-if="mostrar">
+		`<div id="divL" v-if="mostrar">
 			<!--<p class="pAviso">No hay ningún registro.</p>-->
 			<div class="divItem" role="listitem" v-for="dato in datos">
 				<img style="width: 256px; height: 256px; display: block;" :src="dato.imagen" :alt="dato.nombre"/>

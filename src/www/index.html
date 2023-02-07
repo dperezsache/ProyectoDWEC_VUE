@@ -35,62 +35,7 @@
             <div id="divAlta"></div>
 
             <!-- Modificar -->
-            <div id="divModificar">
-                <p class="pAviso"></p>
-                <form id="formModificar">
-                    <label for="actualizar">
-                        Componente <select name="actualizar"><option value="-1" disabled selected>-- Selecciona componente --</option></select>
-                    </label>
-                    <label for="nuevoNombre">
-                        Nuevo nombre <input type="text" aria-label="Nuevo nombre" name="nuevoNombre"/>
-                    </label>
-                    <label for="nuevaFecha">
-                        Nueva fecha <input type="text" title="La fecha en la que se lanzó el producto." aria-label="Nueva fecha" name="nuevaFecha"/>
-                    </label>
-                    <label for="nuevoPrecio">
-                        Nuevo precio en € <input type="number" aria-label="Nuevo precio" name="nuevoPrecio" step="0.1"/>
-                    </label>
-                    <label for="nuevaDescripcion">
-                        Nueva descripción <textarea name="nuevaDescripcion" aria-label="Nueva descripción" rows="8" cols="50"></textarea>
-                    </label>
-                    <label for="nuevaImagen">
-                        Subir nueva imagen <input type="file" aria-label="Nueva imagen" name="nuevaImagen" accept="image/png, image/jpeg"/>
-                    </label>
-                    <fieldset>
-                        <legend>Seguros que tiene el producto</legend>
-                        <label for="nuevoSeguro1" class="labelCheckbox">
-                            Seguro contra robos <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro1"/>
-                        </label>
-                        <label for="nuevoSeguro2" class="labelCheckbox">
-                            Seguro contra roturas <input type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro2"/>
-                        </label>
-                        <label for="nuevoSeguro3" class="labelCheckbox">
-                            Seguro contra caídas <input type="checkbox" aria-label="Seguro contra caídas" name="nuevoSeguro3"/>
-                        </label>
-                    </fieldset>
-                    <label for="nuevaCategoria">
-                        Nueva categoría <select name="nuevaCategoria">
-                            <option value="-1" disabled selected>-- Selecciona --</option>
-                            <option value="1">CPU</option>
-                            <option value="2">GPU</option>
-                            <option value="3">RAM</option>
-                            <option value="4">Fuente de alimentación</option>
-                            <option value="5">Placa base</option>
-                            <option value="6">Disco duro</option>
-                            <option value="7">Torre</option>
-                            <option value="8">Otro</option>
-                        </select>  
-                    </label>
-                    <label for="checkboxAvisoMod">
-                        <input type="checkbox" aria-label="Checkbox privacidad" name="checkboxAvisoMod"/>
-                        Acepto sin reservas la <a href="infoLegal.html">política de protección de datos personales.</a>
-                    </label>
-                    <div class="divBotonesForm">
-                        <button type="button" id="botonBorrar">Cancelar</button>
-                        <button type="button" id="botonActualizar">Aceptar</button>
-                    </div>
-                </form>
-            </div>
+            <div id="divModificar"></div>
         </main>
 
         <footer></footer>

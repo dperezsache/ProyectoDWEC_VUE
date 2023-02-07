@@ -2,13 +2,12 @@
 	Vista de la barra de búsqueda.
 	Contiene todos los componentes que hayan.
 **/
-export function VistaCookies(controlador)
-{
+export function VistaCookies(controlador) {
 	return VistaCookies = Vue.createApp({
 		data() {
 			return {
 				controlador: controlador,
-				mostrar: true,
+				mostrar: false
 			}
 		},
 		template:

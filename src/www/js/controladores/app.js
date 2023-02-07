@@ -3,7 +3,7 @@ import { VistaAlta } from "../vistas/vistaalta.js";
 import { VistaDivBotones } from "../vistas/vistadivbotones.js";
 import { VistaCookies } from "../vistas/vistacookies.js";
 import { VistaListado } from "../vistas/vistalistado.js";
-import { VistaModificar } from "../vistas/vistamodificar.js";
+//import { VistaModificar } from "../vistas/vistamodificar.js";
 import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
 import { VistaFooter } from "../vistas/vistafooter.js";
 
@@ -42,7 +42,7 @@ class Controlador
         //this.divAlta = $('#divAlta');
 		//this.divCookies = $('#divCookies');
         //this.divListado = $('#divListado');
-        this.divModificar =  $('#divModificar');
+        //this.divModificar =  $('#divModificar');
         //this.divFooter = $('#divFooter');
 
         //this.vistaDivBotones = new VistaDivBotones(this, this.divBotones);
@@ -50,23 +50,26 @@ class Controlador
         //this.vistaAlta = new VistaAlta(this, this.divAlta, true);
 		//this.vistaCookies = new VistaCookies(this, this.divCookies, true);
         //this.vistaListado = new VistaListado(this, this.divListado, true);
-        this.vistaModificar = new VistaModificar(this, this.divModificar, true);
+        //this.vistaModificar = new VistaModificar(this, this.divModificar, true);
         //this.vistaFooter = new VistaFooter(this, this.divFooter, true);
 
 		// Cookies
 		if(!this.obtenerCookie(this.COOKIE_1))
 		{
-			this.vistaCookies.checkCookies = true;
+			this.vistaCookies.mostrar = true;
 		}
 		else
 		{
+			this.vistaCookies.checkCookies = true;
 			this.vistaFooter.cookiesPulsadas = true;
-			console.log('cookies: ',this.vistaFooter.cookiesPulsadas)
 		}
 
 		this.crearCookie3();		  // Aumentar contador de visitas (si están las cookies permitidas).
 		this.pulsarBotonListado();    // Iniciar desde la vista de listado.
-		this.modelo.registrar(this.enviarListado.bind(this))
+
+		// Registrar callbacks
+		this.modelo.registrar(this.enviarListado.bind(this));
+		this.modelo.registrar(this.enviarDatosTiempo.bind(this));
 	}
 
 	/**
@@ -75,7 +78,14 @@ class Controlador
 	enviarListado()
 	{
 		this.vistaListado.datos = this.modelo.getLista();
-		console.log(this.vistaListado.datos);
+	}
+
+	/**
+	 * Enviar datos del tiempo a la vista del footer.
+	 */
+	enviarDatosTiempo()
+	{
+		this.vistaFooter.datosTiempo = this.modelo.getDatosTiempo();
 	}
 
 	/**
@@ -180,7 +190,7 @@ class Controlador
     {
         this.vistaListado.mostrar = true;
         this.vistaBarraBusqueda.mostrar = true;
-        //this.vistaAlta.mostrar = false;
+        this.vistaAlta.mostrar = false;
         //this.vistaModificar.mostrar = false;
     }
 
@@ -191,7 +201,7 @@ class Controlador
     {
         this.vistaListado.mostrar = false;
         this.vistaBarraBusqueda.mostrar = false;
-        //this.vistaAlta.mostrar(true);
+        this.vistaAlta.mostrar = true;
         //this.vistaModificar.mostrar(false);
     }
 
@@ -202,7 +212,7 @@ class Controlador
     {
         this.vistaListado.mostrar = false;
         this.vistaBarraBusqueda.mostrar = false;
-        //this.vistaAlta.mostrar(false);
+        this.vistaAlta.mostrar = false;
         //this.vistaModificar.mostrar(true);
     }
 

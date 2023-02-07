@@ -1,8 +1,7 @@
 /**
 	Vista del footer.
 **/
-export function VistaFooter(controlador)
-{
+export function VistaFooter(controlador) {
 	return VistaFooter = Vue.createApp({
 		data() {
 			return {
@@ -33,7 +32,7 @@ export function VistaFooter(controlador)
                 </label>
             </div>
             
-            <button type="button" class="boton" id="buttonTiempo" @change="toggleTiempo">Mostrar/ocultar predicción meteorológica</button>
+            <button type="button" class="boton" id="buttonTiempo" @click="toggleTiempo">Mostrar/ocultar predicción meteorológica</button>
             <p v-if="mostrarTiempo" id="pTiempo">{{datosTiempo}}</p>
         </div>`,
         methods: {
