@@ -17,7 +17,7 @@ export function VistaListado(controlador) {
 			<div class="divItem" role="listitem" v-for="dato in datos">
 				<img style="width: 256px; height: 256px; display: block;" :src="dato.imagen" :alt="dato.nombre"/>
 				<p class="pNombreItem" tabIndex="0">{{dato.nombre}}</p>
-				<p class="pPrecioItem" tabIndex="0">{{dato.precio}}€</p>
+				<p class="pPrecioItem" tabIndex="0">{{this.formatearPrecio(dato.precio)}}€</p>
 				<div class="divDescItem">
 					<p tabIndex="0">{{dato.descripcion}}</p>
 				</div>
@@ -42,10 +42,10 @@ export function VistaListado(controlador) {
 				</ul>
 				<div>
 					<button class="boton" style="margin-right: 10px;">
-						<span @click="eliminar(dato.id)" class="ui-icon ui-icon-trash" role="img" aria-label="Eliminar" tabIndex="0"></span>
+						<span @click="eliminar(dato.id)" class="material-icons" role="img" aria-label="Eliminar" tabIndex="0">delete</span>
 					</button>
 					<button class="boton">
-						<span @click="editar(dato.id)" class="ui-icon ui-icon-pencil" role="img" aria-label="Editar" tabIndex="0"></span>
+						<span @click="editar(dato.id)" class="material-icons" role="img" aria-label="Editar" tabIndex="0">edit</span>
 					</button>
 				</div>
 			</div>
@@ -69,6 +69,11 @@ export function VistaListado(controlador) {
 					case 8: return 'Otro';
 					default: return '';		
 				}
+			},
+			formatearPrecio(precio) {
+				precio = parseFloat(precio).toFixed(2);
+				precio = precio.replace('.', ',');
+				return precio;
 			}
 		}
 	});

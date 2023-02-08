@@ -25,16 +25,16 @@ export function VistaAlta(controlador) {
 			<p v-if="mostrarParrafo" class="pAviso">{{this.parrafoTexto}}</p>
 			<form id="formAlta">
 				<label for="nombre">
-					Nombre <input v-model="nombre" aria-label="Nombre" type="text" name="nombre"/>
+					Nombre <input v-model="nombre" ref="nombre" aria-label="Nombre" type="text" name="nombre"/>
 				</label>
 				<label for="fecha">
-					Fecha <input v-model="fecha" aria-label="Fecha" type="date" title="La fecha en la que se lanzó el producto." name="fecha"/>
+					Fecha <input v-model="fecha" ref="fecha" aria-label="Fecha" type="date" title="La fecha en la que se lanzó el producto." name="fecha"/>
 				</label>
 				<label for="precio">
-					Precio en € <input v-model="precio" aria-label="Precio" type="number" name="precio" step="0.1"/>
+					Precio en € <input v-model="precio" ref="precio" aria-label="Precio" type="number" name="precio" step="0.1"/>
 				</label>
 				<label for="descripcion">
-					Descripción <textarea v-model="descripcion" aria-label="Descripción" name="descripcion" rows="8" cols="50"></textarea>
+					Descripción <textarea v-model="descripcion" ref="descripcion" aria-label="Descripción" name="descripcion" rows="8" cols="50"></textarea>
 				</label>
 				<label for="subirImagen">
 					Subir imagen <input v-on:change="imagenChange" type="file" aria-label="Imagen" name="subirImagen" accept="image/png, image/jpeg"/>
@@ -52,7 +52,8 @@ export function VistaAlta(controlador) {
 					</label>
 				</fieldset>
 				<label for="categoria">
-					Categoría <select name="categoria" v-model="categoria">
+					Categoría 
+					<select name="categoria" v-model="categoria" ref="categoria">
 						<option value="-1" disabled selected>-- Selecciona --</option>
 						<option value="1">CPU</option>
 						<option value="2">GPU</option>
@@ -80,58 +81,67 @@ export function VistaAlta(controlador) {
   				console.log(this.subirImagen);
 			},
 			aceptar() {
-				const colorOk = '1px solid #ADACAC'; 
-				const colorMal = '1px solid crimson';
-
 				if(this.checkboxAlta) {
+					const colorOk = '1px solid #ADACAC'; 
+					const colorMal = '1px solid crimson';
 					let cont = 0;
 		
 					// Validación nombre
 					if (this.nombre && this.nombre.length <= 50) {
+						this.$refs.nombre.style.border = colorOk;
 						cont++;
+					}
+					else {
+						this.$refs.nombre.style.border = colorMal;
 					}
 		
 					// Validación fecha
 					if (this.fecha) {
+						this.$refs.fecha.style.border = colorOk;
 						cont++;
+					}
+					else {
+						this.$refs.fecha.style.border = colorMal;
 					}
 		
 					// Validación precio
 					if (this.precio && !isNaN(this.precio) && this.precio > 0) {
+						this.$refs.precio.style.border = colorOk;
 						cont++;
+					}
+					else {
+						this.$refs.precio.style.border = colorMal;
 					}
 		
 					// Validación tipo
 					if (this.categoria != -1){
+						this.$refs.categoria.style.border = colorOk;
 						cont++;
+					}
+					else {
+						this.$refs.categoria.style.border = colorMal;
 					}
 		
 					// Validación descripción
 					if (this.descripcion && this.descripcion.length <= 500){
+						this.$refs.descripcion.style.border = colorOk;
 						cont++;
+					}
+					else {
+						this.$refs.descripcion.style.border = colorMal;
 					}
 		
 					// Validación imagen
-					if (this.subirImagen[0] != null) {
+					if (this.subirImagen != null) {
 						cont++;
 					}
 					
 					window.scrollTo(0, 0);	// Mover al top de la página.
 					this.mostrarParrafo = true;
 
-					console.log(this.nombre, 
-						this.fecha, 
-						this.precio,
-						this.descripcion, 
-						this.categoria,
-						this.subirImagen[0], 
-						this.seguro1,
-						this.seguro2,
-						this.seguro3)
-
 					if(cont == 6) {
 						this.parrafoTexto = '✔️ Componente añadido correctamente ✔️';
-						console.log('alta OK')
+						
 						this.controlador.aceptarCRUD(
 							this.nombre, 
 							this.fecha, 
@@ -147,7 +157,7 @@ export function VistaAlta(controlador) {
 						this.cancelar();	// Borrar los campos una vez añadido el elemento.
 					}
 					else {
-						this.parrafoTexto = '⚠️ Rellena correctamente los campos indicados ⚠️';
+						this.parrafoTexto = '⚠️ Rellena correctamente todos los campos ⚠️';
 					}
 				}
 				else {
@@ -161,7 +171,7 @@ export function VistaAlta(controlador) {
 				this.precio = 0;
 				this.descripcion = ''; 
 				this.categoria = -1;
-				this.subirImagen[0] = null; 
+				this.subirImagen = null; 
 				this.seguro1 = false;
 				this.seguro2 = false;
 				this.seguro3 = false;

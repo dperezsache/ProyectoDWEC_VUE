@@ -1,287 +1,225 @@
-/**
-	@file Contiene la vista de modificar.
-	@author David Pérez Saché <dperezsache.guadalupe@alumnado.fundacionloyola.net>
-	@license GPL-3.0-or-later
-**/
-
-import {Vista} from './vista.js';
-
-/**
-	Vista de la página de modificar.
-**/
-export class VistaModificar extends Vista
-{
-	/**
-		Constructor de la clase.
-		@param {Controlador} controlador Controlador de la vista.
-		@param {HTMLDivElement} div Div de HTML en el que se desplegará la vista.
-		@param {Boolean} efecto Si habrá efecto al mostrarse/ocultarse.
-	**/
-    constructor(controlador, div, efecto) 
-	{
-        super(controlador, div, efecto);
-
-		this.modelo = this.controlador.getModelo();
-		this.modelo.registrar(this.cargarListado.bind(this));
-
-		// Coger referencias de los elementos
-		this.listado = this.div.find('select').eq(0);
-		this.campoNombre = this.div.find('input').eq(0);
-		this.campoFecha = this.div.find('input').eq(1);
-		this.campoPrecio = this.div.find('input').eq(2);
-		this.campoDescripcion = this.div.find('textarea').eq(0);
-		this.campoTipo = this.div.find('select').eq(1);
-		this.campoImagen = this.div.find('input').eq(3);
-		this.seguro1 = this.div.find('input').eq(4);
-		this.seguro2 = this.div.find('input').eq(5);
-		this.seguro3 = this.div.find('input').eq(6);
-		this.botonCancelar = this.div.find('button').eq(0);
-		this.botonAceptar = this.div.find('button').eq(1);
-		this.parrafoAviso = this.div.find('.pAviso').eq(0);
-		this.checkboxAviso = this.div.find('input').eq(7);
+export function VistaModificar(controlador) {
+	return VistaModificar = Vue.createApp({
+		data() {
+			return {
+				controlador: controlador,
+				mostrar: false,
+				actualizar: -1,
+				nuevoNombre: '',
+				nuevaFecha: '',
+				nuevoPrecio: 0,
+				nuevaDescripcion: '',
+				nuevaImagen: null,
+				nuevoSeguro1: false,
+				nuevoSeguro2: false,
+				nuevoSeguro3: false,
+				nuevaCategoria: -1,
+				checkboxAlta: false,
+				parrafoTexto: '',
+				mostrarParrafo: false,
+				componentes: null
+			}
+		},
+		template:
+		/*html*/
+		`<div v-if="mostrar" id="divM">
+			<p v-if="mostrarParrafo" class="pAviso">{{this.parrafoTexto}}</p>
+			<form id="formModificar">
+				<label for="actualizar">
+					Componente 
+					<select v-model="actualizar" @click="actualizarForm" ref="listado" name="actualizar">
+						<option value="-1" disabled selected>-- Selecciona componente --</option>
+						<option v-for="componente of componentes" :value="componente.id">{{componente.nombre}}</option>
+					</select>
+				</label>
+				<label for="nuevoNombre">
+					Nuevo nombre <input v-model="nuevoNombre" ref="nuevoNombre" type="text" aria-label="Nuevo nombre" name="nuevoNombre"/>
+				</label>
+				<label for="nuevaFecha">
+					Nueva fecha <input v-model="nuevaFecha" ref="nuevaFecha" type="text" title="La fecha en la que se lanzó el producto." aria-label="Nueva fecha" name="nuevaFecha"/>
+				</label>
+				<label for="nuevoPrecio">
+					Nuevo precio en € <input v-model="nuevoPrecio" ref="nuevoPrecio" type="number" aria-label="Nuevo precio" name="nuevoPrecio" step="0.1"/>
+				</label>
+				<label for="nuevaDescripcion">
+					Nueva descripción <textarea v-model="nuevaDescripcion" ref="nuevaDescripcion" name="nuevaDescripcion" aria-label="Nueva descripción" rows="8" cols="50"></textarea>
+				</label>
+				<label for="nuevaImagen">
+					Subir nueva imagen <input v-on:change="imagenChange" type="file" aria-label="Nueva imagen" name="nuevaImagen" accept="image/png, image/jpeg"/>
+				</label>
+				<fieldset>
+					<legend>Seguros que tiene el producto</legend>
+					<label for="nuevoSeguro1" class="labelCheckbox">
+						Seguro contra robos <input v-model="nuevoSeguro1" type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro1"/>
+					</label>
+					<label for="nuevoSeguro2" class="labelCheckbox">
+						Seguro contra roturas <input v-model="nuevoSeguro2" type="checkbox" aria-label="Seguro contra robos" name="nuevoSeguro2"/>
+					</label>
+					<label for="nuevoSeguro3" class="labelCheckbox">
+						Seguro contra caídas <input v-model="nuevoSeguro3" type="checkbox" aria-label="Seguro contra caídas" name="nuevoSeguro3"/>
+					</label>
+				</fieldset>
+				<label for="nuevaCategoria">
+					Nueva categoría 
+					<select v-model="nuevaCategoria" ref="nuevaCategoria" name="nuevaCategoria">
+						<option value="-1" disabled selected>-- Selecciona --</option>
+						<option value="1">CPU</option>
+						<option value="2">GPU</option>
+						<option value="3">RAM</option>
+						<option value="4">Fuente de alimentación</option>
+						<option value="5">Placa base</option>
+						<option value="6">Disco duro</option>
+						<option value="7">Torre</option>
+						<option value="8">Otro</option>
+					</select>  
+				</label>
+				<label for="checkboxAvisoAlta">
+					<input v-model="checkboxAlta" type="checkbox" aria-label="Checkbox privacidad" name="checkboxAvisoAlta"/>
+					Acepto sin reservas la <a href="infoLegal.html">política de protección de datos personales.</a>
+				</label>
+				<div class="divBotonesForm">
+					<button type="button" @click="cancelar" id="botonBorrar">Cancelar</button>
+					<button type="button" @click="aceptar" id="botonActualizar">Aceptar</button>
+				</div>
+			</form>
+		</div>`,
+		methods: {
+			imagenChange(e) {
+				this.nuevaImagen = e.target.files || e.dataTransfer.files;
+  				console.log(this.nuevaImagen);
+			},
+			aceptar() {
+				if(this.checkboxAlta) {
+					const colorOk = '1px solid #ADACAC'; 
+					const colorMal = '1px solid crimson';
+					let cont = 0;
 		
-		// Asignar eventos.
-		this.listado.on('click', this.actualizarForm.bind(this));
-		this.botonAceptar.on('click', this.aceptar.bind(this));
-		this.botonCancelar.on('click', this.cancelar.bind(this));
+					// Validación listado
+					if (this.actualizar != -1) {
+						this.$refs.listado.style.border = colorOk;
+						cont++;
+					}
+					else {
+						this.$refs.listado.style.border = colorMal;
+					}
 
-		// JQUERY UI
-		this.campoFecha.tooltip();
-		this.campoFecha.datepicker({
-			showOtherMonths: true,
-			selectOtherMonths: true,
-			showButtonPanel: true,
-			changeYear: true
-		});
+					// Validación nombre
+					if (this.nuevoNombre && this.nuevoNombre.length <= 50) {
+						this.$refs.nuevoNombre.style.border = colorOk;
+						cont++;
+					}
+					else {
+						this.$refs.nuevoNombre.style.border = colorMal;
+					}
+		
+					// Validación fecha
+					if (this.nuevaFecha) {
+						this.$refs.nuevaFecha.style.border = colorOk
+						cont++;
+					}
+					else {
+						this.$refs.nuevaFecha.style.border = colorMal;
+					}
+		
+					// Validación precio
+					if (this.nuevoPrecio && !isNaN(this.nuevoPrecio) && this.nuevoPrecio > 0) {
+						this.$refs.nuevoPrecio.style.border = colorOk;
+						cont++;
+					}
+					else {
+						this.$refs.nuevoPrecio.style.border = colorMal;
+					}
+		
+					// Validación tipo
+					if (this.nuevaCategoria != -1) {
+						this.$refs.nuevaCategoria.style.border = colorOk;
+						cont++;
+					}
+					else {
+						this.$refs.nuevaCategoria.style.border = colorMal;
+					}
+		
+					// Validación descripción
+					if (this.nuevaDescripcion && this.nuevaDescripcion.length <= 500) {
+						this.$refs.nuevaDescripcion.style.border = colorOk;
+						cont++;
+					}
+					else {
+						this.$refs.nuevaDescripcion.style.border = colorMal;
+					}
+		
+					// Validación imagen
+					if (this.nuevaImagen != null) {
+						cont++;
+					}
+					
+					window.scrollTo(0, 0);	// Mover al top de la página.
+					this.mostrarParrafo = true;
 
-		this.campoNombre.autocomplete({
-			source: [
-				'Disco duro',
-				'Memoria RAM',
-				'Tarjeta gráfica',
-				'Tarjeta de sonido',
-				'Procesador',
-				'Caja',
-				'Fuente de alimentación',
-				'Auriculares',
-				'Luces RGB',
-				'Placa base',
-				'Tarjeta de red'	
-			]
-		});
-    }
+					if(cont == 7) {
+						this.parrafoTexto = '✔️ Componente modificado correctamente ✔️';
+						
+						this.controlador.actualizarCRUD(
+							this.actualizar,
+							this.nuevoNombre, 
+							this.nuevaFecha, 
+							this.nuevoPrecio,
+							this.nuevaDescripcion, 
+							this.nuevaCategoria,
+							this.nuevaImagen[0], 
+							this.nuevoSeguro1,
+							this.nuevoSeguro2,
+							this.nuevoSeguro3
+						);
+		
+						this.cancelar();	// Borrar los campos una vez añadido el elemento.
+					}
+					else {
+						this.parrafoTexto = '⚠️ Rellena correctamente todos los campos ⚠️';
+					}
+				}
+				else {
+					window.scrollTo(0, 0);	// Mover al top de la página.
+					this.mostrarParrafo = true;
+					this.parrafoTexto = '⚠️ Acepta el aviso de protección de datos para continuar ⚠️';
+				}
+			},
+			cancelar() {
+				this.nuevoNombre = ''; 
+				this.nuevaFecha = '';
+				this.nuevoPrecio = 0;
+				this.nuevaDescripcion = ''; 
+				this.nuevaCategoria = -1;
+				this.nuevaImagen = null; 
+				this.nuevoSeguro1 = false;
+				this.nuevoSeguro2 = false;
+				this.nuevoSeguro3 = false;
+				this.checkboxAlta = false;
+			},
+			actualizarForm() {
+				let componentes = this.controlador.modelo.getLista();
+				let dato = null;
+				
+				if(componentes != null) {
+					for(let componente of componentes) {
+						if(componente.id == this.actualizar) {
+							dato = componente;
+							break;
+						}
+					}
 
-	/**
-		Actualiza el formulario con los datos del personaje seleccionado.
-	**/
-	actualizarForm() 
-	{
-		let componentes = this.modelo.getLista();
-		let dato = null;
-
-		if(componentes != null) 
-		{
-			for(let componente of componentes) 
-			{
-				if(componente.id == this.listado.val()) 
-				{
-					dato = componente;
-					break;
+					if(dato != null) {
+						this.nuevoNombre = dato.nombre;
+						this.nuevaFecha = dato.fecha;
+						this.nuevoPrecio = dato.precio;
+						this.nuevaDescripcion = dato.descripcion;
+						this.nuevaCategoria = dato.tipo;
+						this.nuevoSeguro1 = dato.seguro1;
+						this.nuevoSeguro2 = dato.seguro2;
+						this.nuevoSeguro3 = dato.seguro3;
+					}
 				}
 			}
-
-			if(dato != null) 
-			{
-				this.campoNombre.val(dato.nombre);
-				this.campoFecha.val(dato.fecha);
-				this.campoPrecio.val(dato.precio);
-				this.campoDescripcion.val(dato.descripcion);
-				this.campoTipo.val(dato.tipo);
-				this.seguro1.prop('checked', dato.seguro1);
-				this.seguro2.prop('checked', dato.seguro2);
-				this.seguro3.prop('checked', dato.seguro3);
-			}
 		}
-	}
-
-	/**
-		Carga el listado de componentes a actualizar. 
-	**/
-	cargarListado()
-	{
-		this.borrarListado();
-		let componentes = this.modelo.getLista();
-
-		if(componentes != null)
-		{
-			let primeraOpcion = $('<option></option>');
-			primeraOpcion.text('-- Selecciona componente --');
-			primeraOpcion.attr('value', '-1');
-			primeraOpcion.attr('disabled', '');
-			primeraOpcion.attr('selected', '');
-			this.listado.append(primeraOpcion);
-
-			for(let componente of componentes)
-			{
-				let option = $('<option></option>');
-				option.attr('value', componente.id);
-				option.text(componente.nombre);
-				this.listado.append(option);
-			}
-		}
-	}
-
-	/**
-		Atención al click de aceptar actualización.
-	**/
-	aceptar()
-	{
-		const colorOk = '1px solid #ADACAC'; 
-		const colorMal = '1px solid crimson';
-
-		if(this.checkboxAviso.is(':checked'))
-		{
-			let cont = 0;
-
-			// Validación listado
-			if (this.listado.val() != -1)
-			{
-				cont++;
-				this.listado.css('border', colorOk);
-			}
-			else
-			{
-				this.listado.css('border', colorMal);
-			}
-	
-			// Validación nombre
-			if (this.campoNombre.val() && this.campoNombre.val().length <= 50) 
-			{
-				cont++;
-				this.campoNombre.css('border', colorOk);
-			}
-			else 
-			{
-				this.campoNombre.css('border', colorMal);
-			}
-	
-			// Validación fecha
-			if (this.campoFecha.val()) 
-			{
-				cont++;
-				this.campoFecha.css('border', colorOk);
-			}
-			else 
-			{
-				this.campoFecha.css('border', colorMal);
-			}
-	
-			// Validación precio
-			if (this.campoPrecio.val() && !isNaN(this.campoPrecio.val()) && this.campoPrecio.val() > 0) 
-			{
-				cont++;
-				this.campoPrecio.css('border', colorOk);
-			}
-			else 
-			{
-				this.campoPrecio.css('border', colorMal);
-			}
-	
-			// Validación tipo
-			if (this.campoTipo.val() != -1)
-			{
-				cont++;
-				this.campoTipo.css('border', colorOk);
-			}
-			else
-			{
-				this.campoTipo.css('border', colorMal);
-			}
-	
-			// Validación descripción
-			if (this.campoDescripcion.val() && this.campoDescripcion.val().length <= 500)
-			{
-				cont++;
-				this.campoDescripcion.css('border', colorOk);
-			}
-			else
-			{
-				this.campoDescripcion.css('border', colorMal);
-			}
-	
-			// Validación imagen
-			if (this.campoImagen.prop('files')[0] != null)
-			{
-				cont++;
-				this.campoImagen.css('border', colorOk);
-			}
-			else
-			{
-				this.campoImagen.css('border', colorMal);
-			}
-	
-			window.scrollTo(0, 0);	// Mover al top de la página.
-			this.parrafoAviso.show();
-	
-			if(cont == 7) 
-			{
-				this.parrafoAviso.text('✔️ Componente actualizado correctamente ✔️');
-	
-				this.controlador.actualizarCRUD(
-					this.listado.val(),
-					this.campoNombre.val(), 
-					this.campoFecha.val(), 
-					this.campoPrecio.val(),
-					this.campoDescripcion.val(), 
-					this.campoTipo.val(),
-					this.campoImagen.prop('files')[0], 
-					this.seguro1.is(':checked'),
-					this.seguro2.is(':checked'),
-					this.seguro3.is(':checked')
-				);
-	
-				this.cancelar();	// Borrar los campos una vez modificado el elemento.
-			}
-			else
-			{
-				this.parrafoAviso.text('⚠️ Rellena correctamente los campos indicados ⚠️');
-			}
-		}
-		else
-		{
-			window.scrollTo(0, 0);	// Mover al top de la página.
-			this.parrafoAviso.show();
-			this.parrafoAviso.text('⚠️ Acepta el aviso de protección de datos para continuar ⚠️');
-		}
-	}
-
-	/**
-		Limpiar los campos del formulario.
-	**/
-	cancelar()
-	{
-		this.campoNombre.val('');
-		this.campoFecha.val('');
-		this.campoPrecio.val('');
-		this.campoDescripcion.val('');
-		this.campoTipo.val(-1);
-		this.campoImagen.val('');
-		this.seguro1.prop('checked', false);
-		this.seguro2.prop('checked', false);
-		this.seguro3.prop('checked', false);
-	}
-
-	/**
-		Borra todos los options del select.
-	**/
-	borrarListado()
-	{
-		this.listado.empty();
-	}
-
-	mostrar(ver)
-	{
-		super.mostrar(ver);
-		this.parrafoAviso.hide();
-	}
+	});
 }
