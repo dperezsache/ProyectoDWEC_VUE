@@ -8,10 +8,8 @@
 	Clase Modelo.
 	Gestiona los datos de la aplicación.
 **/
-export class Modelo 
-{
-    constructor(controlador) 
-	{
+export class Modelo {
+    constructor(controlador) {
 		this.controlador = controlador;
 		this.callbacks = [];
 		this.listaComponentes;
@@ -24,8 +22,7 @@ export class Modelo
 	/**
 		Iniciar conexión con la base de datos.
 	**/
-	conectarDB() 
-	{
+	conectarDB() {
 		const peticion = window.indexedDB.open('ComponentesDB', 1);
 
 		peticion.onsuccess = (event) => {
@@ -45,16 +42,14 @@ export class Modelo
 		Registra un objeto para informarle de los cambios en el Modelo.
 		@param {Function} callback Función de callback que será llamada cuando cambien los datos.
 	**/
-	registrar(callback) 
-	{
+	registrar(callback) {
 		this.callbacks.push(callback);
 	}
 
 	/**
 		Ejecuta todos los callback registrados.
 	**/
-	avisar() 
-	{
+	avisar() {
 		for(let callback of this.callbacks) 
 			callback();
 	}
@@ -71,8 +66,7 @@ export class Modelo
 		@param {Boolean} seguro2 Seguro nº 2.
 		@param {Boolean} seguro3 Seguro nº 3.
 	**/
-	insertar(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
-	{
+	insertar(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) {
 		// Transformar imagen a base64
 		let reader = new FileReader();
 		reader.readAsDataURL(imagen);
@@ -112,8 +106,7 @@ export class Modelo
 		@param {Boolean} seguro2 Seguro nº 2.
 		@param {Boolean} seguro3 Seguro nº 3.
 	**/
-	procesarComponente(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3)
-	{
+	procesarComponente(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) {
 		const peticion = this.db.transaction('tablaComponentes', 'readwrite').objectStore('tablaComponentes').get(parseInt(id));
 		peticion.onsuccess = (event) => {
 			const datos = event.target.result;
@@ -134,8 +127,7 @@ export class Modelo
 		@param {Boolean} seguro2 Seguro nº 2.
 		@param {Boolean} seguro3 Seguro nº 3.
 	**/
-	actualizarComponente(datos, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
-	{
+	actualizarComponente(datos, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) {
 		datos.nombre = nombre;
 		datos.fecha = fecha;
 		datos.precio = precio;
@@ -158,8 +150,7 @@ export class Modelo
 		Elimina un registro de la BBDD.
 		@param {Number} id Nº identificador del registro a eliminar.
 	**/
-	borrar(id)
-	{
+	borrar(id) {
 		const peticion = this.db.transaction('tablaComponentes', 'readwrite').objectStore('tablaComponentes').delete(id);
 		peticion.onsuccess = () => this.obtenerRegistros();
 	}
@@ -168,8 +159,7 @@ export class Modelo
 		Devuelve los registros de la base de datos a un array en el modelo, después llama a los callbacks.
 		@returns {Array} Datos de la BBDD.
 	**/
-	obtenerRegistros() 
-	{
+	obtenerRegistros() {
 		const peticion = this.db.transaction('tablaComponentes', 'readonly').objectStore('tablaComponentes').getAll();
 		
 		peticion.onsuccess = () => {
@@ -182,22 +172,19 @@ export class Modelo
 		Busca componentes que contengan el nombre o parte del nombre.
 		@param {String} nombre Nombre del componente.
 	**/
-	buscar(nombre)
-	{
-		if(!nombre)	// Si el nombre está en blanco, recuperar los registros.
-		{
+	buscar(nombre) {
+		// Si el nombre está en blanco, recuperar los registros.
+		if (!nombre) {	
 			this.obtenerRegistros();
 		}
-		else
-		{
+		else {
 			const peticion = this.db.transaction('tablaComponentes', 'readonly').objectStore('tablaComponentes').getAll();
 
 			peticion.onsuccess = () => {
 				const componentes = peticion.result;
 				this.listaComponentes = [];	// Limpiar la lista de componentes
 	
-				for(let componente of componentes)
-				{
+				for(let componente of componentes) {
 					if(componente.nombre.includes(nombre)) 
 						this.listaComponentes.push(componente);
 				}
@@ -211,24 +198,21 @@ export class Modelo
 		Devuelve la lista local de componentes.
 		@returns {Array} Lista.
 	**/
-	getLista() 
-	{
+	getLista() {
 		return this.listaComponentes;
 	}
 
 	/**
 	 * Devuelve los datos del tiempo.
 	 */
-	getDatosTiempo()
-	{
+	getDatosTiempo() {
 		return this.datosTiempo;
 	}
 
 	/**
 	 * Carga los datos de la predicción meteorológica de Badajoz para el día de hoy.
 	 */
-	infoAEMET()
-	{
+	infoAEMET() {
 		const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYXZpZHNhY2hlMDhAZ21haWwuY29tIiwianRpIjoiZTQ2ZDNlNWEtMjQ1Ni00ZDUyLTg0ZjYtYjc2ZjFjOThkOTAyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE2NzQ1NzM5NjMsInVzZXJJZCI6ImU0NmQzZTVhLTI0NTYtNGQ1Mi04NGY2LWI3NmYxYzk4ZDkwMiIsInJvbGUiOiIifQ.mFEFzKjKcpHxvyinDg6iXDen6I2cdKBExm0Qb_ke5aY';
 		let peticion = {
 			'async': true,

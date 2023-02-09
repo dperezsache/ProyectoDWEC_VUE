@@ -58,6 +58,7 @@ button.buttonCookie {
     border-radius: 5px;
     padding: 8px 12px 8px 12px;
     margin-bottom: 10px;
+    margin-right: 10px;
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;

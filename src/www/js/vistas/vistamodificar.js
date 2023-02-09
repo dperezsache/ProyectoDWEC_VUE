@@ -4,7 +4,7 @@ export function VistaModificar(controlador) {
 			return {
 				controlador: controlador,
 				mostrar: false,
-				actualizar: -1,
+				listado: -1,
 				nuevoNombre: '',
 				nuevaFecha: '',
 				nuevoPrecio: 0,
@@ -25,9 +25,9 @@ export function VistaModificar(controlador) {
 		`<div v-if="mostrar" id="divM">
 			<p v-if="mostrarParrafo" class="pAviso">{{this.parrafoTexto}}</p>
 			<form id="formModificar">
-				<label for="actualizar">
+				<label for="listado">
 					Componente 
-					<select v-model="actualizar" @click="actualizarForm" ref="listado" name="actualizar">
+					<select v-model="listado" @click="actualizarForm" ref="listado" name="listado">
 						<option value="-1" disabled selected>-- Selecciona componente --</option>
 						<option v-for="componente of componentes" :value="componente.id">{{componente.nombre}}</option>
 					</select>
@@ -84,10 +84,16 @@ export function VistaModificar(controlador) {
 			</form>
 		</div>`,
 		methods: {
+			/**
+			 * Atención al cambio sobre el campo de tipo imagen.
+			 * @param {Event} e 
+			 */
 			imagenChange(e) {
 				this.nuevaImagen = e.target.files || e.dataTransfer.files;
-  				console.log(this.nuevaImagen);
 			},
+			/**
+			 * Atención al click sobre el botón Aceptar de la vista.
+			 */
 			aceptar() {
 				if(this.checkboxAlta) {
 					const colorOk = '1px solid #ADACAC'; 
@@ -95,7 +101,7 @@ export function VistaModificar(controlador) {
 					let cont = 0;
 		
 					// Validación listado
-					if (this.actualizar != -1) {
+					if (this.listado != -1) {
 						this.$refs.listado.style.border = colorOk;
 						cont++;
 					}
@@ -160,7 +166,7 @@ export function VistaModificar(controlador) {
 						this.parrafoTexto = '✔️ Componente modificado correctamente ✔️';
 						
 						this.controlador.actualizarCRUD(
-							this.actualizar,
+							this.listado,
 							this.nuevoNombre, 
 							this.nuevaFecha, 
 							this.nuevoPrecio,
@@ -184,6 +190,9 @@ export function VistaModificar(controlador) {
 					this.parrafoTexto = '⚠️ Acepta el aviso de protección de datos para continuar ⚠️';
 				}
 			},
+			/**
+			 * Limpia los campos del formulario.
+			 */
 			cancelar() {
 				this.nuevoNombre = ''; 
 				this.nuevaFecha = '';
@@ -196,13 +205,16 @@ export function VistaModificar(controlador) {
 				this.nuevoSeguro3 = false;
 				this.checkboxAlta = false;
 			},
+			/**
+			 * Actualiza el formulario con los datos del componente seleccionado.
+			 */
 			actualizarForm() {
 				let componentes = this.controlador.modelo.getLista();
 				let dato = null;
 				
 				if(componentes != null) {
 					for(let componente of componentes) {
-						if(componente.id == this.actualizar) {
+						if(componente.id == this.listado) {
 							dato = componente;
 							break;
 						}
@@ -218,6 +230,17 @@ export function VistaModificar(controlador) {
 						this.nuevoSeguro2 = dato.seguro2;
 						this.nuevoSeguro3 = dato.seguro3;
 					}
+				}
+			},
+			/**
+			 * Mostrar/ocultar la vista.
+			 * @param {Boolean} visible True mostrar, false ocultar.
+			 */
+			mostrarVista(visible) {
+				this.mostrar = visible;
+
+				if(!this.mostrar) {
+					this.mostrarParrafo = false;
 				}
 			}
 		}

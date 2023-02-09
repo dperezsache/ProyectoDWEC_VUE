@@ -41,22 +41,35 @@ export function VistaListado(controlador) {
 					</li>
 				</ul>
 				<div>
-					<button class="boton" style="margin-right: 10px;">
-						<span @click="eliminar(dato.id)" class="material-icons" role="img" aria-label="Eliminar" tabIndex="0">delete</span>
+					<button class="boton" @click="eliminar(dato.id)" style="margin-right: 10px;">
+						<span class="material-icons" role="img" aria-label="Eliminar" tabIndex="0">delete</span>
 					</button>
-					<button class="boton">
-						<span @click="editar(dato.id)" class="material-icons" role="img" aria-label="Editar" tabIndex="0">edit</span>
+					<button class="boton" @click="editar(dato.id)">
+						<span class="material-icons" role="img" aria-label="Editar" tabIndex="0">edit</span>
 					</button>
 				</div>
 			</div>
 		</div>`,
 		methods: {
+			/**
+			 *	Atención al evento eliminar de una fila.
+			 *	@param {Number} id ID del dato a eliminar.
+			 */
 			eliminar(id) {
 				this.controlador.eliminarCRUD(id);
 			},
+			/**
+			 *	Atención al evento editar una fila.
+			 *	@param {Number} id ID del dato a editar.
+			 */
 			editar(id) {
 				this.controlador.editarCRUD(id);
 			},
+			/**
+			 *	Devuelve el tipo de elemento correspondiente.
+			 *	@param {Number} tipo ID del tipo de componente.
+			 *	@returns {String} Nombre del tipo de componente.
+			 */
 			tipoProducto(tipo) {
 				switch(parseInt(tipo)) {
 					case 1: return 'Procesador';
@@ -70,10 +83,22 @@ export function VistaListado(controlador) {
 					default: return '';		
 				}
 			},
+			/**
+			 * Formatea el precio del componente.
+			 * @param {Number} precio Precio del componente.
+			 * @returns {Number} Precio formateado.
+			 */
 			formatearPrecio(precio) {
 				precio = parseFloat(precio).toFixed(2);
 				precio = precio.replace('.', ',');
 				return precio;
+			},
+			/**
+			 * Mostrar/ocultar la vista.
+			 * @param {Boolean} visible True mostrar, false ocultar.
+			 */
+			mostrarVista(visible) {
+				this.mostrar = visible;
 			}
 		}
 	});

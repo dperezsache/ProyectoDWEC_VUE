@@ -22,7 +22,7 @@ export function VistaCookies(controlador) {
 						<a href="assets/politicaCookies.pdf">Más información.</a>
 					</p>
 					<div>
-						<button class="buttonCookie" @click="cancelar">Rechazar</button>
+						<button class="buttonCookie" @click="mostrarVista(false)">Rechazar</button>
 						<button class="buttonCookie" @click="aceptar">Aceptar</button>
 					</div>
 				</div>
@@ -30,18 +30,18 @@ export function VistaCookies(controlador) {
 		</div>`,
 		methods: {
 			/**
-			 * Ocultar el aviso de cookies.
-			 */
-			cancelar() {
-				this.mostrar = false;
-			},
-
-			/**
 			 * Aceptar las cookies.
 			 */
 			aceptar() {
-				this.mostrar = false;
+				this.mostrarVista(false);
 				this.controlador.crearCookie1();
+			},
+			/**
+			 * Mostrar/ocultar la vista.
+			 * @param {Boolean} visible True mostrar, false ocultar.
+			 */
+			mostrarVista(visible) {
+				this.mostrar = visible;
 			}
 		}
 	});

@@ -29,6 +29,13 @@ export function VistaBarraBusqueda(controlador) {
 			busqueda() {
 				this.controlador.buscarComponentes(this.campoBuscar);
 			},
+			/**
+			 * Mostrar/ocultar la vista.
+			 * @param {Boolean} visible True mostrar, false ocultar.
+			 */
+			mostrarVista(visible) {
+				this.mostrar = visible;
+			}
 		}
 	});
 }

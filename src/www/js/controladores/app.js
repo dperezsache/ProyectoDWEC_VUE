@@ -7,14 +7,12 @@ import { VistaModificar } from "../vistas/vistamodificar.js";
 import { VistaBarraBusqueda } from "../vistas/vistabarrabusqueda.js";
 import { VistaFooter } from "../vistas/vistafooter.js";
 
-class Controlador 
-{
+class Controlador {
     /**
 	 *	Constructor de la clase.
 	 *	Llama al método iniciar al cargarse la página.
 	 */
-    constructor() 
-    {
+    constructor() {
 		$(window).on('load', this.iniciar.bind(this));
     }
 
@@ -22,8 +20,7 @@ class Controlador
      * Inicia la aplicación.
      * Crea el modelo y las vistas.
      */
-    iniciar() 
-    {
+    iniciar() {
 		this.COOKIE_1 = 'cookies_aceptadas';
 		this.COOKIE_2 = 'id_ultima_insercion';
 		this.COOKIE_3 = 'numero_visitas';
@@ -39,12 +36,10 @@ class Controlador
 		this.vistaModificar = new VistaModificar(this).mount('#divModificar');
 		
 		// Cookies
-		if(!this.obtenerCookie(this.COOKIE_1))
-		{
+		if(!this.obtenerCookie(this.COOKIE_1)) {
 			this.vistaCookies.mostrar = true;
 		}
-		else
-		{
+		else {
 			this.vistaCookies.checkCookies = true;
 			this.vistaFooter.cookiesPulsadas = true;
 		}
@@ -60,8 +55,7 @@ class Controlador
 	/**
 	 * Enviar el listado de componentes.
 	 */
-	enviarListado()
-	{
+	enviarListado() {
 		this.vistaListado.datos = this.modelo.getLista();
 		this.vistaModificar.componentes = this.modelo.getLista();
 	}
@@ -69,59 +63,51 @@ class Controlador
 	/**
 	 * Enviar datos del tiempo a la vista del footer.
 	 */
-	enviarDatosTiempo()
-	{
+	enviarDatosTiempo() {
 		this.vistaFooter.datosTiempo = this.modelo.getDatosTiempo();
 	}
 
 	/**
 	 * Generar cookie con valor true al aceptar las cookies, de 30 días de duración.
 	 */
-	crearCookie1()
-	{
+	crearCookie1() {
 		let fecha = new Date();
 		fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 		const caducidad = 'expires=' + fecha.toUTCString();
-		document.cookie = this.COOKIE_1 + '=' + true + ';' + caducidad + '; path=/'; 
+		document.cookie = this.COOKIE_1 + '=' + true + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
 	}
 
 	/**
 	 * Generar cookie con el ID del último elemento dado de alta.
 	 * @param {Number} id Identificador del elemento.
 	 */
-	crearCookie2(id)
-	{
-		if(this.obtenerCookie(this.COOKIE_1))
-		{
+	crearCookie2(id) {
+		if (this.obtenerCookie(this.COOKIE_1)) {
 			let fecha = new Date();
 			fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 			const caducidad = 'expires=' + fecha.toUTCString();
-			document.cookie = this.COOKIE_2 + '=' + id + ';' + caducidad + '; path=/'; 
+			document.cookie = this.COOKIE_2 + '=' + id + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
 		}
 	}
 
 	/**
 	 * Generar o modificar cookie del nº de visitas del usuario.
 	 */
-	crearCookie3()
-	{
-		if(this.obtenerCookie(this.COOKIE_1))
-		{
+	crearCookie3() {
+		if (this.obtenerCookie(this.COOKIE_1)) {
 			let resultado = this.obtenerCookie(this.COOKIE_3);
 			
-			if(resultado != null || resultado != undefined)	// Recrear cookie con +1 de valor
-			{
+			if (resultado != null || resultado != undefined) {	// Recrear cookie con +1 de valor
 				let fecha = new Date();
 				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 				const caducidad = 'expires=' + fecha.toUTCString();
-				document.cookie = this.COOKIE_3 + '=' + (parseInt(resultado) + 1) + ';' + caducidad + '; path=/'; 
+				document.cookie = this.COOKIE_3 + '=' + (parseInt(resultado) + 1) + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
 			}
-			else	// Generar cookie
-			{
+			else {	// Generar cookie
 				let fecha = new Date();
 				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 				const caducidad = 'expires=' + fecha.toUTCString();
-				document.cookie = this.COOKIE_3 + '=' + 1 + ';' + caducidad + '; path=/'; 
+				document.cookie = this.COOKIE_3 + '=' + 1 + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
 			}
 		}
 	}
@@ -130,8 +116,7 @@ class Controlador
 	 * Devuelve el valor de la cookie indicada.
 	 * @param {String} nombreCookie Nombre de la cookie.
 	 */
-	obtenerCookie(nombreCookie)
-	{
+	obtenerCookie(nombreCookie) {
 		const cNombre = nombreCookie + '=';
 		const cDecodificada = decodeURIComponent(document.cookie);
 		const cArray = cDecodificada.split('; ');
@@ -149,10 +134,8 @@ class Controlador
 	 * Gestionar el permiso de cookies.
 	 * @param {Boolean} permitir Si se permiten o no.
 	 */
-	configuracionCookies(permitir)
-	{
-		if(!permitir)
-		{
+	configuracionCookies(permitir) {
+		if (!permitir) {
 			if(this.obtenerCookie(this.COOKIE_1))
 				document.cookie = this.COOKIE_1 + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
@@ -162,68 +145,60 @@ class Controlador
 			if(this.obtenerCookie(this.COOKIE_3)) 
 				document.cookie = this.COOKIE_3 + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 		}
-		else
-		{
-			if(!this.obtenerCookie(this.COOKIE_1))
-				this.crearCookie1();
+		else {
+			if(!this.obtenerCookie(this.COOKIE_1)) this.crearCookie1();
 		}
 	}
 
     /**
 		Atención a la pulsación sobre el botón de listado
 	**/
-    pulsarBotonListado() 
-    {
-        this.vistaListado.mostrar = true;
-        this.vistaBarraBusqueda.mostrar = true;
-        this.vistaAlta.mostrar = false;
-        this.vistaModificar.mostrar = false;
+    pulsarBotonListado() {
+        this.vistaListado.mostrarVista(true);
+        this.vistaBarraBusqueda.mostrarVista(true);
+        this.vistaAlta.mostrarVista(false);
+        this.vistaModificar.mostrarVista(false);
     }
 
     /**
 		Atención a la pulsación sobre el botón de alta
 	**/
-    pulsarBotonAlta() 
-    {
-        this.vistaListado.mostrar = false;
-        this.vistaBarraBusqueda.mostrar = false;
-        this.vistaAlta.mostrar = true;
-        this.vistaModificar.mostrar = false;
+    pulsarBotonAlta() {
+        this.vistaListado.mostrarVista(false);
+        this.vistaBarraBusqueda.mostrarVista(false);
+        this.vistaAlta.mostrarVista(true);
+        this.vistaModificar.mostrarVista(false);
     }
 
     /**
 		Atención a la pulsación sobre el botón de modificar
 	**/
-    pulsarBotonModificar() 
-    {
-        this.vistaListado.mostrar = false;
-        this.vistaBarraBusqueda.mostrar = false;
-        this.vistaAlta.mostrar = false;
-        this.vistaModificar.mostrar = true;
+    pulsarBotonModificar() {
+        this.vistaListado.mostrarVista(false);
+        this.vistaBarraBusqueda.mostrarVista(false);
+        this.vistaAlta.mostrarVista(false);
+        this.vistaModificar.mostrarVista(true);
     }
 
     /**
 		Realizar búsqueda de componentes.
 		@param {String} nombre Nombre del componente.
 	**/
-	buscarComponentes(nombre)
-	{
+	buscarComponentes(nombre) {
 		this.modelo.buscar(nombre);
 	}
 
     /**
 		Inserta el elemento en el modelo.
     **/
-    aceptarCRUD(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) 
-    {
+    aceptarCRUD(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) {
         this.modelo.insertar(nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3);
     }
 
     /**
 		Atención al click en el icono editar del CRUD.
 	**/
-	actualizarCRUD(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3)
-	{
+	actualizarCRUD(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3) {
 		this.modelo.procesarComponente(id, nombre, fecha, precio, descripcion, tipo, imagen, seguro1, seguro2, seguro3);
 	}
 
@@ -232,8 +207,7 @@ class Controlador
 		Elimina el elemento en el modelo.
 		@param {Number} id ID del elemento a eliminar.
 	**/
-	eliminarCRUD(id) 
-    {
+	eliminarCRUD(id) {
 		this.modelo.borrar(id);
 	}
 
@@ -242,10 +216,9 @@ class Controlador
 		Manda al formulario de edición.
 		@param {Number} id ID del elemento a editar.
 	**/
-	editarCRUD(id) 
-    {
+	editarCRUD(id) {
 		this.pulsarBotonModificar();
-		this.vistaModificar.actualizar = id;
+		this.vistaModificar.listado = id;
 		this.vistaModificar.actualizarForm();
 	}
 
@@ -253,10 +226,9 @@ class Controlador
 		Devuelve el modelo de la aplicación.
 		@return {Modelo} El modelo de la aplicación.
 	**/
-	getModelo() 
-    {
+	getModelo() {
 		return this.modelo;
 	}
 }
 
-const app = new Controlador();
+new Controlador();

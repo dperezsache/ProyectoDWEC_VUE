@@ -76,10 +76,16 @@ export function VistaAlta(controlador) {
 			</form>
 		</div>`,
 		methods: {
+			/**
+			 * Atención al cambio sobre el campo de tipo imagen.
+			 * @param {Event} e
+			 */
 			imagenChange(e) {
 				this.subirImagen = e.target.files || e.dataTransfer.files;
-  				console.log(this.subirImagen);
 			},
+			/**
+			 * Atención al click sobre el botón Aceptar de la vista.
+			 */
 			aceptar() {
 				if(this.checkboxAlta) {
 					const colorOk = '1px solid #ADACAC'; 
@@ -162,9 +168,13 @@ export function VistaAlta(controlador) {
 				}
 				else {
 					window.scrollTo(0, 0);	// Mover al top de la página.
+					this.mostrarParrafo = true;
 					this.parrafoTexto = '⚠️ Acepta el aviso de protección de datos para continuar ⚠️';
 				}
 			},
+			/**
+			 * Limpia campos del formulario.
+			 */
 			cancelar() {
 				this.nombre = ''; 
 				this.fecha = '';
@@ -176,6 +186,17 @@ export function VistaAlta(controlador) {
 				this.seguro2 = false;
 				this.seguro3 = false;
 				this.checkboxAlta = false;
+			},
+			/**
+			 * Mostrar/ocultar la vista.
+			 * @param {Boolean} visible True mostrar, false ocultar.
+			 */
+			mostrarVista(visible) {
+				this.mostrar = visible;
+
+				if(!this.mostrar) {
+					this.mostrarParrafo = false;
+				}
 			}
 		}
 	});
