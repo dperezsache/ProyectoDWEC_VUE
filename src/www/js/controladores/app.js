@@ -37,19 +37,19 @@ class Controlador {
 		
 		// Cookies
 		if(!this.obtenerCookie(this.COOKIE_1)) {
-			this.vistaCookies.mostrar = true;
+			this.vistaCookies.mostrarVista(true);
 		}
 		else {
-			this.vistaCookies.checkCookies = true;
 			this.vistaFooter.cookiesPulsadas = true;
 		}
 
 		this.crearCookie3();		  // Aumentar contador de visitas (si están las cookies permitidas).
-		this.pulsarBotonListado();    // Iniciar desde la vista de listado.
 
 		// Registrar callbacks
 		this.modelo.registrar(this.enviarListado.bind(this));
 		this.modelo.registrar(this.enviarDatosTiempo.bind(this));
+
+		this.pulsarBotonListado();    // Iniciar desde la vista de listado.
 	}
 
 	/**
@@ -74,7 +74,9 @@ class Controlador {
 		let fecha = new Date();
 		fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 		const caducidad = 'expires=' + fecha.toUTCString();
-		document.cookie = this.COOKIE_1 + '=' + true + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
+		document.cookie = this.COOKIE_1 + '=' + true + ';' + caducidad + '; path=/' + ';' + 'SameSite=None;' +  'Secure'; 
+		
+		this.vistaFooter.cookiesPulsadas = true;
 	}
 
 	/**
@@ -86,7 +88,7 @@ class Controlador {
 			let fecha = new Date();
 			fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 			const caducidad = 'expires=' + fecha.toUTCString();
-			document.cookie = this.COOKIE_2 + '=' + id + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
+			document.cookie = this.COOKIE_2 + '=' + id + ';' + caducidad + '; path=/;' + 'SameSite=None;' +  'Secure'; 
 		}
 	}
 
@@ -101,13 +103,13 @@ class Controlador {
 				let fecha = new Date();
 				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 				const caducidad = 'expires=' + fecha.toUTCString();
-				document.cookie = this.COOKIE_3 + '=' + (parseInt(resultado) + 1) + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
+				document.cookie = this.COOKIE_3 + '=' + (parseInt(resultado) + 1) + ';' + caducidad + '; path=/;' + 'SameSite=None;' +  'Secure'; 
 			}
 			else {	// Generar cookie
 				let fecha = new Date();
 				fecha.setTime(fecha.getTime() + (30 * 24 * 60 * 60 * 1000));
 				const caducidad = 'expires=' + fecha.toUTCString();
-				document.cookie = this.COOKIE_3 + '=' + 1 + ';' + caducidad + '; path=/' + ';' + 'SameSite=Lax'; 
+				document.cookie = this.COOKIE_3 + '=' + 1 + ';' + caducidad + '; path=/;' + 'SameSite=None;' +  'Secure'; 
 			}
 		}
 	}

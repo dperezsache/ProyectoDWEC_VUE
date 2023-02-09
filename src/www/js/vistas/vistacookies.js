@@ -1,6 +1,5 @@
 /**
-	Vista de la barra de búsqueda.
-	Contiene todos los componentes que hayan.
+	Vista del aviso de cookies.
 **/
 export function VistaCookies(controlador) {
 	return VistaCookies = Vue.createApp({
@@ -19,7 +18,7 @@ export function VistaCookies(controlador) {
 						Utilizamos cookies para habilitar el funcionamiento y la seguridad adecuados de nuestro sitio web, 
 						y para ayudarnos a ofrecerte la mejor experiencia de usuario posible. Al hacer clic en Aceptar, 
 						aceptas el uso de estas cookies. Puedes cambiar la configuración de las cookies en cualquier momento.
-						<a href="assets/politicaCookies.pdf">Más información.</a>
+						<a href="assets/politicaCookies.pdf" target="_blank">Más información.</a>
 					</p>
 					<div>
 						<button class="buttonCookie" @click="mostrarVista(false)">Rechazar</button>

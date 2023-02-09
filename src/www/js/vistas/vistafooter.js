@@ -28,20 +28,28 @@ export function VistaFooter(controlador) {
             </p>
             <div v-if="mostrarConfCookies" id="divConfCookies">
                 <label for="checkboxCookie">
-                    <input :checked="cookiesPulsadas" type="checkbox" name="checkboxCookie" @click="permitirCookies"/> Permitir el uso de cookies (deshabilita o habilita las demás).
+                    <input v-model="cookiesPulsadas" type="checkbox" name="checkboxCookie" @click="permitirCookies"/> Permitir el uso de cookies (deshabilita o habilita las demás).
                 </label>
             </div>
-            
             <button type="button" class="boton" id="buttonTiempo" @click="toggleTiempo">Mostrar/ocultar predicción meteorológica</button>
             <p v-if="mostrarTiempo" id="pTiempo">{{datosTiempo}}</p>
         </div>`,
         methods: {
+            /**
+             * Muestra/oculta la información del tiempo.
+             */
             toggleTiempo() {
                 this.mostrarTiempo = !this.mostrarTiempo;
             },
+            /**
+             * Muestra/oculta la configuración de las cookies.
+             */
             toggleConfCookies() {
                 this.mostrarConfCookies = !this.mostrarConfCookies;
             },
+            /**
+             * Habilita o no el uso de cookies.
+             */
             permitirCookies() {
                 this.cookiesPulsadas = !this.cookiesPulsadas;
                 this.controlador.configuracionCookies(this.cookiesPulsadas);

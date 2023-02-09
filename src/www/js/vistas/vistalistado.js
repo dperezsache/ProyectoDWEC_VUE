@@ -6,16 +6,16 @@ export function VistaListado(controlador) {
 		data() {
 			return {
 				controlador: controlador,
-				datos: {type: Array},
+				datos: {type: Array,},
 				mostrar: false
 			}
 		},
 		template:
 		/*html*/
 		`<div id="divL" v-if="mostrar">
-			<!--<p class="pAviso">No hay ningún registro.</p>-->
+			<p v-if="!datos.length" class="pAviso">No hay ningún registro.</p>
 			<div class="divItem" role="listitem" v-for="dato in datos">
-				<img style="width: 256px; height: 256px; display: block;" :src="dato.imagen" :alt="dato.nombre"/>
+				<img class="imgComponente" draggable="false" :src="dato.imagen" :alt="dato.nombre"/>
 				<p class="pNombreItem" tabIndex="0">{{dato.nombre}}</p>
 				<p class="pPrecioItem" tabIndex="0">{{this.formatearPrecio(dato.precio)}}€</p>
 				<div class="divDescItem">
@@ -25,7 +25,7 @@ export function VistaListado(controlador) {
 					<li>Tipo de producto: <span class="spanFecha">{{this.tipoProducto(dato.tipo)}}</span></li>
 					<li>Fecha de lanzamiento: <span class="spanFecha">{{dato.fecha}}</span></li>
 				</ul>
-				<hr class="hrItems" style="width: 350px;"/>
+				<hr class="hrItems"/>
 				<ul>
 					<li tabIndex="0">
 						<p v-if="dato.seguro1">Se ofrece seguro contra robos.</p>
@@ -72,15 +72,24 @@ export function VistaListado(controlador) {
 			 */
 			tipoProducto(tipo) {
 				switch(parseInt(tipo)) {
-					case 1: return 'Procesador';
-					case 2: return 'Tarjeta gráfica';
-					case 3: return 'Memoria RAM';
-					case 4: return 'Fuente de alimentación';
-					case 5: return 'Placa base';
-					case 6: return 'Disco duro';
-					case 7: return 'Torre';
-					case 8: return 'Otro';
-					default: return '';		
+					case 1: 
+						return 'Procesador';
+					case 2: 
+						return 'Tarjeta gráfica';
+					case 3: 
+						return 'Memoria RAM';
+					case 4: 
+						return 'Fuente de alimentación';
+					case 5: 
+						return 'Placa base';
+					case 6: 
+						return 'Disco duro';
+					case 7: 
+						return 'Torre';
+					case 8: 
+						return 'Otro';
+					default: 
+						return '';
 				}
 			},
 			/**
